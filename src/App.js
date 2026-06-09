@@ -314,11 +314,68 @@ function UnitySection() {
   );
 }
 
+// ── MISSION / VISION ─────────────────────────────────────
+function MissionVision() {
+  return (
+    <section className="mv-section">
+      {/* Canadian identity bar */}
+      <div className="mv-canada-bar">
+        <span className="mv-maple">🍁</span>
+        <span className="mv-canada-text">Proudly Serving Hindu &amp; Sikh Canadians Since 2019</span>
+        <span className="mv-maple">🍁</span>
+      </div>
+
+      <div className="mv-inner">
+        {/* Vision */}
+        <Reveal className="mv-card mv-vision">
+          <div className="mv-icon">ੴ ॐ</div>
+          <div className="mv-label">Our Vision</div>
+          <h3>A Harmonious Canada Where Two Great Traditions Thrive as One</h3>
+          <p>A society where Hindu and Sikh Canadians celebrate shared values and cultural heritage — fostering mutual respect, interfaith unity, and active civic engagement for the betterment of <em>all</em> Canadians.</p>
+        </Reveal>
+
+        <div className="mv-divider">
+          <div className="mv-div-line" />
+          <div className="mv-div-leaf">🍁</div>
+          <div className="mv-div-line" />
+        </div>
+
+        {/* Mission */}
+        <Reveal delay={0.15} className="mv-card mv-mission">
+          <div className="mv-icon">🤝</div>
+          <div className="mv-label">Our Mission</div>
+          <h3>Uniting Communities. Empowering Canadians. Building Tomorrow Together.</h3>
+          <p>Strengthening bonds between Hindu and Sikh communities through cultural, educational, humanitarian, and advocacy work — organizing events, supporting charitable projects, and advocating for fair representation in Canada's democracy.</p>
+        </Reveal>
+      </div>
+
+      {/* Key pillars */}
+      <div className="mv-pillars">
+        {[
+          { icon: '🎉', title: 'Cultural Exchange',       desc: 'Joint Diwali, Gurpurab & shared festival celebrations' },
+          { icon: '🕊️', title: 'Interfaith Dialogue',    desc: 'Open platforms for respectful conversation & learning' },
+          { icon: '🎓', title: 'Education & Heritage',    desc: 'Programs on our intertwined histories & shared roots' },
+          { icon: '🙌', title: 'Humanitarian Seva',       desc: 'Charitable projects, disaster relief & social services' },
+          { icon: '🗳️', title: 'Civic Advocacy',         desc: 'Fair political representation for both communities' },
+          { icon: '🍁', title: 'Stronger Canada',        desc: 'Diversity, inclusion & unity enriching the national fabric' },
+        ].map((p, i) => (
+          <Reveal key={i} delay={i * 0.07} className="mv-pillar">
+            <span className="mv-pillar-icon">{p.icon}</span>
+            <strong>{p.title}</strong>
+            <span>{p.desc}</span>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ── HOME ─────────────────────────────────────────────────
 function Home({ setPage }) {
   return (
     <div className="page-home">
       <HeroSlider setPage={setPage} />
+      <MissionVision />
       <section className="stats-bar">
         <Counter end={5000} label="Members" />
         <Counter end={12}   label="Cities" />
