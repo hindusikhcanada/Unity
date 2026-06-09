@@ -223,12 +223,12 @@ function Nav({ page, setPage }) {
 // ── Gallery ─────────────────────────────────────────────
 function Gallery() {
   const panels = [
-    { img: IMG.prayerHands, caption: 'Gurdwara Darbar Hall — The Sacred Diwan', wide: true },
-    { img: IMG.diyaLamps,   caption: 'Ganga Aarti — Sacred Fire & Light',     wide: false },
-    { img: IMG.lotus,       caption: 'Gurbani — Divine Wisdom',               wide: false },
-    { img: IMG.kirtan,      caption: 'Gurdwara Seva — Sacred Service',        wide: false },
-    { img: IMG.havan,       caption: 'Badrinath — Himalayan Pilgrimage',      wide: false },
-    { img: IMG.turban,      caption: 'Dastar — The Nihang Crown of Honour',   wide: true },
+    { img: IMG.prayerHands, caption: 'Gurdwara Darbar Hall — The Sacred Diwan',       wide: true  },
+    { img: IMG.diyaLamps,   caption: 'Badrinath Dham — Adorned for the Divine',        wide: false },
+    { img: IMG.lotus,       caption: 'Gangotri — Source of the Sacred Ganga',          wide: false },
+    { img: IMG.kirtan,      caption: 'Harmandir Sahib — The Golden Temple, Amritsar',  wide: false },
+    { img: IMG.havan,       caption: 'Holi — Festival of Colour & Community',          wide: false },
+    { img: IMG.turban,      caption: 'Gurdwara Sahib — A House of the Divine',         wide: true  },
   ];
   return (
     <section className="gallery-section">
