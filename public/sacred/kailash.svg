@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a2e"/>
+      <stop offset="40%" style="stop-color:#2d1b69"/>
+      <stop offset="70%" style="stop-color:#6b4fa0"/>
+      <stop offset="100%" style="stop-color:#c8a8d8"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90d9;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#1a5276;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="snow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="60%" style="stop-color:#d5d8dc"/>
+      <stop offset="100%" style="stop-color:#808b96"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="30%" r="15%">
+      <stop offset="0%" style="stop-color:#fff7aa;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#f39c12;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <!-- Sun glow -->
+  <ellipse cx="960" cy="320" rx="300" ry="200" fill="url(#sun)"/>
+  <!-- Stars -->
+  <g fill="white" opacity="0.6">
+    <circle cx="200" cy="80" r="1.5"/><circle cx="450" cy="120" r="1"/><circle cx="700" cy="60" r="2"/><circle cx="1100" cy="90" r="1.5"/><circle cx="1400" cy="50" r="1"/><circle cx="1700" cy="100" r="2"/>
+    <circle cx="300" cy="200" r="1"/><circle cx="600" cy="180" r="1.5"/><circle cx="900" cy="150" r="1"/><circle cx="1200" cy="170" r="2"/><circle cx="1600" cy="140" r="1.5"/>
+  </g>
+  <!-- Background mountains -->
+  <polygon points="0,700 200,450 400,550 600,380 800,500 1000,350 1200,480 1400,400 1600,520 1800,430 1920,500 1920,800 0,800" fill="#4a4a6a" opacity="0.6"/>
+  <!-- Mt Kailash main peak - distinctive square top -->
+  <polygon points="760,720 840,400 880,380 920,320 960,280 1000,320 1040,380 1080,400 1120,720" fill="url(#snow)"/>
+  <!-- Kailash dark rock face -->
+  <polygon points="840,720 880,500 920,400 960,340 1000,400 1040,500 1080,720" fill="#5d6d7e" opacity="0.6"/>
+  <!-- Horizontal bands on Kailash (distinctive feature) -->
+  <line x1="840" y1="560" x2="1080" y2="560" stroke="#808b96" stroke-width="4" opacity="0.5"/>
+  <line x1="855" y1="500" x2="1065" y2="500" stroke="#808b96" stroke-width="3" opacity="0.5"/>
+  <line x1="875" y1="450" x2="1045" y2="450" stroke="#808b96" stroke-width="2" opacity="0.4"/>
+  <!-- Snow cap -->
+  <polygon points="900,380 920,320 960,270 1000,320 1020,380 990,360 960,300 930,360" fill="white" opacity="0.95"/>
+  <!-- Mansarovar Lake -->
+  <ellipse cx="960" cy="810" rx="580" ry="130" fill="url(#lake)" opacity="0.88"/>
+  <!-- Lake reflection shimmer -->
+  <ellipse cx="960" cy="790" rx="400" ry="40" fill="white" opacity="0.15"/>
+  <!-- Foreground snow/ice -->
+  <polygon points="0,850 300,780 600,820 960,770 1320,820 1620,780 1920,850 1920,1080 0,1080" fill="#d5d8dc" opacity="0.7"/>
+  <polygon points="0,900 400,860 700,880 960,840 1220,880 1520,860 1920,900 1920,1080 0,1080" fill="#eaecee" opacity="0.5"/>
+  <!-- Tibetan prayer flags hint -->
+  <g opacity="0.7">
+    <line x1="700" y1="650" x2="700" y2="720" stroke="#8B4513" stroke-width="2"/>
+    <rect x="685" y="650" width="30" height="15" fill="#e74c3c" opacity="0.8"/>
+    <line x1="740" y1="645" x2="740" y2="715" stroke="#8B4513" stroke-width="2"/>
+    <rect x="725" y="645" width="30" height="15" fill="#f39c12" opacity="0.8"/>
+    <line x1="780" y1="642" x2="780" y2="712" stroke="#8B4513" stroke-width="2"/>
+    <rect x="765" y="642" width="30" height="15" fill="#27ae60" opacity="0.8"/>
+    <polyline points="700,660 740,655 780,652" fill="none" stroke="#f5f5f5" stroke-width="1.5" opacity="0.6"/>
+  </g>
+  <!-- OM symbol watermark -->
+  <text x="960" y="220" font-family="serif" font-size="80" fill="rgba(240,192,96,0.25)" text-anchor="middle">ॐ</text>
+</svg>

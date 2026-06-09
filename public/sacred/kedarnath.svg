@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="himsky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#080818"/>
+      <stop offset="40%" style="stop-color:#1a1a4e"/>
+      <stop offset="70%" style="stop-color:#4a3a8a"/>
+      <stop offset="100%" style="stop-color:#c8a0d8"/>
+    </linearGradient>
+    <linearGradient id="snowpeak" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="50%" style="stop-color:#d0d8e0"/>
+      <stop offset="100%" style="stop-color:#8090a0"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b0a090"/>
+      <stop offset="100%" style="stop-color:#706050"/>
+    </linearGradient>
+    <radialGradient id="moonlight" cx="30%" cy="20%" r="30%">
+      <stop offset="0%" style="stop-color:#fffff0;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#4a3a8a;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#himsky)"/>
+  <rect width="1920" height="1080" fill="url(#moonlight)"/>
+  <!-- Moon -->
+  <circle cx="580" cy="200" r="50" fill="#fffff0" opacity="0.9"/>
+  <circle cx="600" cy="185" r="45" fill="#4a3a8a"/>
+  <!-- Stars -->
+  <g fill="white" opacity="0.9">
+    <circle cx="100" cy="50" r="2"/><circle cx="300" cy="80" r="1.5"/><circle cx="500" cy="30" r="2.5"/>
+    <circle cx="800" cy="70" r="1.5"/><circle cx="1100" cy="50" r="2"/><circle cx="1400" cy="80" r="1.5"/>
+    <circle cx="1700" cy="40" r="2"/><circle cx="200" cy="160" r="1"/><circle cx="700" cy="140" r="1.5"/>
+    <circle cx="1200" cy="130" r="1"/><circle cx="1600" cy="150" r="2"/><circle cx="900" cy="100" r="1"/>
+  </g>
+  <!-- Himalayan background range -->
+  <polygon points="0,600 150,380 300,460 500,300 700,420 900,280 1100,400 1300,320 1500,450 1700,380 1920,440 1920,700 0,700" fill="#5a6070" opacity="0.5"/>
+  <!-- Kedarnath peak behind -->
+  <polygon points="750,700 840,350 880,280 940,180 980,130 1020,180 1060,280 1100,380 1150,700" fill="url(#snowpeak)"/>
+  <!-- Rock face of Kedarnath mountain -->
+  <polygon points="860,700 900,430 940,320 980,220 1020,320 1060,440 1100,700" fill="#5a5a6a" opacity="0.5"/>
+  <!-- Kedarnath Temple - ancient stone -->
+  <!-- Temple Platform/base -->
+  <rect x="820" y="610" width="280" height="30" fill="#b0a090" rx="2"/>
+  <!-- Main temple hall (mandapa) -->
+  <rect x="840" y="510" width="180" height="100" fill="url(#stone)"/>
+  <!-- Arched entrance -->
+  <path d="M890,610 L890,550 Q890,520 920,520 Q950,520 950,550 L950,610 Z" fill="#60504a"/>
+  <!-- Pillars -->
+  <rect x="850" y="510" width="12" height="100" fill="#a09080"/>
+  <rect x="870" y="510" width="12" height="100" fill="#a09080"/>
+  <rect x="960" y="510" width="12" height="100" fill="#a09080"/>
+  <rect x="980" y="510" width="12" height="100" fill="#a09080"/>
+  <!-- Roof of mandapa -->
+  <polygon points="835,510 1025,510 1010,480 850,480" fill="#c0b0a0"/>
+  <!-- Main garbhagriha (shrine) tower -->
+  <rect x="880" y="380" width="120" height="135" fill="url(#stone)"/>
+  <!-- Shikhara (spire) - characteristic Kedarnath shape -->
+  <polygon points="875,380 885,320 900,260 920,200 960,140 1000,200 1020,260 1035,320 1045,380" fill="#c8baa8"/>
+  <!-- Horizontal bands on shikhara -->
+  <g stroke="#a09080" stroke-width="3" fill="none" opacity="0.7">
+    <line x1="882" y1="360" x2="1038" y2="360"/>
+    <line x1="888" y1="335" x2="1032" y2="335"/>
+    <line x1="896" y1="310" x2="1024" y2="310"/>
+    <line x1="904" y1="285" x2="1016" y2="285"/>
+    <line x1="912" y1="260" x2="1008" y2="260"/>
+    <line x1="920" y1="235" x2="1000" y2="235"/>
+  </g>
+  <!-- Amalaka (disc) at top of shikhara -->
+  <ellipse cx="960" cy="145" rx="30" ry="12" fill="#d0c0a8"/>
+  <!-- Kalash -->
+  <line x1="960" y1="110" x2="960" y2="140" stroke="#ffd700" stroke-width="5"/>
+  <ellipse cx="960" cy="105" rx="12" ry="16" fill="#ffd700"/>
+  <line x1="960" y1="85" x2="960" y2="105" stroke="#ffd700" stroke-width="3"/>
+  <circle cx="960" cy="82" r="7" fill="#ffd700"/>
+  <!-- Trishul (trident) of Shiva near temple -->
+  <g stroke="#ffd700" stroke-width="3" fill="none" transform="translate(1110,480)">
+    <line x1="0" y1="0" x2="0" y2="120"/>
+    <path d="M0,0 Q-15,-30 -10,-50 Q0,-35 0,0"/>
+    <path d="M0,0 Q15,-30 10,-50 Q0,-35 0,0"/>
+    <path d="M-20,10 Q-25,-15 -10,-20 Q0,-5 0,0"/>
+    <path d="M20,10 Q25,-15 10,-20 Q0,-5 0,0"/>
+  </g>
+  <!-- Snow/ice field around temple -->
+  <polygon points="700,700 750,670 820,650 960,640 1100,650 1170,670 1220,700 1920,800 1920,1080 0,1080 0,800" fill="white" opacity="0.8"/>
+  <!-- Footprints/path in snow -->
+  <path d="M960,700 Q980,690 980,680 Q980,670 960,665" fill="none" stroke="#c8d8e8" stroke-width="2" opacity="0.5"/>
+  <!-- Pilgrims -->
+  <g fill="rgba(0,0,0,0.6)">
+    <ellipse cx="860" cy="648" rx="7" ry="18"/><ellipse cx="880" cy="651" rx="6" ry="16"/>
+    <ellipse cx="1040" cy="645" rx="7" ry="18"/><ellipse cx="1060" cy="648" rx="6" ry="16"/>
+  </g>
+  <!-- Shiva Om watermark -->
+  <text x="960" y="200" font-family="serif" font-size="70" fill="rgba(255,215,0,0.2)" text-anchor="middle">ॐ नमः शिवाय</text>
+</svg>

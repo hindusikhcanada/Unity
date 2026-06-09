@@ -3,27 +3,27 @@ import './App.css';
 
 // ── Unsplash image library (verified popular IDs) ───────
 const IMG = {
-  // Hero slides - 6 specific sacred sites
-  kailash:        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80',
-  harmandirSahib: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=1920&q=80',
-  hemkuntSahib:   'https://images.unsplash.com/photo-1605649487488-8173084857f0?auto=format&fit=crop&w=1920&q=80',
-  kedarnath:      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=80',
-  patnaSahib:     'https://images.unsplash.com/photo-1609766857985-1de99d5c08e9?auto=format&fit=crop&w=1920&q=80',
-  nainaDevi:      'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1920&q=80',
-  // Gallery panels
+  // Hero slides - 6 specific sacred sites (local SVG illustrations)
+  kailash:        '/sacred/kailash.svg',
+  harmandirSahib: '/sacred/harmandir.svg',
+  hemkuntSahib:   '/sacred/hemkunt.svg',
+  kedarnath:      '/sacred/kedarnath.svg',
+  patnaSahib:     '/sacred/patna-sahib.svg',
+  nainaDevi:      '/sacred/naina-devi.svg',
+  // Gallery & card images (Unsplash - load fine in browser)
   prayerHands:    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
   diyaLamps:      'https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?auto=format&fit=crop&w=800&q=80',
   lotus:          'https://images.unsplash.com/photo-1559305616-3f99cd43e353?auto=format&fit=crop&w=800&q=80',
   kirtan:         'https://images.unsplash.com/photo-1511735111819-9a3efd16269a?auto=format&fit=crop&w=800&q=80',
   havan:          'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=800&q=80',
-  turban:         'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+  turban:         'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
   // Card headers
-  memberCard:     'https://images.unsplash.com/photo-1545996124-0501ebae84d0?auto=format&fit=crop&w=600&q=80',
+  memberCard:     '/sacred/harmandir.svg',
   community:      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80',
   business:       'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80',
-  calendar:       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80',
-  articles:       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
-  seva:           'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80',
+  calendar:       '/sacred/kedarnath.svg',
+  articles:       '/sacred/naina-devi.svg',
+  seva:           '/sacred/patna-sahib.svg',
 };
 
 // ── Intersection Observer hook ──────────────────────────

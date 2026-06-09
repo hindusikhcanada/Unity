@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="hillsky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0520"/>
+      <stop offset="30%" style="stop-color:#1a0a40"/>
+      <stop offset="55%" style="stop-color:#8B2500"/>
+      <stop offset="75%" style="stop-color:#D4560A"/>
+      <stop offset="90%" style="stop-color:#F0C060"/>
+      <stop offset="100%" style="stop-color:#FAF3E0"/>
+    </linearGradient>
+    <linearGradient id="hillGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d5a27"/>
+      <stop offset="100%" style="stop-color:#1a3a15"/>
+    </linearGradient>
+    <linearGradient id="redTemple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4560a"/>
+      <stop offset="100%" style="stop-color:#8b2500"/>
+    </linearGradient>
+    <radialGradient id="sunrise2" cx="50%" cy="65%" r="45%">
+      <stop offset="0%" style="stop-color:#f5c842;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#d4560a;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <!-- Sky sunrise -->
+  <rect width="1920" height="1080" fill="url(#hillsky)"/>
+  <ellipse cx="960" cy="700" rx="550" ry="380" fill="url(#sunrise2)"/>
+  <!-- Sun rising -->
+  <circle cx="960" cy="640" r="60" fill="#f5c842" opacity="0.9"/>
+  <circle cx="960" cy="640" r="80" fill="#f0a500" opacity="0.3"/>
+  <!-- Shivalik hills background -->
+  <polygon points="0,700 200,500 400,580 600,440 800,520 1000,400 1200,500 1400,430 1600,510 1800,460 1920,510 1920,750 0,750" fill="#3a5a30" opacity="0.6"/>
+  <!-- Main hill of Naina Devi -->
+  <polygon points="400,850 500,500 600,380 700,280 800,230 960,180 1120,230 1220,280 1320,380 1420,500 1520,850" fill="url(#hillGreen)"/>
+  <!-- Hill outline -->
+  <polygon points="400,850 500,500 600,380 700,280 800,230 960,180 1120,230 1220,280 1320,380 1420,500 1520,850" fill="none" stroke="#4a7a3a" stroke-width="3" opacity="0.5"/>
+  <!-- Naina Devi Temple at hilltop -->
+  <!-- Temple base platform -->
+  <rect x="840" y="260" width="240" height="25" fill="#f0e8d0" rx="3"/>
+  <!-- Main temple structure -->
+  <rect x="860" y="180" width="200" height="85" fill="#f0e8d0" rx="4"/>
+  <!-- Arched entrance (golden/saffron) -->
+  <path d="M930,265 L930,220 Q930,195 960,195 Q990,195 990,220 L990,265 Z" fill="#c87800"/>
+  <!-- Side pillars -->
+  <rect x="870" y="180" width="15" height="85" fill="#e0d8c8"/>
+  <rect x="1075" y="180" width="15" height="85" fill="#e0d8c8"/>
+  <!-- Decorative shikhara/tower -->
+  <rect x="900" y="110" width="120" height="75" fill="#f0e8d0"/>
+  <!-- Shikhara spire (North Indian style) -->
+  <polygon points="895,110 905,60 925,25 960,0 995,25 1015,60 1025,110" fill="#e8d8b8"/>
+  <!-- Horizontal rings on shikhara -->
+  <g stroke="#c8b898" stroke-width="2.5" fill="none">
+    <line x1="900" y1="95" x2="1020" y2="95"/>
+    <line x1="905" y1="78" x2="1015" y2="78"/>
+    <line x1="912" y1="60" x2="1008" y2="60"/>
+    <line x1="920" y1="44" x2="1000" y2="44"/>
+  </g>
+  <!-- Amalaka -->
+  <ellipse cx="960" cy="5" rx="28" ry="10" fill="#d8c8a0"/>
+  <!-- Kalash -->
+  <line x1="960" y1="-15" x2="960" y2="0" stroke="#ffd700" stroke-width="5"/>
+  <ellipse cx="960" cy="-20" rx="13" ry="18" fill="#ffd700"/>
+  <circle cx="960" cy="-38" r="8" fill="#ffd700"/>
+  <!-- Red/Saffron flags (typical of Shakti temples) -->
+  <g>
+    <line x1="870" y1="100" x2="870" y2="160" stroke="#8B2500" stroke-width="3"/>
+    <polygon points="870,100 920,115 870,130" fill="#D4560A"/>
+    <line x1="1050" y1="100" x2="1050" y2="160" stroke="#8B2500" stroke-width="3"/>
+    <polygon points="1050,100 1100,115 1050,130" fill="#D4560A"/>
+  </g>
+  <!-- Devotees climbing hill path -->
+  <path d="M600,700 Q700,600 750,500 Q800,400 850,300 Q900,220 960,200" fill="none" stroke="#d4a040" stroke-width="3" stroke-dasharray="8,5" opacity="0.6"/>
+  <!-- Devotee silhouettes on path -->
+  <g fill="rgba(0,0,0,0.5)">
+    <ellipse cx="680" cy="640" rx="7" ry="18"/><ellipse cx="720" cy="600" rx="6" ry="16"/>
+    <ellipse cx="780" cy="530" rx="7" ry="18"/><ellipse cx="820" cy="470" rx="6" ry="16"/>
+    <ellipse cx="870" cy="380" rx="6" ry="15"/>
+  </g>
+  <!-- Nainital lake at bottom -->
+  <ellipse cx="960" cy="940" rx="700" ry="160" fill="#4a8fa8" opacity="0.7"/>
+  <ellipse cx="960" cy="920" rx="500" ry="60" fill="#6aafce" opacity="0.3"/>
+  <!-- Foreground trees -->
+  <g fill="#1a4010">
+    <circle cx="300" cy="780" r="60"/><circle cx="280" cy="750" r="45"/><circle cx="320" cy="755" r="50"/>
+    <circle cx="1620" cy="770" r="60"/><circle cx="1600" cy="745" r="45"/><circle cx="1640" cy="750" r="50"/>
+    <circle cx="450" cy="810" r="55"/><circle cx="1480" cy="805" r="55"/>
+  </g>
+  <!-- OM watermark -->
+  <text x="960" y="850" font-family="serif" font-size="60" fill="rgba(212,86,10,0.2)" text-anchor="middle">जय माँ नैना देवी</text>
+</svg>

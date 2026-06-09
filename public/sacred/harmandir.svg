@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="dawnsky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0505"/>
+      <stop offset="30%" style="stop-color:#7b2d00"/>
+      <stop offset="60%" style="stop-color:#e8730a"/>
+      <stop offset="85%" style="stop-color:#f5c842"/>
+      <stop offset="100%" style="stop-color:#fdeaa7"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a017;stop-opacity:0.6"/>
+      <stop offset="50%" style="stop-color:#4a8fa8;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#1a5276"/>
+    </linearGradient>
+    <linearGradient id="goldTemple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="40%" style="stop-color:#f0a500"/>
+      <stop offset="100%" style="stop-color:#c87800"/>
+    </linearGradient>
+    <radialGradient id="sunrise" cx="50%" cy="55%" r="40%">
+      <stop offset="0%" style="stop-color:#fff4b0;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#e8730a;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow2"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <!-- Sky dawn gradient -->
+  <rect width="1920" height="1080" fill="url(#dawnsky)"/>
+  <!-- Sunrise glow -->
+  <ellipse cx="960" cy="590" rx="500" ry="300" fill="url(#sunrise)"/>
+  <!-- Sarovar (holy tank) -->
+  <ellipse cx="960" cy="750" rx="750" ry="200" fill="url(#water)"/>
+  <!-- Water reflection of temple (blurred gold) -->
+  <rect x="820" y="700" width="280" height="200" fill="url(#goldTemple)" opacity="0.3" transform="scale(1,-0.5) translate(0,-2800)"/>
+  <!-- Parikarma (marble walkway around sarovar) -->
+  <ellipse cx="960" cy="750" rx="760" ry="210" fill="none" stroke="white" stroke-width="18" opacity="0.6"/>
+  <!-- Causeway to temple (Guru's Bridge) -->
+  <rect x="910" y="580" width="100" height="180" fill="#f5f5f0" opacity="0.9"/>
+  <rect x="910" y="580" width="100" height="8" fill="#d4a017"/>
+  <rect x="910" y="748" width="100" height="8" fill="#d4a017"/>
+  <!-- Main temple base -->
+  <rect x="840" y="480" width="240" height="130" fill="url(#goldTemple)" rx="4"/>
+  <!-- Temple arches (lower level) -->
+  <g fill="#c87800">
+    <path d="M855,480 Q855,450 875,450 Q895,450 895,480 Z"/>
+    <path d="M905,480 Q905,450 925,450 Q945,450 945,480 Z"/>
+    <path d="M955,480 Q955,450 975,450 Q995,450 995,480 Z"/>
+    <path d="M1005,480 Q1005,450 1025,450 Q1045,450 1045,480 Z"/>
+  </g>
+  <!-- Second story -->
+  <rect x="870" y="380" width="200" height="100" fill="url(#goldTemple)"/>
+  <!-- Decorative arches second level -->
+  <g fill="#c87800" opacity="0.7">
+    <path d="M885,380 Q885,360 900,360 Q915,360 915,380 Z"/>
+    <path d="M925,380 Q925,360 940,360 Q955,360 955,380 Z"/>
+    <path d="M965,380 Q965,360 980,360 Q995,360 995,380 Z"/>
+    <path d="M1005,380 Q1005,360 1020,360 Q1035,360 1035,380 Z"/>
+  </g>
+  <!-- Dome base -->
+  <rect x="900" y="310" width="160" height="70" fill="url(#goldTemple)"/>
+  <!-- Main Golden Dome -->
+  <ellipse cx="960" cy="310" rx="80" ry="85" fill="url(#goldTemple)"/>
+  <ellipse cx="960" cy="265" rx="55" ry="55" fill="#ffd700"/>
+  <ellipse cx="960" cy="235" rx="35" ry="35" fill="#ffec6e"/>
+  <!-- Kalash/Spire -->
+  <line x1="960" y1="180" x2="960" y2="210" stroke="#ffd700" stroke-width="6"/>
+  <ellipse cx="960" cy="175" rx="15" ry="20" fill="#ffd700"/>
+  <line x1="960" y1="155" x2="960" y2="180" stroke="#ffd700" stroke-width="4"/>
+  <circle cx="960" cy="152" r="8" fill="#ffd700"/>
+  <!-- Corner towers (Minarets) -->
+  <g fill="url(#goldTemple)">
+    <rect x="840" y="440" width="30" height="50" rx="2"/>
+    <ellipse cx="855" cy="440" rx="18" ry="25"/>
+    <line x1="855" y1="415" x2="855" y2="425" stroke="#ffd700" stroke-width="3"/>
+    <circle cx="855" cy="412" r="5" fill="#ffd700"/>
+
+    <rect x="1050" y="440" width="30" height="50" rx="2"/>
+    <ellipse cx="1065" cy="440" rx="18" ry="25"/>
+    <line x1="1065" y1="415" x2="1065" y2="425" stroke="#ffd700" stroke-width="3"/>
+    <circle cx="1065" cy="412" r="5" fill="#ffd700"/>
+  </g>
+  <!-- Devout silhouettes on parikarma -->
+  <g fill="rgba(0,0,0,0.5)">
+    <ellipse cx="700" cy="722" rx="8" ry="20"/><ellipse cx="720" cy="725" rx="7" ry="18"/>
+    <ellipse cx="1200" cy="718" rx="8" ry="20"/><ellipse cx="1220" cy="722" rx="7" ry="18"/>
+    <ellipse cx="800" cy="718" rx="8" ry="20"/>
+    <ellipse cx="1100" cy="715" rx="8" ry="20"/>
+  </g>
+  <!-- Ik Onkar watermark -->
+  <text x="960" y="180" font-family="sans-serif" font-size="90" fill="rgba(255,215,0,0.2)" text-anchor="middle">ੴ</text>
+</svg>

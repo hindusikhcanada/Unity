@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="dawnPatna" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0818"/>
+      <stop offset="35%" style="stop-color:#3a1a50"/>
+      <stop offset="65%" style="stop-color:#d4560a"/>
+      <stop offset="85%" style="stop-color:#f0c060"/>
+      <stop offset="100%" style="stop-color:#fdeaa7"/>
+    </linearGradient>
+    <linearGradient id="whiteMarble" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="60%" style="stop-color:#f0ece4"/>
+      <stop offset="100%" style="stop-color:#d8d0c0"/>
+    </linearGradient>
+    <radialGradient id="sunriseGlow" cx="50%" cy="70%" r="50%">
+      <stop offset="0%" style="stop-color:#f5c842;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#d4560a;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#dawnPatna)"/>
+  <ellipse cx="960" cy="750" rx="600" ry="350" fill="url(#sunriseGlow)"/>
+  <!-- River Ganges (Patna is on the Ganga) -->
+  <ellipse cx="960" cy="900" rx="1200" ry="250" fill="#4a8fa8" opacity="0.7"/>
+  <ellipse cx="960" cy="875" rx="900" ry="100" fill="#6ab0c8" opacity="0.4"/>
+  <!-- Ganga ripples -->
+  <g stroke="#8bc8d8" stroke-width="1.5" fill="none" opacity="0.4">
+    <ellipse cx="500" cy="890" rx="120" ry="15"/><ellipse cx="900" cy="870" rx="150" ry="18"/>
+    <ellipse cx="1300" cy="885" rx="130" ry="15"/><ellipse cx="700" cy="910" rx="100" ry="12"/>
+  </g>
+  <!-- Patna Sahib Gurdwara - large white structure -->
+  <!-- Main Platform -->
+  <rect x="660" y="650" width="600" height="50" fill="url(#whiteMarble)" rx="5"/>
+  <!-- Secondary platform -->
+  <rect x="700" y="580" width="520" height="75" fill="url(#whiteMarble)" rx="4"/>
+  <!-- Main hall (Darbar Sahib) -->
+  <rect x="740" y="420" width="440" height="165" fill="url(#whiteMarble)" rx="6"/>
+  <!-- Arches on main hall -->
+  <g fill="#e8dcc8">
+    <path d="M760,585 L760,510 Q760,480 785,480 Q810,480 810,510 L810,585 Z"/>
+    <path d="M830,585 L830,510 Q830,480 855,480 Q880,480 880,510 L880,585 Z"/>
+    <path d="M900,585 L900,505 Q900,475 925,475 Q960,475 960,505 L960,585 Z" fill="#d4c8b0"/>
+    <path d="M990,585 L990,510 Q990,480 1015,480 Q1040,480 1040,510 L1040,585 Z"/>
+    <path d="M1060,585 L1060,510 Q1060,480 1085,480 Q1110,480 1110,510 L1110,585 Z"/>
+    <path d="M1130,585 L1130,510 Q1130,480 1155,480 Q1180,480 1180,510 L1180,585 Z"/>
+  </g>
+  <!-- Central large dome -->
+  <ellipse cx="960" cy="420" rx="110" ry="120" fill="url(#whiteMarble)"/>
+  <ellipse cx="960" cy="360" rx="80" ry="80" fill="#f5f0e8"/>
+  <ellipse cx="960" cy="310" rx="55" ry="55" fill="white"/>
+  <!-- Drum of dome -->
+  <rect x="890" y="310" width="140" height="40" fill="url(#whiteMarble)" rx="4"/>
+  <!-- Small domes on corners -->
+  <g fill="url(#whiteMarble)">
+    <ellipse cx="760" cy="415" rx="38" ry="42"/>
+    <ellipse cx="760" cy="393" rx="28" ry="28"/>
+    <line x1="760" y1="365" x2="760" y2="380" stroke="#ffd700" stroke-width="3"/>
+    <circle cx="760" cy="362" r="6" fill="#ffd700"/>
+
+    <ellipse cx="1160" cy="415" rx="38" ry="42"/>
+    <ellipse cx="1160" cy="393" rx="28" ry="28"/>
+    <line x1="1160" y1="365" x2="1160" y2="380" stroke="#ffd700" stroke-width="3"/>
+    <circle cx="1160" cy="362" r="6" fill="#ffd700"/>
+
+    <ellipse cx="860" cy="408" rx="32" ry="36"/>
+    <ellipse cx="860" cy="390" rx="22" ry="22"/>
+    <line x1="860" y1="368" x2="860" y2="380" stroke="#ffd700" stroke-width="2"/>
+    <circle cx="860" cy="365" r="5" fill="#ffd700"/>
+
+    <ellipse cx="1060" cy="408" rx="32" ry="36"/>
+    <ellipse cx="1060" cy="390" rx="22" ry="22"/>
+    <line x1="1060" y1="368" x2="1060" y2="380" stroke="#ffd700" stroke-width="2"/>
+    <circle cx="1060" cy="365" r="5" fill="#ffd700"/>
+  </g>
+  <!-- Main Kalash spire -->
+  <line x1="960" y1="248" x2="960" y2="272" stroke="#ffd700" stroke-width="6"/>
+  <ellipse cx="960" cy="242" rx="16" ry="22" fill="#ffd700"/>
+  <line x1="960" y1="215" x2="960" y2="242" stroke="#ffd700" stroke-width="4"/>
+  <circle cx="960" cy="210" r="10" fill="#ffd700"/>
+  <!-- Nishan Sahib (Sikh flag) -->
+  <line x1="1220" y1="380" x2="1220" y2="650" stroke="#d4560a" stroke-width="5"/>
+  <polygon points="1220,380 1320,410 1220,440" fill="#d4560a"/>
+  <circle cx="1220" cy="375" r="10" fill="#ffd700"/>
+  <!-- Text on facade -->
+  <text x="960" y="555" font-family="sans-serif" font-size="22" fill="#ffd700" text-anchor="middle" opacity="0.8">ਤਖ਼ਤ ਸ੍ਰੀ ਪਟਨਾ ਸਾਹਿਬ</text>
+  <!-- Devotees by river -->
+  <g fill="rgba(0,0,20,0.5)">
+    <ellipse cx="750" cy="865" rx="8" ry="20"/><ellipse cx="770" cy="868" rx="7" ry="18"/>
+    <ellipse cx="1150" cy="860" rx="8" ry="20"/><ellipse cx="1170" cy="863" rx="7" ry="18"/>
+    <ellipse cx="840" cy="862" rx="7" ry="18"/><ellipse cx="1060" cy="858" rx="8" ry="20"/>
+  </g>
+  <!-- Foreground ground -->
+  <polygon points="0,700 200,680 400,690 600,678 960,670 1320,678 1520,690 1720,680 1920,700 1920,1080 0,1080" fill="#c8b89a" opacity="0.7"/>
+</svg>

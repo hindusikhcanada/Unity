@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="alpinesky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a6b"/>
+      <stop offset="100%" style="stop-color:#5b8dd9"/>
+    </linearGradient>
+    <linearGradient id="glacier" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f4f8"/>
+      <stop offset="100%" style="stop-color:#a8c8e0"/>
+    </linearGradient>
+    <linearGradient id="lake2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5ba8d4;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#1a5276"/>
+    </linearGradient>
+  </defs>
+  <!-- Alpine sky -->
+  <rect width="1920" height="1080" fill="url(#alpinesky)"/>
+  <!-- Stars -->
+  <g fill="white" opacity="0.8">
+    <circle cx="150" cy="60" r="2"/><circle cx="400" cy="100" r="1.5"/><circle cx="700" cy="50" r="2.5"/>
+    <circle cx="1000" cy="80" r="1.5"/><circle cx="1300" cy="40" r="2"/><circle cx="1600" cy="90" r="1.5"/>
+    <circle cx="1800" cy="60" r="2"/><circle cx="250" cy="150" r="1"/><circle cx="550" cy="130" r="1.5"/>
+    <circle cx="850" cy="110" r="1"/><circle cx="1150" cy="120" r="2"/><circle cx="1450" cy="100" r="1"/>
+  </g>
+  <!-- Snow peaks background -->
+  <polygon points="0,600 200,350 350,450 500,280 650,400 800,250 900,600" fill="#a8c8e0" opacity="0.5"/>
+  <polygon points="1000,600 1100,260 1200,350 1350,200 1500,320 1650,280 1800,350 1920,400 1920,600" fill="#a8c8e0" opacity="0.5"/>
+  <!-- Main Hemkunt peaks (7 peaks sacred) -->
+  <polygon points="600,700 680,320 720,280 760,220 800,180 840,220 880,280 920,340 960,700" fill="url(#glacier)"/>
+  <polygon points="900,700 940,350 970,290 1000,240 1030,290 1060,360 1100,700" fill="url(#glacier)" opacity="0.9"/>
+  <!-- Rock faces on peaks -->
+  <polygon points="720,700 760,400 800,300 840,400 880,700" fill="#708090" opacity="0.4"/>
+  <!-- Hemkunt Sahib Gurdwara (white 5-pointed star shape) -->
+  <g transform="translate(960, 560)">
+    <!-- Main structure -->
+    <polygon points="0,-80 20,-20 80,-20 30,20 50,80 0,40 -50,80 -30,20 -80,-20 -20,-20" fill="white" opacity="0.95"/>
+    <!-- Central dome -->
+    <ellipse cx="0" cy="-30" rx="30" ry="35" fill="white"/>
+    <ellipse cx="0" cy="-55" rx="20" ry="22" fill="white"/>
+    <!-- Spire -->
+    <line x1="0" y1="-77" x2="0" y2="-95" stroke="#ffd700" stroke-width="4"/>
+    <circle cx="0" cy="-98" r="6" fill="#ffd700"/>
+    <!-- Khanda symbol on front -->
+    <text x="0" y="-25" font-family="sans-serif" font-size="18" fill="#1a3a6b" text-anchor="middle" font-weight="bold">☬</text>
+  </g>
+  <!-- Hemkunt Sahib lake (glacial) -->
+  <ellipse cx="960" cy="760" rx="500" ry="100" fill="url(#lake2)" opacity="0.85"/>
+  <!-- Ice/snow reflection -->
+  <ellipse cx="960" cy="750" rx="300" ry="30" fill="white" opacity="0.2"/>
+  <!-- Foreground snow -->
+  <polygon points="0,820 300,780 600,800 960,760 1320,800 1620,780 1920,820 1920,1080 0,1080" fill="white" opacity="0.85"/>
+  <polygon points="0,880 400,850 700,865 960,840 1220,865 1520,850 1920,880 1920,1080 0,1080" fill="#e8f4f8" opacity="0.6"/>
+  <!-- Pilgrims silhouettes -->
+  <g fill="rgba(0,0,20,0.6)">
+    <ellipse cx="820" cy="775" rx="6" ry="16"/><ellipse cx="840" cy="778" rx="5" ry="14"/>
+    <ellipse cx="1080" cy="772" rx="6" ry="16"/><ellipse cx="1100" cy="775" rx="5" ry="14"/>
+  </g>
+  <!-- Khanda watermark -->
+  <text x="960" y="200" font-family="sans-serif" font-size="80" fill="rgba(255,255,255,0.15)" text-anchor="middle">☬</text>
+</svg>
