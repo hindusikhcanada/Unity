@@ -1,81 +1,169 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
-// ── Scroll-reveal hook ──────────────────────────────────
-function useReveal() {
+// ── Unsplash image library (verified popular IDs) ───────
+const IMG = {
+  // Hero slides - temples, gurdwaras, spiritual
+  goldenTemple:   'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=1920&q=80',
+  hinduTemple:    'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1920&q=80',
+  diya:           'https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?auto=format&fit=crop&w=1920&q=80',
+  langar:         'https://images.unsplash.com/photo-1631623804053-1d3ef2ef0bef?auto=format&fit=crop&w=1920&q=80',
+  prayer:         'https://images.unsplash.com/photo-1545996124-0501ebae84d0?auto=format&fit=crop&w=1920&q=80',
+  procession:     'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=1920&q=80',
+  // Gallery panels
+  prayerHands:    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
+  diyaLamps:      'https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?auto=format&fit=crop&w=800&q=80',
+  lotus:          'https://images.unsplash.com/photo-1559305616-3f99cd43e353?auto=format&fit=crop&w=800&q=80',
+  kirtan:         'https://images.unsplash.com/photo-1511735111819-9a3efd16269a?auto=format&fit=crop&w=800&q=80',
+  havan:          'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=800&q=80',
+  turban:         'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+  // Card headers
+  memberCard:     'https://images.unsplash.com/photo-1545996124-0501ebae84d0?auto=format&fit=crop&w=600&q=80',
+  community:      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80',
+  business:       'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80',
+  calendar:       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80',
+  articles:       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+  seva:           'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80',
+};
+
+// ── Intersection Observer hook ──────────────────────────
+function useReveal(threshold = 0.15) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if(e.isIntersecting) setVisible(true); }, { threshold: 0.15 });
-    if(ref.current) obs.observe(ref.current);
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold });
+    if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, visible];
 }
 
-function Reveal({ children, delay=0 }) {
+function Reveal({ children, delay = 0, className = '' }) {
   const [ref, visible] = useReveal();
   return (
-    <div ref={ref} style={{ transition: `opacity .7s ease ${delay}s, transform .7s ease ${delay}s`, opacity: visible?1:0, transform: visible?'translateY(0)':'translateY(40px)' }}>
+    <div ref={ref} className={className} style={{
+      transition: `opacity .8s ease ${delay}s, transform .8s ease ${delay}s`,
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateY(0)' : 'translateY(50px)',
+    }}>
       {children}
     </div>
   );
 }
 
-// ── Particle Canvas ─────────────────────────────────────
-function Particles() {
-  const canvasRef = useRef(null);
+// ── Animated Counter ────────────────────────────────────
+function Counter({ end, suffix = '+', label }) {
+  const [n, setN] = useState(0);
+  const [ref, visible] = useReveal(0.5);
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-    const symbols = ['ॐ','☬','✦','◈','⬡'];
-    const particles = Array.from({length:35}, () => ({
-      x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-      vx: (Math.random()-.5)*.4, vy: (Math.random()-.5)*.4,
-      symbol: symbols[Math.floor(Math.random()*symbols.length)],
-      size: 12 + Math.random()*22, opacity: .07 + Math.random()*.12,
-      color: Math.random()>.5 ? '#D4560A' : '#F0C060',
-    }));
-    let raf;
-    function draw() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if(p.x<0) p.x=canvas.width; if(p.x>canvas.width) p.x=0;
-        if(p.y<0) p.y=canvas.height; if(p.y>canvas.height) p.y=0;
-        ctx.save();
-        ctx.globalAlpha = p.opacity;
-        ctx.fillStyle = p.color;
-        ctx.font = `${p.size}px serif`;
-        ctx.fillText(p.symbol, p.x, p.y);
-        ctx.restore();
-      });
-      raf = requestAnimationFrame(draw);
-    }
-    draw();
-    return () => cancelAnimationFrame(raf);
-  }, []);
-  return <canvas ref={canvasRef} style={{position:'absolute',inset:0,width:'100%',height:'100%',pointerEvents:'none'}} />;
-}
-
-// ── Counter Animation ───────────────────────────────────
-function Counter({ end, label }) {
-  const [count, setCount] = useState(0);
-  const [ref, visible] = useReveal();
-  useEffect(() => {
-    if(!visible) return;
-    let start = 0;
-    const step = end / 60;
-    const t = setInterval(() => { start += step; if(start>=end){ setCount(end); clearInterval(t); } else setCount(Math.floor(start)); }, 20);
+    if (!visible) return;
+    const dur = 1800, steps = 60, step = end / steps;
+    let cur = 0, t = setInterval(() => {
+      cur += step; if (cur >= end) { setN(end); clearInterval(t); } else setN(Math.floor(cur));
+    }, dur / steps);
     return () => clearInterval(t);
   }, [visible, end]);
   return (
     <div ref={ref} className="stat-item">
-      <span className="stat-num">{count.toLocaleString()}+</span>
+      <span className="stat-num">{n.toLocaleString()}{suffix}</span>
       <span className="stat-label">{label}</span>
     </div>
+  );
+}
+
+// ── Hero Slideshow ──────────────────────────────────────
+const SLIDES = [
+  { img: IMG.goldenTemple, title: 'Hindu Sikh Unity Forum Canada', sub: 'ਸਾਂਝ ਵਿੱਚ ਸ਼ਕਤੀ • साझा विरासत में शक्ति' },
+  { img: IMG.hinduTemple,  title: 'Rooted in Shared Heritage', sub: 'One Light — Many Traditions' },
+  { img: IMG.diya,         title: 'Celebrating Diwali Together', sub: 'The Festival of Lights Unites Us' },
+  { img: IMG.langar,       title: 'Seva — Selfless Service', sub: 'Feeding Every Soul, Without Distinction' },
+  { img: IMG.prayer,       title: 'Devotion Across Traditions', sub: 'Bhakti and Ardas — One Heart' },
+  { img: IMG.procession,   title: 'Stronger Together', sub: 'Canada\'s Hindu-Sikh Community' },
+];
+
+function HeroSlider({ setPage }) {
+  const [cur, setCur] = useState(0);
+  const [prev, setPrev] = useState(null);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setPrev(cur);
+      setFading(true);
+      setTimeout(() => {
+        setCur(c => (c + 1) % SLIDES.length);
+        setFading(false);
+        setPrev(null);
+      }, 1000);
+    }, 6000);
+    return () => clearInterval(t);
+  }, [cur]);
+
+  return (
+    <section className="hero">
+      {/* Previous slide (fading out) */}
+      {prev !== null && (
+        <div className="hero-slide hero-slide-prev" style={{ backgroundImage: `url(${SLIDES[prev].img})` }} />
+      )}
+      {/* Current slide */}
+      <div className={`hero-slide hero-slide-cur ${fading ? 'fade-out' : 'fade-in'}`}
+        style={{ backgroundImage: `url(${SLIDES[cur].img})` }} />
+
+      {/* Overlay */}
+      <div className="hero-overlay" />
+
+      {/* Floating particles */}
+      <div className="particles">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div key={i} className="particle" style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            animationDuration: `${4 + Math.random() * 6}s`,
+            fontSize: `${0.8 + Math.random() * 1.2}rem`,
+          }}>
+            {i % 2 === 0 ? '✦' : '◈'}
+          </div>
+        ))}
+      </div>
+
+      {/* Dual symbol animation */}
+      <div className="hero-symbols-float">
+        <div className="symbol-ring ring-om">
+          <span className="sym-text">ॐ</span>
+          <svg className="ring-svg" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(240,192,96,.4)" strokeWidth="1" strokeDasharray="4 8" />
+            <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(240,192,96,.2)" strokeWidth="1" />
+          </svg>
+        </div>
+        <div className="symbol-ring ring-ik">
+          <span className="sym-text">ੴ</span>
+          <svg className="ring-svg" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(240,192,96,.4)" strokeWidth="1" strokeDasharray="4 8" />
+            <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(240,192,96,.2)" strokeWidth="1" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="hero-content">
+        <div className="hero-badge">🇨🇦 Celebrating Unity Since 2019</div>
+        <h1 className="hero-title">{SLIDES[cur].title}</h1>
+        <p className="hero-script">{SLIDES[cur].sub}</p>
+        <div className="hero-btns">
+          <button onClick={() => setPage('seva')} className="btn btn-gold">Talk to Seva AI</button>
+          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+            target="_blank" rel="noreferrer" className="btn btn-outline-white">Join for $1</a>
+          <button onClick={() => setPage('membership')} className="btn btn-outline-gold">Member Card</button>
+        </div>
+      </div>
+
+      {/* Slide dots */}
+      <div className="hero-dots">
+        {SLIDES.map((_, i) => (
+          <button key={i} onClick={() => setCur(i)} className={`dot ${i === cur ? 'active' : ''}`} />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -84,132 +172,158 @@ function Nav({ page, setPage }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 30);
+    const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', fn);
     return () => window.removeEventListener('scroll', fn);
   }, []);
-  const links = ['home','membership','events','directory','connect','articles','seva'];
+  const links = [
+    { id: 'home', label: 'Home' }, { id: 'membership', label: 'Membership' },
+    { id: 'events', label: 'Events' }, { id: 'directory', label: 'Directory' },
+    { id: 'connect', label: 'Connect' }, { id: 'articles', label: 'Articles' },
+    { id: 'seva', label: 'Seva AI' },
+  ];
+  const go = (id) => { setPage(id); setOpen(false); window.scrollTo(0, 0); };
+
   return (
-    <nav className={`nav ${scrolled?'scrolled':''}`}>
-      <div className="nav-container">
-        <button className="logo" onClick={()=>{ setPage('home'); setOpen(false); }}>
-          <span className="logo-symbols">ॐ ☬</span>
-          <span className="logo-text">HSUF Canada</span>
+    <nav className={`nav ${scrolled ? 'nav-scrolled' : ''}`}>
+      <div className="shimmer-bar" />
+      <div className="nav-inner">
+        <button className="nav-logo" onClick={() => go('home')}>
+          <div className="logo-circle">
+            <span className="logo-ik">ੴ</span>
+            <span className="logo-om">ॐ</span>
+          </div>
+          <span className="logo-name">HSUF Canada</span>
         </button>
-        <div className={`nav-links ${open?'open':''}`}>
-          {links.map(p => (
-            <button key={p} onClick={()=>{ setPage(p); setOpen(false); window.scrollTo(0,0); }} className={page===p?'active':''}>
-              {p.charAt(0).toUpperCase()+p.slice(1)}
-            </button>
+        <div className={`nav-links ${open ? 'open' : ''}`}>
+          {links.map(l => (
+            <button key={l.id} onClick={() => go(l.id)} className={page === l.id ? 'active' : ''}>{l.label}</button>
           ))}
+          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+            target="_blank" rel="noreferrer" className="nav-join">Join $1</a>
         </div>
-        <button className="hamburger" onClick={()=>setOpen(!open)}>{open?'✕':'☰'}</button>
+        <button className="hamburger" onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button>
       </div>
     </nav>
   );
 }
 
+// ── Gallery ─────────────────────────────────────────────
+function Gallery() {
+  const panels = [
+    { img: IMG.prayerHands, caption: 'Ardas — The Sacred Prayer', wide: true },
+    { img: IMG.diyaLamps,   caption: 'Diya Lamps at Diwali',     wide: false },
+    { img: IMG.lotus,       caption: 'Lotus — Symbol of Purity', wide: false },
+    { img: IMG.kirtan,      caption: 'Kirtan — Divine Music',    wide: false },
+    { img: IMG.havan,       caption: 'Havan — Sacred Fire',      wide: false },
+    { img: IMG.turban,      caption: 'Dastar — Crown of Honour', wide: true },
+  ];
+  return (
+    <section className="gallery-section">
+      <Reveal><h2 className="section-title">Sacred Moments</h2></Reveal>
+      <Reveal delay={0.1}><p className="section-sub">Where tradition, devotion and community come alive</p></Reveal>
+      <div className="gallery-grid">
+        {panels.map((p, i) => (
+          <Reveal key={i} delay={i * 0.07} className={`gallery-item ${p.wide ? 'wide' : ''}`}>
+            <div className="gallery-img-wrap">
+              <img src={p.img} alt={p.caption} loading="lazy" />
+              <div className="gallery-caption">{p.caption}</div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── Features ─────────────────────────────────────────────
+function Features({ setPage }) {
+  const cards = [
+    { img: IMG.memberCard, title: 'Digital Member Card',    desc: 'QR-verified membership recognized at all HSUF events and partner businesses.', page: 'membership' },
+    { img: IMG.community,  title: 'Connect Board',          desc: 'City-based networking. Meet, collaborate and grow with community members.', page: 'connect' },
+    { img: IMG.business,   title: 'Business Directory',     desc: 'Verified Hindu and Sikh businesses across Canada, reviewed by members.', page: 'directory' },
+    { img: IMG.calendar,   title: 'Events Calendar',        desc: 'Hindu and Sikh festivals, pujas, kirtan, and community gatherings.', page: 'events' },
+    { img: IMG.articles,   title: 'Articles & Heritage',    desc: 'Stories of unity, cultural heritage, and shared spiritual wisdom.', page: 'articles' },
+    { img: IMG.seva,       title: 'Seva AI',                desc: 'AI guide on Hindu-Sikh unity, Gurbani, Vedic wisdom, and shared heritage.', page: 'seva' },
+  ];
+  return (
+    <section className="features-section">
+      <Reveal><h2 className="section-title">Our Community Platform</h2></Reveal>
+      <Reveal delay={0.1}><p className="section-sub">Everything you need to connect, celebrate, and grow together</p></Reveal>
+      <div className="features-grid">
+        {cards.map((c, i) => (
+          <Reveal key={i} delay={i * 0.08}>
+            <div className="feat-card" onClick={() => setPage(c.page)}>
+              <div className="feat-img-wrap">
+                <img src={c.img} alt={c.title} loading="lazy" />
+              </div>
+              <div className="feat-body">
+                <h3>{c.title}</h3>
+                <p>{c.desc}</p>
+                <span className="feat-link">Explore →</span>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── Unity Section ────────────────────────────────────────
+function UnitySection() {
+  return (
+    <section className="unity-section" style={{ backgroundImage: `url(${IMG.goldenTemple})` }}>
+      <div className="unity-overlay" />
+      <div className="unity-content">
+        <Reveal><h2 className="unity-title">One Root — Two Traditions</h2></Reveal>
+        <Reveal delay={0.1}><p className="unity-ekam">Ik Onkar — Ekam Sat</p></Reveal>
+        <div className="unity-split">
+          <Reveal delay={0.15} className="unity-side sikh-side">
+            <div className="unity-sym">ੴ</div>
+            <h3>Sikh Tradition</h3>
+            <blockquote>"ਸਭੁ ਕੋ ਊਚਾ ਆਖੀਐ ਨੀਚੁ ਨ ਦੀਸੈ ਕੋਇ"</blockquote>
+            <p>All are called high — none appears low. <br /><em>— Guru Granth Sahib</em></p>
+          </Reveal>
+          <div className="unity-divider">
+            <div className="divider-line" />
+            <span className="divider-sym">✦</span>
+            <div className="divider-line" />
+          </div>
+          <Reveal delay={0.15} className="unity-side hindu-side">
+            <div className="unity-sym">ॐ</div>
+            <h3>Hindu Tradition</h3>
+            <blockquote>"वसुधैव कुटुम्बकम्"</blockquote>
+            <p>The world is one family. <br /><em>— Maha Upanishad</em></p>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── HOME ─────────────────────────────────────────────────
 function Home({ setPage }) {
-  const features = [
-    {icon:'🎫',title:'Digital Member Card',desc:'QR-verified membership for community events',color:'#fff8f0'},
-    {icon:'👥',title:'Connect Board',desc:'City-based networking across Canada',color:'#f0f4ff'},
-    {icon:'🏪',title:'Business Directory',desc:'Verified Hindu & Sikh businesses',color:'#f0fff4'},
-    {icon:'📅',title:'Events Calendar',desc:'Festivals and community gatherings',color:'#fff0f8'},
-    {icon:'📖',title:'Articles & Blog',desc:'Unity stories and cultural heritage',color:'#fffbf0'},
-    {icon:'🤖',title:'Seva AI',desc:'Wisdom on Hindu-Sikh heritage',color:'#f8f0ff'},
-  ];
-
   return (
     <div className="page-home">
-      {/* HERO */}
-      <section className="hero">
-        <Particles />
-        <div className="hero-glow glow1" />
-        <div className="hero-glow glow2" />
-        <div className="hero-content">
-          <div className="hero-badge">🇨🇦 Celebrating Unity in Canada</div>
-          <h1>
-            <span className="line1">Hindu Sikh</span>
-            <span className="line2">Unity Forum</span>
-            <span className="line3">Canada</span>
-          </h1>
-          <p className="hero-tagline">Stronger Together</p>
-          <p className="hero-sub">Celebrating shared heritage, fostering unity and understanding across Canada's vibrant communities</p>
-          <div className="hero-btns">
-            <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership" target="_blank" rel="noreferrer" className="btn btn-hero">
-              <span>Join Now — $1</span><span className="btn-arrow">→</span>
-            </a>
-            <button className="btn btn-ghost" onClick={()=>setPage('seva')}>Talk to Seva AI ✨</button>
-          </div>
-          <div className="hero-symbols">
-            <span>ॐ</span><span className="divider">|</span><span>☬</span>
-          </div>
-        </div>
-        <div className="scroll-hint">
-          <div className="scroll-line" />
-          <span>Scroll</span>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="stats">
+      <HeroSlider setPage={setPage} />
+      <section className="stats-bar">
         <Counter end={5000} label="Members" />
-        <Counter end={12} label="Cities" />
-        <Counter end={200} label="Events" />
-        <Counter end={50} label="Businesses" />
+        <Counter end={12}   label="Cities" />
+        <Counter end={5}    label="Years of Unity" />
+        <Counter end={200}  label="Events Hosted" />
       </section>
-
-      {/* FEATURES */}
-      <section className="features-section">
-        <Reveal><h2 className="section-title">Our Community Platform</h2></Reveal>
-        <Reveal delay={.1}><p className="section-sub">Everything you need to connect, celebrate, and grow together</p></Reveal>
-        <div className="features-grid">
-          {features.map((f,i) => (
-            <Reveal key={i} delay={i*.08}>
-              <div className="feat-card" style={{background:f.color}}>
-                <div className="feat-icon">{f.icon}</div>
-                <h3>{f.title}</h3>
-                <p>{f.desc}</p>
-                <div className="feat-arrow">→</div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* UNITY VISUAL */}
-      <section className="unity-section">
-        <Reveal>
-          <div className="unity-visual">
-            <div className="unity-circle circle-left">
-              <span className="big-symbol">ॐ</span>
-              <p>Hindu</p>
-            </div>
-            <div className="unity-center">
-              <span>🤝</span>
-              <p>Together</p>
-            </div>
-            <div className="unity-circle circle-right">
-              <span className="big-symbol">☬</span>
-              <p>Sikh</p>
-            </div>
-          </div>
-        </Reveal>
-        <Reveal delay={.2}>
-          <h2>Rooted in Shared Values</h2>
-          <p>Both traditions celebrate seva (service), devotion, community, and the divine light within all people. Our differences enrich us — our shared values unite us.</p>
-        </Reveal>
-      </section>
-
-      {/* CTA */}
+      <Features setPage={setPage} />
+      <Gallery />
+      <UnitySection />
       <section className="cta-section">
         <Reveal>
-          <h2>Ready to Join?</h2>
-          <p>Become a verified member of HSUF Canada today</p>
+          <h2>Join Our Community</h2>
+          <p>One membership. Every community platform. A lifetime of connection.</p>
           <div className="big-price">$1</div>
-          <p className="price-note">One-time membership · Digital card · Full community access</p>
-          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership" target="_blank" rel="noreferrer" className="btn btn-cta">Become a Member →</a>
+          <p className="price-note">One-time · No recurring fees · Digital member card included</p>
+          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+            target="_blank" rel="noreferrer" className="btn btn-cta-large">Become a Member →</a>
         </Reveal>
       </section>
     </div>
@@ -218,39 +332,41 @@ function Home({ setPage }) {
 
 // ── MEMBERSHIP ───────────────────────────────────────────
 function Membership() {
-  const benefits = [
-    {icon:'🎫',title:'Digital Member Card',desc:'QR-verified card accepted at all HSUF events and partner businesses'},
-    {icon:'👥',title:'Connect Board Access',desc:'Post, network and meet community members in your city'},
-    {icon:'📅',title:'Event Early Access',desc:'First access to Hindu & Sikh festivals and community gatherings'},
-    {icon:'🏪',title:'Business Directory',desc:'Full access to verified Hindu & Sikh businesses across Canada'},
-    {icon:'📚',title:'Premium Articles',desc:'Exclusive access to cultural heritage resources and stories'},
-    {icon:'🤝',title:'Unity Community',desc:'Join thousands of members celebrating shared heritage'},
-  ];
   return (
-    <div className="page">
-      <div className="page-hero-strip">
-        <Reveal><div className="page-emoji">🎫</div></Reveal>
-        <Reveal delay={.1}><h1>Join HSUF Canada</h1></Reveal>
-        <Reveal delay={.2}><p>One membership, full community access</p></Reveal>
+    <div className="inner-page">
+      <div className="inner-hero" style={{ backgroundImage: `url(${IMG.memberCard})` }}>
+        <div className="inner-overlay" />
+        <div className="inner-hero-text">
+          <h1>Join HSUF Canada</h1>
+          <p>One membership. Full community access.</p>
+        </div>
       </div>
       <div className="container">
         <div className="bento-grid">
-          {benefits.map((b,i) => (
-            <Reveal key={i} delay={i*.07}>
+          {[
+            { img: IMG.memberCard, title: 'Digital Member Card',  desc: 'QR-verified card for all HSUF events and partners' },
+            { img: IMG.community,  title: 'Connect Board',        desc: 'Network with members city-by-city across Canada' },
+            { img: IMG.calendar,   title: 'Event Early Access',   desc: 'First access to Hindu and Sikh festivals' },
+            { img: IMG.business,   title: 'Business Directory',   desc: 'Full verified directory of Hindu and Sikh businesses' },
+            { img: IMG.articles,   title: 'Premium Articles',     desc: 'Exclusive cultural heritage and unity content' },
+            { img: IMG.seva,       title: 'Seva AI Access',       desc: 'Full access to our AI guide on shared heritage' },
+          ].map((b, i) => (
+            <Reveal key={i} delay={i * 0.07}>
               <div className="bento-card">
-                <span className="bento-icon">{b.icon}</span>
+                <img src={b.img} alt={b.title} />
                 <h3>{b.title}</h3>
                 <p>{b.desc}</p>
               </div>
             </Reveal>
           ))}
         </div>
-        <Reveal delay={.3}>
-          <div className="cta-section" style={{marginTop:'3rem'}}>
+        <Reveal delay={0.3}>
+          <div className="cta-section" style={{ marginTop: '3rem' }}>
             <h2>One Payment. Full Access.</h2>
             <div className="big-price">$1</div>
-            <p className="price-note">No recurring fees · No hidden charges</p>
-            <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership" target="_blank" rel="noreferrer" className="btn btn-cta">Join Now →</a>
+            <p className="price-note">No recurring fees</p>
+            <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+              target="_blank" rel="noreferrer" className="btn btn-cta-large">Join Now →</a>
           </div>
         </Reveal>
       </div>
@@ -262,42 +378,39 @@ function Membership() {
 function Events() {
   const [filter, setFilter] = useState('All');
   const events = [
-    {icon:'🪔',name:'Diwali Celebration 2024',date:'November 1, 2024',time:'6:00 PM',loc:'Toronto Convention Centre',cat:'Hindu',color:'#fff8f0',border:'#fda'},
-    {icon:'☬',name:'Guru Nanak Jayanti',date:'November 15, 2024',time:'10:00 AM',loc:'Gurudwara Sahib, Vancouver',cat:'Sikh',color:'#f0f4ff',border:'#c3d4ff'},
-    {icon:'🤝',name:'HSUF Unity Meet & Greet',date:'December 8, 2024',time:'5:00 PM',loc:'Community Centre, Montreal',cat:'Shared',color:'#f8f0ff',border:'#dcc3ff'},
-    {icon:'🎨',name:'Holi Festival of Colors',date:'March 25, 2025',time:'12:00 PM',loc:"Queen's Park, Toronto",cat:'Hindu',color:'#fff8f0',border:'#fda'},
-    {icon:'💃',name:'Vaisakhi Celebration',date:'April 14, 2025',time:'10:00 AM',loc:'Kitchener-Waterloo',cat:'Sikh',color:'#f0f4ff',border:'#c3d4ff'},
-    {icon:'📖',name:'Shared Wisdom Series',date:'Every Sunday',time:'7:00 PM',loc:'Online via Zoom',cat:'Shared',color:'#f8f0ff',border:'#dcc3ff'},
+    { img: IMG.diya,       name: 'Diwali Celebration 2024',  date: 'November 1, 2024',    time: '6:00 PM', loc: 'Toronto', cat: 'Hindu' },
+    { img: IMG.goldenTemple, name: 'Guru Nanak Jayanti',     date: 'November 15, 2024',   time: '10:00 AM',loc: 'Vancouver', cat: 'Sikh' },
+    { img: IMG.prayer,     name: 'HSUF Unity Meet',          date: 'December 8, 2024',    time: '5:00 PM', loc: 'Montreal', cat: 'Shared' },
+    { img: IMG.havan,      name: 'Holi Festival of Colors',  date: 'March 25, 2025',      time: '12:00 PM',loc: 'Toronto', cat: 'Hindu' },
+    { img: IMG.procession, name: 'Vaisakhi Celebration',     date: 'April 14, 2025',      time: '10:00 AM',loc: 'Winnipeg', cat: 'Sikh' },
+    { img: IMG.kirtan,     name: 'Shared Wisdom Series',     date: 'Every Sunday',        time: '7:00 PM', loc: 'Online',  cat: 'Shared' },
   ];
-  const filtered = filter==='All' ? events : events.filter(e=>e.cat===filter);
+  const filtered = filter === 'All' ? events : events.filter(e => e.cat === filter);
   return (
-    <div className="page">
-      <div className="page-hero-strip">
-        <Reveal><div className="page-emoji">📅</div></Reveal>
-        <Reveal delay={.1}><h1>Community Events</h1></Reveal>
-        <Reveal delay={.2}><p>Hindu, Sikh and shared celebrations across Canada</p></Reveal>
+    <div className="inner-page">
+      <div className="inner-hero" style={{ backgroundImage: `url(${IMG.procession})` }}>
+        <div className="inner-overlay" />
+        <div className="inner-hero-text"><h1>Community Events</h1><p>Hindu, Sikh & shared celebrations across Canada</p></div>
       </div>
       <div className="container">
         <Reveal>
           <div className="filter-tabs">
-            {['All','Hindu','Sikh','Shared'].map(f => (
-              <button key={f} onClick={()=>setFilter(f)} className={filter===f?'active':''}>{f}</button>
+            {['All', 'Hindu', 'Sikh', 'Shared'].map(f => (
+              <button key={f} onClick={() => setFilter(f)} className={filter === f ? 'active' : ''}>{f}</button>
             ))}
           </div>
         </Reveal>
         <div className="events-grid">
-          {filtered.map((e,i) => (
-            <Reveal key={i} delay={i*.06}>
-              <div className="event-card" style={{background:e.color, borderColor:e.border}}>
-                <div className="event-top">
-                  <span className="event-icon">{e.icon}</span>
+          {filtered.map((e, i) => (
+            <Reveal key={i} delay={i * 0.07}>
+              <div className="event-card">
+                <div className="event-img"><img src={e.img} alt={e.name} /></div>
+                <div className="event-body">
                   <span className={`badge badge-${e.cat}`}>{e.cat}</span>
+                  <h3>{e.name}</h3>
+                  <p>{e.date} · {e.time}</p>
+                  <p>{e.loc}</p>
                 </div>
-                <h3>{e.name}</h3>
-                <p>📅 {e.date}</p>
-                <p>🕐 {e.time}</p>
-                <p>📍 {e.loc}</p>
-                <button className="event-btn">Learn More →</button>
               </div>
             </Reveal>
           ))}
@@ -311,41 +424,36 @@ function Events() {
 function Directory() {
   const [search, setSearch] = useState('');
   const biz = [
-    {icon:'🍛',name:'Ananda Restaurant',cat:'Food & Dining',city:'Toronto',rate:4.8,trad:'Hindu',desc:'Authentic North Indian vegetarian cuisine'},
-    {icon:'🤝',name:'Sikh Community Services',cat:'Community',city:'Vancouver',rate:4.9,trad:'Sikh',desc:'Social services and family counseling'},
-    {icon:'👗',name:'Sacred Textiles',cat:'Clothing',city:'Montreal',rate:4.7,trad:'Both',desc:'Sarees, turbans, sherwanis and kurtas'},
-    {icon:'⚕️',name:'Dr. Sharma Medical',cat:'Healthcare',city:'Calgary',rate:4.9,trad:'Hindu',desc:'Culturally sensitive family medicine'},
-    {icon:'📚',name:'Guru Nanak Academy',cat:'Education',city:'Winnipeg',rate:4.8,trad:'Sikh',desc:'Punjabi language and traditions'},
-    {icon:'🎉',name:'Unity Event Planning',cat:'Events',city:'Toronto',rate:4.7,trad:'Both',desc:'Hindu & Sikh weddings and events'},
+    { img: IMG.langar,     name: 'Ananda Restaurant',       cat: 'Food', city: 'Toronto',   rate: '4.8', trad: 'Hindu', desc: 'Authentic North Indian vegetarian cuisine' },
+    { img: IMG.community,  name: 'Sikh Community Services', cat: 'Community', city: 'Vancouver', rate: '4.9', trad: 'Sikh',  desc: 'Social services and family counseling' },
+    { img: IMG.prayer,     name: 'Sacred Textiles',         cat: 'Clothing', city: 'Montreal',  rate: '4.7', trad: 'Both',  desc: 'Sarees, turbans, sherwanis and more' },
+    { img: IMG.articles,   name: 'Dr. Sharma Medical',      cat: 'Health', city: 'Calgary',   rate: '4.9', trad: 'Hindu', desc: 'Culturally sensitive family medicine' },
+    { img: IMG.kirtan,     name: 'Guru Nanak Academy',      cat: 'Education', city: 'Winnipeg',  rate: '4.8', trad: 'Sikh',  desc: 'Punjabi language and traditions' },
+    { img: IMG.procession, name: 'Unity Event Planning',    cat: 'Events', city: 'Toronto',   rate: '4.7', trad: 'Both',  desc: 'Hindu and Sikh weddings and events' },
   ];
   const filtered = biz.filter(b => b.name.toLowerCase().includes(search.toLowerCase()) || b.cat.toLowerCase().includes(search.toLowerCase()));
-  const tradColor = {Hindu:{bg:'#fef3c7',text:'#92400e'}, Sikh:{bg:'#dbeafe',text:'#1e40af'}, Both:{bg:'#f3e8ff',text:'#6b21a8'}};
   return (
-    <div className="page">
-      <div className="page-hero-strip">
-        <Reveal><div className="page-emoji">🏪</div></Reveal>
-        <Reveal delay={.1}><h1>Business Directory</h1></Reveal>
-        <Reveal delay={.2}><p>Verified Hindu & Sikh businesses across Canada</p></Reveal>
+    <div className="inner-page">
+      <div className="inner-hero" style={{ backgroundImage: `url(${IMG.business})` }}>
+        <div className="inner-overlay" />
+        <div className="inner-hero-text"><h1>Business Directory</h1><p>Verified Hindu and Sikh businesses across Canada</p></div>
       </div>
       <div className="container">
-        <Reveal>
-          <input className="search-input" type="text" placeholder="🔍 Search by name or category..." value={search} onChange={e=>setSearch(e.target.value)}/>
-        </Reveal>
+        <Reveal><input className="search-input" type="text" placeholder="Search by name or category..." value={search} onChange={e => setSearch(e.target.value)} /></Reveal>
         <div className="biz-grid">
-          {filtered.map((b,i) => (
-            <Reveal key={i} delay={i*.06}>
+          {filtered.map((b, i) => (
+            <Reveal key={i} delay={i * 0.06}>
               <div className="biz-card">
-                <div className="biz-top">
-                  <span className="biz-icon">{b.icon}</span>
-                  <span className="biz-rating">⭐ {b.rate}</span>
+                <div className="biz-img"><img src={b.img} alt={b.name} /></div>
+                <div className="biz-body">
+                  <div className="biz-meta-row">
+                    <span className={`trad-badge trad-${b.trad}`}>{b.trad}</span>
+                    <span className="biz-rating">★ {b.rate}</span>
+                  </div>
+                  <h3>{b.name}</h3>
+                  <p className="biz-cat">{b.cat} · {b.city}</p>
+                  <p className="biz-desc">{b.desc}</p>
                 </div>
-                <h3>{b.name}</h3>
-                <div className="biz-badges">
-                  <span className="biz-cat">{b.cat}</span>
-                  <span className="biz-trad" style={{background:tradColor[b.trad]?.bg, color:tradColor[b.trad]?.text}}>{b.trad}</span>
-                </div>
-                <p className="biz-desc">{b.desc}</p>
-                <p className="biz-city">📍 {b.city}</p>
               </div>
             </Reveal>
           ))}
@@ -359,55 +467,51 @@ function Directory() {
 function Connect() {
   const [city, setCity] = useState('All');
   const posts = [
-    {avatar:'👨',name:'Rajesh Kumar',city:'Toronto',time:'2h ago',tag:'Events',text:'Looking for volunteers for Diwali celebration in October! Great opportunity to give back to our community 🪔'},
-    {avatar:'👩',name:'Simran Kaur',city:'Vancouver',time:'5h ago',tag:'Business',text:'Just opened a new yoga studio focusing on traditional Hindu & Sikh practices. All welcome! 🙏'},
-    {avatar:'👨',name:'Amit Patel',city:'Montreal',time:'1d ago',tag:'Help',text:'New to Montreal — seeking a good Gurudwara recommendation. Any suggestions?'},
-    {avatar:'👩',name:'Priya Singh',city:'Calgary',time:'2d ago',tag:'Culture',text:'Beautiful Diwali rangoli tutorial video — sharing with the community ✨'},
-    {avatar:'👨',name:'Gurpreet Bains',city:'Toronto',time:'3d ago',tag:'Events',text:'Incredible turnout at last weekend\'s Unity picnic! Thank you all who came 🤝'},
+    { name: 'Rajesh Kumar',   city: 'Toronto',   time: '2h ago', tag: 'Events',   text: 'Volunteers needed for Diwali! Great opportunity to give back to our community.' },
+    { name: 'Simran Kaur',    city: 'Vancouver', time: '5h ago', tag: 'Business',  text: 'Just opened a new yoga studio focusing on traditional practices. All welcome!' },
+    { name: 'Amit Patel',     city: 'Montreal',  time: '1d ago', tag: 'Help',      text: 'New to Montreal — seeking Gurudwara recommendations. Any suggestions?' },
+    { name: 'Priya Singh',    city: 'Calgary',   time: '2d ago', tag: 'Culture',   text: 'Beautiful Diwali rangoli tutorial — sharing with our community!' },
+    { name: 'Gurpreet Bains', city: 'Toronto',   time: '3d ago', tag: 'Events',    text: 'Incredible turnout at the Unity picnic! Thank you everyone who came.' },
   ];
-  const filtered = city==='All' ? posts : posts.filter(p=>p.city===city);
-  const tagColor = {Events:'#fee2b3',Business:'#dbeafe',Help:'#d1fae5',Culture:'#f3e8ff'};
+  const filtered = city === 'All' ? posts : posts.filter(p => p.city === city);
   return (
-    <div className="page">
-      <div className="page-hero-strip">
-        <Reveal><div className="page-emoji">👥</div></Reveal>
-        <Reveal delay={.1}><h1>Connect Board</h1></Reveal>
-        <Reveal delay={.2}><p>City-based community networking — verified members only</p></Reveal>
+    <div className="inner-page">
+      <div className="inner-hero" style={{ backgroundImage: `url(${IMG.community})` }}>
+        <div className="inner-overlay" />
+        <div className="inner-hero-text"><h1>Connect Board</h1><p>City-based community networking</p></div>
       </div>
       <div className="container">
         <Reveal>
           <div className="filter-tabs">
-            {['All','Toronto','Vancouver','Montreal','Calgary','Winnipeg'].map(c => (
-              <button key={c} onClick={()=>setCity(c)} className={city===c?'active':''}>{c}</button>
+            {['All', 'Toronto', 'Vancouver', 'Montreal', 'Calgary', 'Winnipeg'].map(c => (
+              <button key={c} onClick={() => setCity(c)} className={city === c ? 'active' : ''}>{c}</button>
             ))}
           </div>
         </Reveal>
-        <div className="connect-compose">
-          <p>💬 <strong>Share with your community</strong></p>
-          <textarea disabled placeholder="Verified members can post here..."></textarea>
-        </div>
         <div className="posts-list">
-          {filtered.map((p,i) => (
-            <Reveal key={i} delay={i*.05}>
+          {filtered.map((p, i) => (
+            <Reveal key={i} delay={i * 0.06}>
               <div className="post-card">
-                <span className="post-avatar">{p.avatar}</span>
+                <div className="post-avatar-circle">{p.name.charAt(0)}</div>
                 <div className="post-body">
-                  <div className="post-head">
-                    <strong>{p.name}</strong>
-                    <span className="post-meta">{p.city} · {p.time}</span>
-                  </div>
-                  <span className="post-tag" style={{background:tagColor[p.tag]}}>{p.tag}</span>
+                  <div className="post-head"><strong>{p.name}</strong><span className="post-time">{p.city} · {p.time}</span></div>
+                  <span className={`post-tag tag-${p.tag}`}>{p.tag}</span>
                   <p className="post-text">{p.text}</p>
                   <div className="post-actions">
-                    <button>❤️ Like</button>
-                    <button>💬 Reply</button>
-                    <button>↗ Share</button>
+                    <button>Like</button><button>Reply</button><button>Share</button>
                   </div>
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
+        <Reveal delay={0.3}>
+          <div className="connect-cta">
+            <p>Post and reply as a verified member</p>
+            <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+              target="_blank" rel="noreferrer" className="btn btn-gold">Become a Member</a>
+          </div>
+        </Reveal>
       </div>
     </div>
   );
@@ -416,54 +520,53 @@ function Connect() {
 // ── ARTICLES ─────────────────────────────────────────────
 function Articles() {
   const [filter, setFilter] = useState('All');
-  const articles = [
-    {icon:'🙏',title:'Spiritual Roots: Common Philosophy in Hinduism and Sikhism',cat:'Spirituality',author:'Dr. Priya Sharma',read:'8 min',featured:true,desc:'Explore the profound spiritual connections between Hindu Vedantic philosophy and Sikh teachings.'},
-    {icon:'📖',title:'Gurbani Wisdom: Lessons from Guru Granth Sahib',cat:'Culture',author:'Harpreet Singh',read:'6 min',featured:true,desc:'Timeless wisdom and how its teachings apply to modern life in Canada.'},
-    {icon:'🎨',title:'Celebrating Hindu and Sikh Festivals Together',cat:'Festivals',author:'Anjali Patel',read:'5 min',featured:false,desc:'A journey through vibrant festivals celebrating shared values.'},
-    {icon:'🤝',title:'Seva in Action: Community Service Stories',cat:'Community',author:'Contributors',read:'7 min',featured:false,desc:'Real stories of community members putting selfless service into action.'},
-    {icon:'🍴',title:'The Langar Tradition',cat:'Spirituality',author:'Dr. Rajesh Kumar',read:'6 min',featured:false,desc:'Understanding Langar and its parallels in Hindu culture.'},
-    {icon:'💜',title:'Bhakti and Devotion: A Shared Path',cat:'Culture',author:'Simran Kaur',read:'7 min',featured:false,desc:'Celebrating love of the divine across both traditions.'},
+  const arts = [
+    { img: IMG.prayer,    title: 'Spiritual Roots: Common Philosophy', cat: 'Spirituality', author: 'Dr. Priya Sharma', read: '8 min', featured: true,  desc: 'Explore the profound connections between Hindu Vedantic philosophy and Sikh teachings.' },
+    { img: IMG.kirtan,    title: 'Gurbani Wisdom: Lessons for Modern Life', cat: 'Culture', author: 'Harpreet Singh',    read: '6 min', featured: true,  desc: 'Timeless wisdom from the Guru Granth Sahib applied to contemporary Canadian life.' },
+    { img: IMG.diya,      title: 'Celebrating Hindu and Sikh Festivals', cat: 'Festivals',    author: 'Anjali Patel',      read: '5 min', featured: false, desc: 'A journey through vibrant festivals celebrating shared values of joy and community.' },
+    { img: IMG.langar,    title: 'Seva in Action: Community Stories',   cat: 'Community',    author: 'Contributors',      read: '7 min', featured: false, desc: 'Real stories of members putting selfless service into action across Canada.' },
+    { img: IMG.havan,     title: 'The Langar Tradition',                cat: 'Spirituality', author: 'Dr. Rajesh Kumar',  read: '6 min', featured: false, desc: 'Understanding Langar and its deep parallels in Hindu culture and hospitality.' },
+    { img: IMG.lotus,     title: 'Bhakti and Devotion: A Shared Path',  cat: 'Culture',      author: 'Simran Kaur',       read: '7 min', featured: false, desc: 'The Bhakti tradition and its resonance in Sikh devotion — love as the path.' },
   ];
-  const filtered = filter==='All' ? articles : articles.filter(a=>a.cat===filter);
+  const filtered = filter === 'All' ? arts : arts.filter(a => a.cat === filter);
   return (
-    <div className="page">
-      <div className="page-hero-strip">
-        <Reveal><div className="page-emoji">📖</div></Reveal>
-        <Reveal delay={.1}><h1>Articles & Stories</h1></Reveal>
-        <Reveal delay={.2}><p>Celebrating Hindu-Sikh unity and shared heritage</p></Reveal>
+    <div className="inner-page">
+      <div className="inner-hero" style={{ backgroundImage: `url(${IMG.articles})` }}>
+        <div className="inner-overlay" />
+        <div className="inner-hero-text"><h1>Articles & Stories</h1><p>Celebrating Hindu-Sikh unity and shared heritage</p></div>
       </div>
       <div className="container">
-        <h2 style={{marginBottom:'1.5rem',fontSize:'1.5rem'}}>✨ Featured</h2>
+        <h2 className="sub-heading">Featured</h2>
         <div className="featured-grid">
-          {articles.filter(a=>a.featured).map((a,i) => (
-            <Reveal key={i} delay={i*.1}>
+          {arts.filter(a => a.featured).map((a, i) => (
+            <Reveal key={i} delay={i * 0.1}>
               <div className="featured-card">
-                <div className="featured-icon">{a.icon}</div>
-                <span className="feat-badge">{a.cat}</span>
-                <h3>{a.title}</h3>
-                <p>{a.desc}</p>
-                <div className="art-meta">{a.author} · {a.read} read</div>
-                <button className="read-btn">Read Article →</button>
+                <img src={a.img} alt={a.title} />
+                <div className="featured-body">
+                  <span className="feat-badge">{a.cat}</span>
+                  <h3>{a.title}</h3>
+                  <p>{a.desc}</p>
+                  <div className="art-meta">{a.author} · {a.read} read</div>
+                  <button className="read-btn">Read Article →</button>
+                </div>
               </div>
             </Reveal>
           ))}
         </div>
-        <Reveal>
-          <div className="filter-tabs" style={{marginTop:'3rem'}}>
-            {['All','Spirituality','Culture','Festivals','Community'].map(f => (
-              <button key={f} onClick={()=>setFilter(f)} className={filter===f?'active':''}>{f}</button>
-            ))}
-          </div>
-        </Reveal>
+        <Reveal><div className="filter-tabs" style={{ margin: '3rem 0 2rem' }}>
+          {['All', 'Spirituality', 'Culture', 'Festivals', 'Community'].map(f => (
+            <button key={f} onClick={() => setFilter(f)} className={filter === f ? 'active' : ''}>{f}</button>
+          ))}
+        </div></Reveal>
         <div className="art-list">
-          {filtered.map((a,i) => (
-            <Reveal key={i} delay={i*.05}>
+          {filtered.map((a, i) => (
+            <Reveal key={i} delay={i * 0.05}>
               <div className="art-item">
-                <span className="art-icon">{a.icon}</span>
+                <img src={a.img} alt={a.title} className="art-thumb" />
                 <div>
                   <span className="feat-badge">{a.cat}</span>
                   <h3>{a.title}</h3>
-                  <p style={{color:'#666',marginTop:'.4rem'}}>{a.desc}</p>
+                  <p>{a.desc}</p>
                   <p className="art-meta">{a.author} · {a.read} read</p>
                 </div>
               </div>
@@ -478,110 +581,143 @@ function Articles() {
 // ── SEVA AI ──────────────────────────────────────────────
 function Seva() {
   const [msgs, setMsgs] = useState([
-    {role:'bot',text:'Namaskar! I am Seva (सेवा / ਸੇਵਾ) — your guide on Hindu-Sikh unity and shared heritage. Ask me about Gurbani wisdom, Vedic philosophy, our shared history, or anything about our beautiful traditions. 🙏'}
+    { role: 'bot', text: 'Namaskar! I am Seva (सेवा / ਸੇਵਾ). I can guide you on Hindu-Sikh unity, Gurbani wisdom, Vedic philosophy, and our shared cultural heritage. What would you like to explore? 🙏' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef(null);
-  const replies = [
-    'Both Hinduism and Sikhism celebrate Seva (selfless service) as a path to divine connection and community wellbeing. 🙏',
-    'Guru Nanak was deeply influenced by the Bhakti movement in Hinduism — both traditions share this devotional heart.',
-    'The concept of Ek Onkar (One God) in Sikhism resonates deeply with Advaita Vedanta\'s teaching of universal divine unity.',
-    'Langar (community meal) in Sikhism reflects the Hindu value of Annadana — both celebrate nourishing all without discrimination.',
-    'The Guru Granth Sahib contains verses from Hindu saints like Kabir and Namdev, beautifully weaving both traditions.',
-    'Both traditions teach that the divine light (Jyoti / Jot) resides in every being — the foundation of mutual respect.',
+  const suggested = [
+    'What do Hinduism and Sikhism share?',
+    'Tell me about Guru Nanak Dev Ji',
+    'What is the meaning of Seva?',
+    'Explain the Bhakti tradition',
+    'What is Langar?',
+    'Share a Gurbani verse',
   ];
-  useEffect(() => { bottomRef.current?.scrollIntoView({behavior:'smooth'}); }, [msgs]);
+  const fallbacks = [
+    'Both traditions celebrate Seva (selfless service) as a direct path to the divine. Guru Nanak and the Hindu Bhakti saints both taught that serving others is serving God.',
+    'Guru Nanak Dev Ji was profoundly influenced by the Hindu Bhakti movement. His teachings bridge both traditions through the concepts of Nam Simran and devotional love.',
+    'The Guru Granth Sahib contains compositions by Hindu saints including Kabir, Namdev, and Ravidas — a beautiful weaving of both traditions.',
+    'Ek Onkar (One God) in Sikhism resonates with the Advaita Vedanta teaching of Ekam Brahm — the ultimate unity of all existence.',
+    'Langar, the community meal in every Gurdwara, reflects the Hindu value of Annadana — feeding all without distinction. Both celebrate nourishing humanity.',
+  ];
+  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [msgs]);
 
-  const send = async () => {
-    if(!input.trim() || loading) return;
-    setMsgs(m => [...m, {role:'user',text:input}]);
+  const send = async (text) => {
+    const msg = text || input;
+    if (!msg.trim() || loading) return;
+    setMsgs(m => [...m, { role: 'user', text: msg }]);
     setInput('');
     setLoading(true);
     try {
-      const res = await fetch('/api/seva', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({message: input})
-      });
+      const res = await fetch('/api/seva', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: msg }) });
       const data = await res.json();
-      setMsgs(m => [...m, {role:'bot', text: data.response || replies[Math.floor(Math.random()*replies.length)]}]);
+      setMsgs(m => [...m, { role: 'bot', text: data.response || fallbacks[Math.floor(Math.random() * fallbacks.length)] }]);
     } catch {
-      setMsgs(m => [...m, {role:'bot', text: replies[Math.floor(Math.random()*replies.length)]}]);
+      setMsgs(m => [...m, { role: 'bot', text: fallbacks[Math.floor(Math.random() * fallbacks.length)] }]);
     }
     setLoading(false);
   };
 
   return (
-    <div className="page seva-page">
-      <div className="seva-header">
-        <Reveal><div className="seva-orb">🙏</div></Reveal>
-        <Reveal delay={.1}><h1>Seva AI</h1></Reveal>
-        <Reveal delay={.2}><p>Wisdom on Hindu-Sikh Unity & Shared Heritage</p></Reveal>
-        <div className="seva-glow" />
+    <div className="inner-page seva-page">
+      <div className="seva-hero" style={{ backgroundImage: `url(${IMG.prayerHands})` }}>
+        <div className="inner-overlay" />
+        <div className="inner-hero-text">
+          <div className="seva-icon-row">
+            <span className="seva-sym">ੴ</span>
+            <span className="seva-plus">+</span>
+            <span className="seva-sym">ॐ</span>
+          </div>
+          <h1>Seva AI</h1>
+          <p>Wisdom on Hindu-Sikh Unity and Shared Heritage</p>
+        </div>
       </div>
       <div className="container">
-        <div className="chat-box">
-          {msgs.map((m,i) => (
+        <div className="chat-box" id="chat-box">
+          {msgs.map((m, i) => (
             <div key={i} className={`chat-msg ${m.role}`}>
-              {m.role==='bot' && <span className="chat-avatar">🙏</span>}
+              {m.role === 'bot' && <div className="chat-av bot-av">ੴ</div>}
               <div className="chat-bubble">{m.text}</div>
-              {m.role==='user' && <span className="chat-avatar">👤</span>}
+              {m.role === 'user' && <div className="chat-av user-av">You</div>}
             </div>
           ))}
           {loading && (
             <div className="chat-msg bot">
-              <span className="chat-avatar">🙏</span>
-              <div className="chat-bubble typing"><span/><span/><span/></div>
+              <div className="chat-av bot-av">ੴ</div>
+              <div className="chat-bubble typing"><span /><span /><span /></div>
             </div>
           )}
           <div ref={bottomRef} />
         </div>
         <div className="chat-form">
-          <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&send()}
-            placeholder="Ask about Hindu-Sikh wisdom, unity, heritage..." disabled={loading}/>
-          <button onClick={send} disabled={loading||!input.trim()}>Send →</button>
+          <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && send()}
+            placeholder="Ask about Hindu-Sikh heritage, Gurbani, Vedas..." disabled={loading} />
+          <button onClick={() => send()} disabled={loading || !input.trim()}>Send</button>
         </div>
         <div className="seva-prompts">
-          {['What do Hinduism & Sikhism share?','Tell me about Guru Nanak','What is Seva?','Explain Bhakti tradition'].map((q,i) => (
-            <button key={i} onClick={()=>{ setInput(q); }}>💡 {q}</button>
-          ))}
+          {suggested.map((q, i) => <button key={i} onClick={() => send(q)}>{q}</button>)}
         </div>
       </div>
     </div>
   );
 }
 
+// ── FOOTER ───────────────────────────────────────────────
+function Footer({ setPage }) {
+  const go = (p) => { setPage(p); window.scrollTo(0, 0); };
+  return (
+    <footer className="footer">
+      <div className="footer-inner">
+        <div className="footer-brand">
+          <div className="footer-logo-circle"><span>ੴ</span><span>ॐ</span></div>
+          <h3>Hindu Sikh Unity Forum Canada</h3>
+          <p>Stronger Together</p>
+          <p className="footer-script">ਸਾਂਝ ਵਿੱਚ ਸ਼ਕਤੀ • साझा विरासत</p>
+        </div>
+        <div className="footer-col">
+          <h4>Platform</h4>
+          <button onClick={() => go('membership')}>Membership</button>
+          <button onClick={() => go('directory')}>Business Directory</button>
+          <button onClick={() => go('connect')}>Connect Board</button>
+          <button onClick={() => go('seva')}>Seva AI</button>
+        </div>
+        <div className="footer-col">
+          <h4>Community</h4>
+          <button onClick={() => go('events')}>Events Calendar</button>
+          <button onClick={() => go('articles')}>Articles</button>
+          <button onClick={() => go('connect')}>City Networks</button>
+        </div>
+        <div className="footer-col">
+          <h4>Organization</h4>
+          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+            target="_blank" rel="noreferrer">Join for $1</a>
+          <button onClick={() => go('membership')}>Member Card</button>
+          <button onClick={() => go('home')}>About</button>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p>© 2024 Hindu Sikh Unity Forum Canada. All rights reserved. Celebrating shared heritage.</p>
+      </div>
+    </footer>
+  );
+}
+
 // ── APP ROOT ─────────────────────────────────────────────
 export default function App() {
   const [page, setPage] = useState('home');
-  const goTo = (p) => { setPage(p); window.scrollTo(0,0); };
-
+  const goTo = (p) => { setPage(p); window.scrollTo(0, 0); };
   return (
     <div className="app">
       <Nav page={page} setPage={goTo} />
-      {page==='home' && <Home setPage={goTo}/>}
-      {page==='membership' && <Membership/>}
-      {page==='events' && <Events/>}
-      {page==='directory' && <Directory/>}
-      {page==='connect' && <Connect/>}
-      {page==='articles' && <Articles/>}
-      {page==='seva' && <Seva/>}
-      <footer className="footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <span className="footer-symbols">ॐ ☬</span>
-            <h3>Hindu Sikh Unity Forum Canada</h3>
-            <p>Stronger Together</p>
-          </div>
-          <div className="footer-links">
-            {['home','membership','events','directory','connect','articles','seva'].map(p => (
-              <button key={p} onClick={()=>goTo(p)}>{p.charAt(0).toUpperCase()+p.slice(1)}</button>
-            ))}
-          </div>
-        </div>
-        <p className="footer-copy">© 2024 HSUF Canada. All rights reserved. Celebrating shared heritage.</p>
-      </footer>
+      {page === 'home'       && <Home setPage={goTo} />}
+      {page === 'membership' && <Membership />}
+      {page === 'events'     && <Events />}
+      {page === 'directory'  && <Directory />}
+      {page === 'connect'    && <Connect />}
+      {page === 'articles'   && <Articles />}
+      {page === 'seva'       && <Seva />}
+      <Footer setPage={goTo} />
     </div>
   );
 }
