@@ -6,24 +6,24 @@ const IMG = {
   // Hero slides - 6 real photographs of sacred sites
   kailash:        '/sacred/kailash.png',
   harmandirSahib: '/sacred/harmandir.jpg',
-  hemkuntSahib:   '/sacred/hemkunt.jpg',
+  hemkuntSahib:   '/sacred/hemkunt.png',
   kedarnath:      '/sacred/kedarnath.jpg',
-  patnaSahib:     '/sacred/patna-sahib.png',
+  patnaSahib:     '/sacred/patna-sahib.jpg',
   nainaDevi:      '/sacred/naina-devi.jpg',
-  // Gallery & card images (Unsplash - load fine in browser)
-  prayerHands:    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
-  diyaLamps:      'https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?auto=format&fit=crop&w=800&q=80',
-  lotus:          'https://images.unsplash.com/photo-1559305616-3f99cd43e353?auto=format&fit=crop&w=800&q=80',
-  kirtan:         'https://images.unsplash.com/photo-1511735111819-9a3efd16269a?auto=format&fit=crop&w=800&q=80',
-  havan:          'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=800&q=80',
-  turban:         'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-  // Card headers
-  memberCard:     '/sacred/harmandir.svg',
-  community:      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80',
-  business:       'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80',
-  calendar:       '/sacred/kedarnath.svg',
-  articles:       '/sacred/naina-devi.svg',
-  seva:           '/sacred/patna-sahib.svg',
+  // Gallery panels - real sacred moment photos
+  prayerHands:    '/gallery/sadh-sangat.jpg',       // Sikh congregation in prayer
+  diyaLamps:      '/gallery/diya-aarti.jpg',         // Gangotri Aarti with lamps
+  lotus:          '/gallery/gurbani_103.jpg',         // Beautiful spiritual landscape
+  kirtan:         '/gallery/gurdwara-scene.jpg',      // Gurdwara scene
+  havan:          '/gallery/temple-prayer.jpg',       // Temple ritual/prayer
+  turban:         '/gallery/turban.jpg',              // Nihang Sikh turban
+  // Card headers - contextually relevant real photos
+  memberCard:     '/sacred/harmandir-best.png',      // Golden Temple = sacred membership
+  community:      '/gallery/sadh-sangat.jpg',         // Congregation = connect board
+  business:       '/gallery/community-gathering.jpg', // Community = business directory
+  calendar:       '/gallery/temple-pilgrims.jpg',     // Pilgrims at temple = events
+  articles:       '/gallery/gurbani_101.jpg',         // Gurbani quote landscape = articles
+  seva:           '/gallery/seva-langar.jpg',          // Langar seva = Seva AI
 };
 
 // ── Intersection Observer hook ──────────────────────────
@@ -211,12 +211,12 @@ function Nav({ page, setPage }) {
 // ── Gallery ─────────────────────────────────────────────
 function Gallery() {
   const panels = [
-    { img: IMG.prayerHands, caption: 'Ardas — The Sacred Prayer', wide: true },
-    { img: IMG.diyaLamps,   caption: 'Diya Lamps at Diwali',     wide: false },
-    { img: IMG.lotus,       caption: 'Lotus — Symbol of Purity', wide: false },
-    { img: IMG.kirtan,      caption: 'Kirtan — Divine Music',    wide: false },
-    { img: IMG.havan,       caption: 'Havan — Sacred Fire',      wide: false },
-    { img: IMG.turban,      caption: 'Dastar — Crown of Honour', wide: true },
+    { img: IMG.prayerHands, caption: 'Sadh Sangat — The Holy Congregation', wide: true },
+    { img: IMG.diyaLamps,   caption: 'Ganga Aarti — Sacred Fire & Light',     wide: false },
+    { img: IMG.lotus,       caption: 'Gurbani — Divine Wisdom',               wide: false },
+    { img: IMG.kirtan,      caption: 'Gurdwara Seva — Sacred Service',        wide: false },
+    { img: IMG.havan,       caption: 'Badrinath — Himalayan Pilgrimage',      wide: false },
+    { img: IMG.turban,      caption: 'Dastar — The Nihang Crown of Honour',   wide: true },
   ];
   return (
     <section className="gallery-section">
