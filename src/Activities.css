@@ -68,7 +68,7 @@
   font-weight: 700; white-space: nowrap; flex-shrink: 0; margin-top: .2rem;
 }
 .event-header-left h3 { font-family: 'Yeseva One', serif; font-size: 1.15rem; color: var(--dark); margin-bottom: .4rem; line-height: 1.3; }
-.event-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .88rem; color: #888; }
+.event-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 1rem; color: #888; }
 .toggle-btn {
   background: none; border: none; cursor: pointer; font-size: 1rem;
   color: var(--saffron); padding: .3rem; flex-shrink: 0; transition: .2s;
@@ -81,7 +81,7 @@
 .event-section { margin-bottom: 1.2rem; }
 .event-section h4 { font-size: .95rem; font-weight: 700; color: var(--dark); margin-bottom: .6rem; }
 .event-section ul { list-style: none; padding: 0; }
-.event-section ul li { padding: .4rem 0 .4rem 1.4rem; position: relative; color: #555; font-size: .95rem; line-height: 1.6; border-bottom: 1px solid #f8f8f8; }
+.event-section ul li { padding: .4rem 0 .4rem 1.4rem; position: relative; color: #222; font-size: 1.05rem; line-height: 1.6; border-bottom: 1px solid #f8f8f8; }
 .event-section ul li::before { content: '✦'; position: absolute; left: 0; color: var(--saffron); font-size: .7rem; top: .55rem; }
 .event-section ul.dignitaries li::before { content: '›'; font-size: 1rem; top: .35rem; }
 .event-media { background: linear-gradient(135deg, #fff8f0, #fff); border: 1px solid rgba(212,86,10,.2); border-radius: 10px; padding: 1rem 1.2rem; margin-top: 1rem; }
@@ -95,7 +95,7 @@
 .ongoing-card:hover { background: rgba(255,255,255,.08); border-color: rgba(240,192,96,.4); transform: translateY(-4px); }
 .ongoing-icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
 .ongoing-card h3 { font-family: 'Yeseva One', serif; font-size: 1.1rem; color: var(--gold-light); margin-bottom: .8rem; line-height: 1.3; }
-.ongoing-card p { color: rgba(255,255,255,.6); line-height: 1.7; font-size: .95rem; }
+.ongoing-card p { color: rgba(255,255,255,.9); line-height: 1.7; font-size: .95rem; }
 
 /* GTB Banner */
 .gtb-banner-section { background: var(--dark); padding: 0 2rem 4rem; text-align: center; }
