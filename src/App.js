@@ -11,19 +11,19 @@ const IMG = {
   patnaSahib:     '/sacred/patna-sahib.jpg',
   nainaDevi:      '/sacred/naina-devi.jpg',
   // Gallery panels - real sacred moment photos
-  prayerHands:    '/gallery/sadh-sangat.jpg',       // Sikh congregation in prayer
-  diyaLamps:      '/gallery/diya-aarti.jpg',         // Gangotri Aarti with lamps
-  lotus:          '/gallery/gurbani_103.jpg',         // Beautiful spiritual landscape
-  kirtan:         '/gallery/gurdwara-scene.jpg',      // Gurdwara scene
-  havan:          '/gallery/temple-prayer.jpg',       // Temple ritual/prayer
-  turban:         '/gallery/turban.jpg',              // Nihang Sikh turban
-  // Card headers - contextually relevant real photos
-  memberCard:     '/sacred/harmandir-best.png',      // Golden Temple = sacred membership
-  community:      '/gallery/sadh-sangat.jpg',         // Congregation = connect board
-  business:       '/gallery/community-gathering.jpg', // Community = business directory
-  calendar:       '/gallery/temple-pilgrims.jpg',     // Pilgrims at temple = events
-  articles:       '/gallery/gurbani_101.jpg',         // Gurbani quote landscape = articles
-  seva:           '/gallery/seva-langar.jpg',          // Langar seva = Seva AI
+  prayerHands:    '/gallery/sadh-sangat.jpg',
+  diyaLamps:      '/gallery/diya-aarti.jpg',
+  lotus:          '/gallery/gurbani_103.jpg',
+  kirtan:         '/gallery/gurdwara-scene.jpg',
+  havan:          '/gallery/temple-prayer.jpg',
+  turban:         '/gallery/turban.jpg',
+  // Feature card headers - contextually accurate
+  memberCard:     '/cards/membership.jpg',   // Golden Temple 1600x900
+  community:      '/cards/connect.jpg',      // Sikh community welfare event - real people
+  business:       '/cards/directory.jpg',    // Gurbani spiritual landscape
+  calendar:       '/cards/events.png',       // Diwali Lakshmi Puja decoration
+  articles:       '/cards/articles.png',     // Bhagavad Gita cover
+  seva:           '/cards/seva.jpg',         // Gurbani landscape - divine guidance
 };
 
 // ── Intersection Observer hook ──────────────────────────
