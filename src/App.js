@@ -11,7 +11,8 @@ const IMG = {
   kedarnath:      '/sacred/kedarnath.jpg',
   patnaSahib:     '/sacred/patna-sahib.jpg',
   nainaDevi:      '/sacred/naina-devi.jpg',
-  anandpurSahib:  '/sacred/anandpur-sahib.jpg',    // Chamkaur / Anandpur Sahib area
+  anandpurSahib:  '/sacred/anandpur-sahib.jpg',
+  kartarpurSahib: '/sacred/kartarpur-sahib.jpg',   // Darbar Sahib Kartarpur
   // Gallery panels - real sacred moment photos
   prayerHands:    '/gallery/sadh-sangat.jpg',
   diyaLamps:      '/gallery/diya-aarti.jpg',
@@ -82,6 +83,7 @@ const SLIDES = [
   { img: IMG.patnaSahib,     title: 'Patna Sahib Gurdwara',    sub: 'ਪਟਨਾ ਸਾਹਿਬ — Birthplace of Guru Gobind Singh Ji' },
   { img: IMG.nainaDevi,      title: 'Naina Devi Temple',       sub: 'नैना देवी मंदिर — Sacred Shakti Peeth, Himachal Pradesh' },
   { img: IMG.anandpurSahib,  title: 'Anandpur Sahib',          sub: 'ਅਨੰਦਪੁਰ ਸਾਹਿਬ — City of Divine Bliss, Birth of the Khalsa' },
+  { img: IMG.kartarpurSahib, title: 'Kartarpur Sahib',         sub: 'ਕਰਤਾਰਪੁਰ ਸਾਹਿਬ — Where Guru Nanak Dev Ji Spent His Final Years' },
 ];
 
 function HeroSlider({ setPage }) {
