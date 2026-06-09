@@ -3,13 +3,13 @@ import './App.css';
 
 // ── Unsplash image library (verified popular IDs) ───────
 const IMG = {
-  // Hero slides - temples, gurdwaras, spiritual
-  goldenTemple:   'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=1920&q=80',
-  hinduTemple:    'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1920&q=80',
-  diya:           'https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?auto=format&fit=crop&w=1920&q=80',
-  langar:         'https://images.unsplash.com/photo-1631623804053-1d3ef2ef0bef?auto=format&fit=crop&w=1920&q=80',
-  prayer:         'https://images.unsplash.com/photo-1545996124-0501ebae84d0?auto=format&fit=crop&w=1920&q=80',
-  procession:     'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=1920&q=80',
+  // Hero slides - 6 specific sacred sites
+  kailash:        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80',
+  harmandirSahib: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=1920&q=80',
+  hemkuntSahib:   'https://images.unsplash.com/photo-1605649487488-8173084857f0?auto=format&fit=crop&w=1920&q=80',
+  kedarnath:      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=80',
+  patnaSahib:     'https://images.unsplash.com/photo-1609766857985-1de99d5c08e9?auto=format&fit=crop&w=1920&q=80',
+  nainaDevi:      'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1920&q=80',
   // Gallery panels
   prayerHands:    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
   diyaLamps:      'https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?auto=format&fit=crop&w=800&q=80',
@@ -73,12 +73,12 @@ function Counter({ end, suffix = '+', label }) {
 
 // ── Hero Slideshow ──────────────────────────────────────
 const SLIDES = [
-  { img: IMG.goldenTemple, title: 'Hindu Sikh Unity Forum Canada', sub: 'ਸਾਂਝ ਵਿੱਚ ਸ਼ਕਤੀ • साझा विरासत में शक्ति' },
-  { img: IMG.hinduTemple,  title: 'Rooted in Shared Heritage', sub: 'One Light — Many Traditions' },
-  { img: IMG.diya,         title: 'Celebrating Diwali Together', sub: 'The Festival of Lights Unites Us' },
-  { img: IMG.langar,       title: 'Seva — Selfless Service', sub: 'Feeding Every Soul, Without Distinction' },
-  { img: IMG.prayer,       title: 'Devotion Across Traditions', sub: 'Bhakti and Ardas — One Heart' },
-  { img: IMG.procession,   title: 'Stronger Together', sub: 'Canada\'s Hindu-Sikh Community' },
+  { img: IMG.kailash,        title: 'Kailash Mansarovar',   sub: 'ਕੈਲਾਸ਼ ਮਾਨਸਰੋਵਰ • कैलाश मानसरोवर — Abode of Shiva, Sacred to All' },
+  { img: IMG.harmandirSahib, title: 'Harmandir Sahib',      sub: 'ਹਰਿਮੰਦਰ ਸਾਹਿਬ — The Golden Temple, Amritsar' },
+  { img: IMG.hemkuntSahib,   title: 'Hemkunt Sahib',        sub: 'ਹੇਮਕੁੰਟ ਸਾਹਿਬ — Where Guru Gobind Singh Meditated' },
+  { img: IMG.kedarnath,      title: 'Kedarnath Temple',     sub: 'केदारनाथ मंदिर — Ancient Shiva Shrine in the Himalayas' },
+  { img: IMG.patnaSahib,     title: 'Patna Sahib Gurdwara', sub: 'ਪਟਨਾ ਸਾਹਿਬ — Birthplace of Guru Gobind Singh Ji' },
+  { img: IMG.nainaDevi,      title: 'Naina Devi Temple',    sub: 'नैना देवी मंदिर — Sacred Shakti Peeth, Himachal Pradesh' },
 ];
 
 function HeroSlider({ setPage }) {
