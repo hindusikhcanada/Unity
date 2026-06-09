@@ -118,3 +118,29 @@
   .event-header { flex-direction: column; }
   .activities-stats { gap: 2rem; }
 }
+
+/* ── MOBILE ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .activities-hero { padding: 3rem 1.5rem 2rem; }
+  .activities-hero h1 { font-size: 2.2rem; }
+  .activities-stats { gap: 1.5rem; padding: 2rem 1rem; }
+  .act-stat-num { font-size: 2.2rem; }
+  .activities-intro { padding: 3rem 1.5rem; }
+  .activities-intro-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .activities-intro-flags { max-width: 260px; margin: 0 auto; }
+  .activities-timeline { padding: 2.5rem 1rem; }
+  .year-group { grid-template-columns: 1fr; gap: .5rem; }
+  .year-marker { flex-direction: row; align-items: center; margin-bottom: .5rem; }
+  .year-marker span { writing-mode: horizontal-tb; border-right: none; border-bottom: 3px solid var(--gold); padding: 0 0 .3rem 0; font-size: 1.5rem; }
+  .event-header { padding: 1rem; }
+  .event-header-left { flex-direction: column; gap: .5rem; }
+  .event-header-left h3 { font-size: 1rem; }
+  .event-meta { gap: .8rem; font-size: .82rem; }
+  .event-body { padding: 0 1rem 1rem; }
+  .ongoing-section { padding: 3rem 1rem; }
+  .ongoing-section h2 { font-size: 2rem; }
+  .ongoing-grid { grid-template-columns: 1fr; }
+  .gtb-banner-section { padding: 0 1rem 3rem; }
+  .activities-cta { padding: 3rem 1.5rem; }
+  .activities-cta h2 { font-size: 2rem; }
+}

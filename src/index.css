@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Mobile touch & scroll improvements */
+* { -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+button, a { touch-action: manipulation; }
+img { max-width: 100%; height: auto; }
