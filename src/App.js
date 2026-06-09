@@ -4,13 +4,14 @@ import Activities from './Activities';
 
 // ── Unsplash image library (verified popular IDs) ───────
 const IMG = {
-  // Hero slides - 6 real photographs of sacred sites
-  kailash:        '/sacred/kailash-hero.jpg',
+  // Hero slides - real photographs of sacred sites
+  kailash:        '/sacred/kailash-hero.jpg',      // Kailash peak + Mansarovar lake
   harmandirSahib: '/sacred/harmandir.jpg',
   hemkuntSahib:   '/sacred/hemkunt.png',
   kedarnath:      '/sacred/kedarnath.jpg',
   patnaSahib:     '/sacred/patna-sahib.jpg',
   nainaDevi:      '/sacred/naina-devi.jpg',
+  anandpurSahib:  '/sacred/anandpur-sahib.jpg',    // Chamkaur / Anandpur Sahib area
   // Gallery panels - real sacred moment photos
   prayerHands:    '/gallery/sadh-sangat.jpg',
   diyaLamps:      '/gallery/diya-aarti.jpg',
@@ -74,12 +75,13 @@ function Counter({ end, suffix = '+', label }) {
 
 // ── Hero Slideshow ──────────────────────────────────────
 const SLIDES = [
-  { img: IMG.kailash,        title: 'Kailash Mansarovar',   sub: 'ਕੈਲਾਸ਼ ਮਾਨਸਰੋਵਰ • कैलाश मानसरोवर — Abode of Shiva, Sacred to All' },
-  { img: IMG.harmandirSahib, title: 'Harmandir Sahib',      sub: 'ਹਰਿਮੰਦਰ ਸਾਹਿਬ — The Golden Temple, Amritsar' },
-  { img: IMG.hemkuntSahib,   title: 'Hemkunt Sahib',        sub: 'ਹੇਮਕੁੰਟ ਸਾਹਿਬ — Where Guru Gobind Singh Meditated' },
-  { img: IMG.kedarnath,      title: 'Kedarnath Temple',     sub: 'केदारनाथ मंदिर — Ancient Shiva Shrine in the Himalayas' },
-  { img: IMG.patnaSahib,     title: 'Patna Sahib Gurdwara', sub: 'ਪਟਨਾ ਸਾਹਿਬ — Birthplace of Guru Gobind Singh Ji' },
-  { img: IMG.nainaDevi,      title: 'Naina Devi Temple',    sub: 'नैना देवी मंदिर — Sacred Shakti Peeth, Himachal Pradesh' },
+  { img: IMG.kailash,        title: 'Kailash Mansarovar',      sub: 'ਕੈਲਾਸ਼ ਮਾਨਸਰੋਵਰ • कैलाश मानसरोवर — Sacred Peak & Holy Lake, Abode of Shiva' },
+  { img: IMG.harmandirSahib, title: 'Harmandir Sahib',         sub: 'ਹਰਿਮੰਦਰ ਸਾਹਿਬ — The Golden Temple, Amritsar' },
+  { img: IMG.hemkuntSahib,   title: 'Hemkunt Sahib',           sub: 'ਹੇਮਕੁੰਟ ਸਾਹਿਬ — Where Guru Gobind Singh Meditated' },
+  { img: IMG.kedarnath,      title: 'Kedarnath Temple',        sub: 'केदारनाथ मंदिर — Ancient Shiva Shrine in the Himalayas' },
+  { img: IMG.patnaSahib,     title: 'Patna Sahib Gurdwara',    sub: 'ਪਟਨਾ ਸਾਹਿਬ — Birthplace of Guru Gobind Singh Ji' },
+  { img: IMG.nainaDevi,      title: 'Naina Devi Temple',       sub: 'नैना देवी मंदिर — Sacred Shakti Peeth, Himachal Pradesh' },
+  { img: IMG.anandpurSahib,  title: 'Anandpur Sahib',          sub: 'ਅਨੰਦਪੁਰ ਸਾਹਿਬ — City of Divine Bliss, Birth of the Khalsa' },
 ];
 
 function HeroSlider({ setPage }) {
