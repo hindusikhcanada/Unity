@@ -5,7 +5,7 @@ import Activities from './Activities';
 // ── Unsplash image library (verified popular IDs) ───────
 const IMG = {
   // Hero slides - 6 real photographs of sacred sites
-  kailash:        '/sacred/kailash.png',
+  kailash:        '/sacred/kailash-hero.jpg',
   harmandirSahib: '/sacred/harmandir.jpg',
   hemkuntSahib:   '/sacred/hemkunt.png',
   kedarnath:      '/sacred/kedarnath.jpg',
