@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
+import Activities from './Activities';
 
 // ── Unsplash image library (verified popular IDs) ───────
 const IMG = {
@@ -184,7 +185,8 @@ function Nav({ page, setPage }) {
   }, []);
   const links = [
     { id: 'home', label: 'Home' }, { id: 'membership', label: 'Membership' },
-    { id: 'events', label: 'Events' }, { id: 'directory', label: 'Directory' },
+    { id: 'events', label: 'Events' }, { id: 'activities', label: 'Activities' },
+    { id: 'directory', label: 'Directory' },
     { id: 'connect', label: 'Connect' }, { id: 'articles', label: 'Articles' },
     { id: 'seva', label: 'Seva AI' },
   ];
@@ -691,6 +693,7 @@ function Footer({ setPage }) {
         <div className="footer-col">
           <h4>Community</h4>
           <button onClick={() => go('events')}>Events Calendar</button>
+          <button onClick={() => go('activities')}>Past Activities</button>
           <button onClick={() => go('articles')}>Articles</button>
           <button onClick={() => go('connect')}>City Networks</button>
         </div>
@@ -719,6 +722,7 @@ export default function App() {
       {page === 'home'       && <Home setPage={goTo} />}
       {page === 'membership' && <Membership />}
       {page === 'events'     && <Events />}
+      {page === 'activities' && <Activities />}
       {page === 'directory'  && <Directory />}
       {page === 'connect'    && <Connect />}
       {page === 'articles'   && <Articles />}
