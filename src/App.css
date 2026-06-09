@@ -19,7 +19,21 @@ img { display: block; width: 100%; object-fit: cover; }
 button, a { font-family: inherit; cursor: pointer; }
 .app { min-height: 100vh; display: flex; flex-direction: column; }
 
-/* ── NAV ────────────────────────────────────────── */
+/* ── NAV LOGO ── */
+.nav-logo-img { height: 52px; width: auto; border-radius: 6px; object-fit: contain; background: rgba(255,255,255,0.1); padding: 2px; flex-shrink: 0; }
+.nav-logo-text { display: flex; flex-direction: column; gap: 1px; }
+.nav-logo-name { font-family: 'Yeseva One', serif; color: var(--gold); font-size: 1rem; letter-spacing: .3px; white-space: nowrap; line-height: 1.2; }
+.nav-logo-sub { font-size: .7rem; color: rgba(240,192,96,.6); letter-spacing: 1px; white-space: nowrap; }
+
+/* ── HERO LOGO LOCKUP ── */
+.hero-logo-lockup { display: flex; align-items: center; gap: 1.5rem; justify-content: center; margin-bottom: 2rem; animation: fadeDown .8s ease both; }
+.hero-logo-img { height: 110px; width: auto; border-radius: 12px; object-fit: contain; background: rgba(255,255,255,0.12); padding: 8px; backdrop-filter: blur(10px); border: 1px solid rgba(240,192,96,.3); box-shadow: 0 8px 30px rgba(0,0,0,.4); }
+.hero-org-name { display: flex; flex-direction: column; gap: .4rem; text-align: left; }
+.hero-org-main { font-family: 'Yeseva One', serif; font-size: clamp(1.5rem, 3.5vw, 2.5rem); color: #fff; line-height: 1.2; text-shadow: 0 3px 15px rgba(0,0,0,.6); }
+.hero-org-tagline { font-size: clamp(.75rem, 1.5vw, 1rem); color: var(--gold-light); opacity: .85; letter-spacing: .5px; font-family: 'Noto Sans Gurmukhi', sans-serif; }
+
+/* ── FOOTER LOGO ── */
+.footer-logo-img { height: 80px; width: auto; border-radius: 8px; object-fit: contain; background: rgba(255,255,255,0.08); padding: 6px; margin-bottom: 1rem; border: 1px solid rgba(240,192,96,.2); }
 .nav { background: var(--dark); position: sticky; top: 0; z-index: 300; }
 .shimmer-bar { height: 3px; background: linear-gradient(90deg, var(--saffron), var(--gold), var(--saffron), var(--gold)); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
 @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
@@ -68,8 +82,8 @@ button, a { font-family: inherit; cursor: pointer; }
 /* Hero content */
 .hero-content { position: relative; z-index: 4; text-align: center; max-width: 1000px; padding: 2rem; }
 .hero-badge { display: inline-block; background: rgba(240,192,96,.2); border: 1px solid rgba(240,192,96,.4); color: var(--gold); padding: .5rem 1.4rem; border-radius: 50px; font-size: .9rem; font-weight: 700; margin-bottom: 2rem; letter-spacing: 1px; backdrop-filter: blur(10px); animation: fadeDown .8s ease both; }
-.hero-title { font-family: 'Yeseva One', serif; font-size: clamp(3rem, 7vw, 6.5rem); color: #fff; line-height: 1.1; margin-bottom: 1.2rem; animation: fadeUp .8s ease .2s both; text-shadow: 0 4px 30px rgba(0,0,0,.5); }
-.hero-script { font-family: 'Noto Sans Gurmukhi', sans-serif; font-size: 1.2rem; color: var(--gold-light); margin-bottom: 3rem; letter-spacing: 1px; animation: fadeUp .8s ease .3s both; }
+.hero-title { font-family: 'Yeseva One', serif; font-size: clamp(1.6rem, 3.5vw, 2.8rem); color: var(--gold-light); line-height: 1.2; margin-bottom: .8rem; animation: fadeUp .8s ease .2s both; text-shadow: 0 3px 15px rgba(0,0,0,.6); opacity: .9; }
+.hero-script { font-family: 'Noto Sans Gurmukhi', sans-serif; font-size: 1rem; color: rgba(255,255,255,.65); margin-bottom: 2.5rem; letter-spacing: .5px; animation: fadeUp .8s ease .3s both; }
 .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp .8s ease .4s both; }
 .hero-dots { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; gap: .7rem; }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.4); border: none; cursor: pointer; transition: all .3s; }
@@ -311,6 +325,12 @@ button, a { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 768px) {
   body { font-size: 18px; }
+  .nav-logo-name { font-size: .85rem; }
+  .nav-logo-sub { display: none; }
+  .hero-logo-lockup { flex-direction: column; gap: 1rem; }
+  .hero-logo-img { height: 80px; }
+  .hero-org-name { text-align: center; }
+  .hero-org-main { font-size: 1.4rem; }
   .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--dark); flex-direction: column; justify-content: center; align-items: center; gap: 2rem; z-index: 400; }
   .nav-links.open { display: flex; }
   .nav-links button { font-size: 1.5rem; color: #fff; }

@@ -146,7 +146,13 @@ function HeroSlider({ setPage }) {
 
       {/* Content */}
       <div className="hero-content">
-        <div className="hero-badge">🇨🇦 Celebrating Unity Since 2019</div>
+        <div className="hero-logo-lockup">
+          <img src="/logo.jpg" alt="HSUF Canada" className="hero-logo-img" />
+          <div className="hero-org-name">
+            <span className="hero-org-main">Hindu Sikh Unity Forum Canada</span>
+            <span className="hero-org-tagline">Stronger Together · ਸਾਂਝ ਵਿੱਚ ਸ਼ਕਤੀ · साझा विरासत</span>
+          </div>
+        </div>
         <h1 className="hero-title">{SLIDES[cur].title}</h1>
         <p className="hero-script">{SLIDES[cur].sub}</p>
         <div className="hero-btns">
@@ -189,11 +195,11 @@ function Nav({ page, setPage }) {
       <div className="shimmer-bar" />
       <div className="nav-inner">
         <button className="nav-logo" onClick={() => go('home')}>
-          <div className="logo-circle">
-            <span className="logo-ik">ੴ</span>
-            <span className="logo-om">ॐ</span>
+          <img src="/logo.jpg" alt="HSUF Canada Logo" className="nav-logo-img" />
+          <div className="nav-logo-text">
+            <span className="nav-logo-name">Hindu Sikh Unity Forum</span>
+            <span className="nav-logo-sub">Canada · Stronger Together</span>
           </div>
-          <span className="logo-name">HSUF Canada</span>
         </button>
         <div className={`nav-links ${open ? 'open' : ''}`}>
           {links.map(l => (
@@ -670,7 +676,7 @@ function Footer({ setPage }) {
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <div className="footer-logo-circle"><span>ੴ</span><span>ॐ</span></div>
+          <img src="/logo.jpg" alt="HSUF Canada Logo" className="footer-logo-img" />
           <h3>Hindu Sikh Unity Forum Canada</h3>
           <p>Stronger Together</p>
           <p className="footer-script">ਸਾਂਝ ਵਿੱਚ ਸ਼ਕਤੀ • साझा विरासत</p>
