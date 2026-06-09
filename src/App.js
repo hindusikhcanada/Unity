@@ -7,7 +7,7 @@ const IMG = {
   // Hero slides - real photographs of sacred sites
   kailash:        '/sacred/kailash-hero.jpg',      // Kailash peak + Mansarovar lake
   harmandirSahib: '/sacred/harmandir.jpg',
-  hemkuntSahib:   '/sacred/hemkunt.png',
+  hemkuntSahib:   '/sacred/hemkunt.jpg',
   kedarnath:      '/sacred/kedarnath.jpg',
   patnaSahib:     '/sacred/patna-sahib.jpg',
   nainaDevi:      '/sacred/naina-devi.jpg',
