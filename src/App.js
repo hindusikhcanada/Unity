@@ -3,13 +3,13 @@ import './App.css';
 
 // ── Unsplash image library (verified popular IDs) ───────
 const IMG = {
-  // Hero slides - 6 specific sacred sites (local SVG illustrations)
-  kailash:        '/sacred/kailash.svg',
-  harmandirSahib: '/sacred/harmandir.svg',
-  hemkuntSahib:   '/sacred/hemkunt.svg',
-  kedarnath:      '/sacred/kedarnath.svg',
-  patnaSahib:     '/sacred/patna-sahib.svg',
-  nainaDevi:      '/sacred/naina-devi.svg',
+  // Hero slides - 6 real photographs of sacred sites
+  kailash:        '/sacred/kailash.png',
+  harmandirSahib: '/sacred/harmandir.jpg',
+  hemkuntSahib:   '/sacred/hemkunt.jpg',
+  kedarnath:      '/sacred/kedarnath.jpg',
+  patnaSahib:     '/sacred/patna-sahib.png',
+  nainaDevi:      '/sacred/naina-devi.jpg',
   // Gallery & card images (Unsplash - load fine in browser)
   prayerHands:    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
   diyaLamps:      'https://images.unsplash.com/photo-1574482620826-40685ca5ebd2?auto=format&fit=crop&w=800&q=80',
