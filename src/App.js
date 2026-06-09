@@ -19,13 +19,13 @@ const IMG = {
   kirtan:         '/gallery/gurdwara-scene.jpg',
   havan:          '/gallery/temple-prayer.jpg',
   turban:         '/gallery/turban.jpg',
-  // Feature card headers - contextually accurate
-  memberCard:     '/cards/membership.jpg',   // Golden Temple 1600x900
-  community:      '/cards/connect.jpg',      // Sikh community welfare event - real people
-  business:       '/cards/directory.jpg',    // Gurbani spiritual landscape
-  calendar:       '/cards/events.png',       // Diwali Lakshmi Puja decoration
+  // Feature card headers - contextually accurate contemporary photos
+  memberCard:     '/cards/membership.jpg',   // Golden Temple
+  community:      '/cards/connect.jpg',      // Contemporary community scene, blue sky, people
+  business:       '/cards/directory.jpg',    // Gurdwara community with people
+  calendar:       '/cards/events.jpg',       // Spiritual gathering, blue sky, people
   articles:       '/cards/articles.png',     // Bhagavad Gita cover
-  seva:           '/cards/seva.jpg',         // Gurbani landscape - divine guidance
+  seva:           '/cards/seva.jpg',         // Serene blue sky landscape - wisdom/guidance
 };
 
 // ── Intersection Observer hook ──────────────────────────
