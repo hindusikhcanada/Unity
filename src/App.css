@@ -604,14 +604,14 @@ button, a { font-family: inherit; cursor: pointer; }
 .mv-pillar:hover { background: rgba(255,255,255,.05); }
 .mv-pillar-icon { font-size: 2rem; display: block; margin-bottom: .3rem; }
 .mv-pillar strong {
-  color: var(--gold-light);
+  color: #FFD98A;
   font-size: .9rem;
   font-weight: 700;
   letter-spacing: .5px;
   display: block;
 }
 .mv-pillar span {
-  color: rgba(255,255,255,.55);
+  color: rgba(255,255,255,.85);
   font-size: .8rem;
   line-height: 1.5;
 }

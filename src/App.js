@@ -192,7 +192,7 @@ function Nav({ page, setPage }) {
     { id: 'events', label: 'Events' }, { id: 'activities', label: 'Activities' },
     { id: 'directory', label: 'Directory' },
     { id: 'connect', label: 'Connect' }, { id: 'articles', label: 'Articles' },
-    { id: 'seva', label: 'Seva AI' }, { id: 'contact', label: 'Contact Us' },
+    { id: 'seva', label: 'Seva AI' },
   ];
   const go = (id) => { setPage(id); setOpen(false); window.scrollTo(0, 0); };
 
@@ -878,8 +878,99 @@ function Seva() {
 // ── FOOTER ───────────────────────────────────────────────
 function Footer({ setPage }) {
   const go = (p) => { setPage(p); window.scrollTo(0, 0); };
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [status, setStatus] = useState('idle');
+
+  const handle = e => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const submit = async () => {
+    if (!form.name || !form.email || !form.message) { setStatus('error'); return; }
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, subject: 'Website Contact Form' })
+      });
+      const data = await res.json();
+      setStatus(data.success ? 'success' : 'error');
+    } catch { setStatus('error'); }
+  };
+
+  const inp = { style: { width: '100%', padding: '10px 14px', borderRadius: 8, border: '1px solid rgba(255,255,255,.2)', background: 'rgba(255,255,255,.08)', color: '#fff', fontSize: 14, boxSizing: 'border-box', outline: 'none', fontFamily: 'inherit' } };
+
   return (
     <footer className="footer">
+      {/* Contact Section */}
+      <div style={{ background: 'linear-gradient(135deg,#0E1A35 0%,#1a0a04 100%)', borderTop: '3px solid #D4560A', padding: '3rem 2rem' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '3rem', alignItems: 'start' }}>
+          
+          {/* Contact Info */}
+          <div>
+            <h3 style={{ color: '#F0C060', fontFamily: 'Yeseva One, serif', fontSize: '1.6rem', marginBottom: '1rem' }}>Get In Touch</h3>
+            <p style={{ color: 'rgba(255,255,255,.75)', lineHeight: 1.7, marginBottom: '1.5rem', fontSize: '0.95rem' }}>
+              We'd love to hear from you. Reach out for membership inquiries, event information, or partnership opportunities.
+            </p>
+            {[
+              { icon: '🌐', label: 'Website', val: 'www.hindusikhunity.com' },
+              { icon: '📧', label: 'Email', val: 'info@hindusikhunity.com' },
+              { icon: '📍', label: 'Location', val: 'Oakville / Greater Toronto Area, ON' },
+              { icon: '👤', label: 'President', val: 'Harji Bajwa — 416-895-6788' },
+              { icon: '👤', label: 'Chairman', val: 'Surinder Sharma — 416-871-1718' },
+            ].map(({ icon, label, val }) => (
+              <div key={label} style={{ display: 'flex', gap: '0.8rem', marginBottom: '0.8rem', alignItems: 'flex-start' }}>
+                <span style={{ fontSize: 18, marginTop: 2 }}>{icon}</span>
+                <div>
+                  <div style={{ color: '#F0C060', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>{label}</div>
+                  <div style={{ color: 'rgba(255,255,255,.85)', fontSize: 13 }}>{val}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Contact Form */}
+          <div>
+            <h3 style={{ color: '#F0C060', fontFamily: 'Yeseva One, serif', fontSize: '1.6rem', marginBottom: '1rem' }}>Send a Message</h3>
+            {status === 'success' ? (
+              <div style={{ textAlign: 'center', padding: '2rem', background: 'rgba(255,255,255,.05)', borderRadius: 12 }}>
+                <div style={{ fontSize: 40, marginBottom: 12 }}>🙏</div>
+                <p style={{ color: '#FFD98A', fontWeight: 700, marginBottom: 8 }}>Thank you!</p>
+                <p style={{ color: 'rgba(255,255,255,.7)', fontSize: 13 }}>We'll get back to you shortly. A confirmation has been sent to your email.</p>
+                <button onClick={() => { setStatus('idle'); setForm({ name:'', email:'', phone:'', message:'' }); }}
+                  style={{ marginTop: 16, padding: '8px 20px', background: '#D4560A', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer', fontWeight: 700 }}>Send Another</button>
+              </div>
+            ) : (
+              <div style={{ display: 'grid', gap: '0.8rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem' }}>
+                  <div>
+                    <label style={{ display: 'block', color: 'rgba(255,255,255,.6)', fontSize: 12, marginBottom: 4 }}>Full Name *</label>
+                    <input name="name" value={form.name} onChange={handle} placeholder="Your name" {...inp} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', color: 'rgba(255,255,255,.6)', fontSize: 12, marginBottom: 4 }}>Email *</label>
+                    <input name="email" value={form.email} onChange={handle} placeholder="you@email.com" type="email" {...inp} />
+                  </div>
+                </div>
+                <div>
+                  <label style={{ display: 'block', color: 'rgba(255,255,255,.6)', fontSize: 12, marginBottom: 4 }}>Phone (optional)</label>
+                  <input name="phone" value={form.phone} onChange={handle} placeholder="+1 (416) 000-0000" {...inp} />
+                </div>
+                <div>
+                  <label style={{ display: 'block', color: 'rgba(255,255,255,.6)', fontSize: 12, marginBottom: 4 }}>Message *</label>
+                  <textarea name="message" value={form.message} onChange={handle} rows={4} placeholder="How can we help you?"
+                    style={{ ...inp.style, resize: 'vertical' }} />
+                </div>
+                {status === 'error' && <p style={{ color: '#ff8a80', fontSize: 12, margin: 0 }}>⚠️ Please fill all required fields and try again.</p>}
+                <button onClick={submit} disabled={status === 'sending'}
+                  style={{ padding: '12px 28px', background: status === 'sending' ? '#666' : 'linear-gradient(135deg,#D4560A,#b84000)', color: '#fff', border: 'none', borderRadius: 10, fontSize: 14, fontWeight: 700, cursor: 'pointer', width: '100%' }}>
+                  {status === 'sending' ? 'Sending... 🙏' : 'Send Message →'}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer links */}
       <div className="footer-inner">
         <div className="footer-brand">
           <img src="/logo.jpg" alt="HSUF Canada Logo" className="footer-logo-img" />
@@ -910,7 +1001,7 @@ function Footer({ setPage }) {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2024 Hindu Sikh Unity Forum Canada. All rights reserved. Celebrating shared heritage.</p>
+        <p>© 2025 Hindu Sikh Unity Forum Canada. All rights reserved. Celebrating shared heritage.</p>
       </div>
     </footer>
   );
