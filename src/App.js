@@ -192,7 +192,7 @@ function Nav({ page, setPage }) {
     { id: 'events', label: 'Events' }, { id: 'activities', label: 'Activities' },
     { id: 'directory', label: 'Directory' },
     { id: 'connect', label: 'Connect' }, { id: 'articles', label: 'Articles' },
-    { id: 'seva', label: 'Seva AI' },
+    { id: 'seva', label: 'Seva AI' }, { id: 'contact', label: 'Contact Us' },
   ];
   const go = (id) => { setPage(id); setOpen(false); window.scrollTo(0, 0); };
 
@@ -647,6 +647,149 @@ function Articles() {
   );
 }
 
+
+// ── CONTACT ──────────────────────────────────────────────
+function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [errMsg, setErrMsg] = useState('');
+
+  const subjects = [
+    'General Inquiry', 'Membership', 'Events & Activities',
+    'Volunteer Opportunities', 'Media & Press', 'Partnership', 'Other'
+  ];
+
+  const handle = e => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const submit = async () => {
+    if (!form.name || !form.email || !form.message) {
+      setErrMsg('Please fill in your name, email and message.'); return;
+    }
+    setStatus('sending'); setErrMsg('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+      const data = await res.json();
+      if (data.success) { setStatus('success'); setForm({ name: '', email: '', phone: '', subject: '', message: '' }); }
+      else { setStatus('error'); setErrMsg(data.error || 'Something went wrong.'); }
+    } catch {
+      setStatus('error'); setErrMsg('Network error. Please try again.');
+    }
+  };
+
+  return (
+    <div className="inner-page">
+      <div className="inner-hero" style={{ background: 'linear-gradient(135deg,#1A3A6B 0%,#D4560A 100%)' }}>
+        <div className="inner-overlay" style={{ background: 'rgba(0,0,0,0.35)' }} />
+        <div className="inner-hero-text">
+          <h1>Contact Us</h1>
+          <p>We'd love to hear from you — reach out anytime</p>
+        </div>
+      </div>
+
+      <div className="container" style={{ maxWidth: 860, padding: '3rem 1.5rem' }}>
+
+        {/* Info cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '1.2rem', marginBottom: '2.5rem' }}>
+          {[
+            { icon: '🌐', label: 'Website', val: 'www.hindusikhunity.com' },
+            { icon: '📧', label: 'Email', val: 'info@hindusikhunity.com' },
+            { icon: '📍', label: 'Base', val: 'Oakville / Greater Toronto Area, ON' },
+          ].map(({ icon, label, val }) => (
+            <div key={label} style={{ background: '#FAF3E0', borderRadius: 12, padding: '1.2rem', borderLeft: '4px solid #D4560A', textAlign: 'center' }}>
+              <div style={{ fontSize: 28, marginBottom: 6 }}>{icon}</div>
+              <div style={{ color: '#888', fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>{label}</div>
+              <div style={{ color: '#1A3A6B', fontWeight: 700, fontSize: 13 }}>{val}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Form */}
+        <div style={{ background: '#fff', borderRadius: 16, boxShadow: '0 4px 30px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
+          <div style={{ background: 'linear-gradient(135deg,#1A3A6B,#D4560A)', padding: '1.5rem 2rem' }}>
+            <h2 style={{ color: '#fff', margin: 0, fontSize: '1.4rem' }}>Send Us a Message</h2>
+            <p style={{ color: '#FFD98A', margin: '4px 0 0', fontSize: 13 }}>We'll get back to you within 24–48 hours</p>
+          </div>
+
+          <div style={{ padding: '2rem' }}>
+            {status === 'success' ? (
+              <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+                <div style={{ fontSize: 56, marginBottom: 16 }}>🙏</div>
+                <h3 style={{ color: '#1A3A6B', marginBottom: 8 }}>Thank You!</h3>
+                <p style={{ color: '#555', lineHeight: 1.7 }}>Your message has been received. We'll be in touch shortly.<br/>A confirmation has been sent to your email.</p>
+                <button onClick={() => setStatus('idle')} style={{ marginTop: 20, padding: '10px 28px', background: '#D4560A', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer', fontWeight: 700 }}>Send Another</button>
+              </div>
+            ) : (
+              <div style={{ display: 'grid', gap: '1rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#555', marginBottom: 6 }}>Full Name *</label>
+                    <input name="name" value={form.name} onChange={handle} placeholder="Harpreet Singh"
+                      style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #e0e0e0', borderRadius: 8, fontSize: 14, boxSizing: 'border-box', outline: 'none' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#555', marginBottom: 6 }}>Email Address *</label>
+                    <input name="email" value={form.email} onChange={handle} placeholder="you@email.com" type="email"
+                      style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #e0e0e0', borderRadius: 8, fontSize: 14, boxSizing: 'border-box', outline: 'none' }} />
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#555', marginBottom: 6 }}>Phone (optional)</label>
+                    <input name="phone" value={form.phone} onChange={handle} placeholder="+1 (416) 000-0000"
+                      style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #e0e0e0', borderRadius: 8, fontSize: 14, boxSizing: 'border-box', outline: 'none' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#555', marginBottom: 6 }}>Subject</label>
+                    <select name="subject" value={form.subject} onChange={handle}
+                      style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #e0e0e0', borderRadius: 8, fontSize: 14, boxSizing: 'border-box', background: '#fff', outline: 'none' }}>
+                      <option value="">Select a subject...</option>
+                      {['General Inquiry','Membership','Events & Activities','Volunteer Opportunities','Media & Press','Partnership','Other'].map(s => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#555', marginBottom: 6 }}>Message *</label>
+                  <textarea name="message" value={form.message} onChange={handle} rows={5} placeholder="How can we help you?"
+                    style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #e0e0e0', borderRadius: 8, fontSize: 14, boxSizing: 'border-box', resize: 'vertical', outline: 'none', fontFamily: 'inherit' }} />
+                </div>
+                {errMsg && <p style={{ color: '#c0392b', fontSize: 13, margin: 0 }}>⚠️ {errMsg}</p>}
+                <button onClick={submit} disabled={status === 'sending'}
+                  style={{ padding: '13px 32px', background: status === 'sending' ? '#aaa' : 'linear-gradient(135deg,#D4560A,#b84000)', color: '#fff', border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: status === 'sending' ? 'not-allowed' : 'pointer', transition: 'all 0.2s', alignSelf: 'flex-start' }}>
+                  {status === 'sending' ? 'Sending... 🙏' : 'Send Message →'}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Leadership */}
+        <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
+          <h3 style={{ color: '#1A3A6B', marginBottom: '1.5rem' }}>Our Leadership</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: '1rem' }}>
+            {[
+              { name: 'Harji Bajwa', role: 'President' },
+              { name: 'Surinder Sharma', role: 'Chairman' },
+              { name: 'Dr. Rajesh Bhatia', role: 'VP & Secretary' },
+            ].map(({ name, role }) => (
+              <div key={name} style={{ background: '#FAF3E0', borderRadius: 12, padding: '1.2rem', border: '1px solid #F0C060' }}>
+                <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(135deg,#D4560A,#1A3A6B)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px', color: '#fff', fontWeight: 700, fontSize: 18 }}>{name[0]}</div>
+                <div style={{ fontWeight: 700, color: '#1A3A6B', fontSize: 14 }}>{name}</div>
+                <div style={{ color: '#D4560A', fontSize: 12, marginTop: 2 }}>{role}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── SEVA AI ──────────────────────────────────────────────
 function Seva() {
   const [msgs, setMsgs] = useState([
@@ -788,6 +931,7 @@ export default function App() {
       {page === 'connect'    && <Connect />}
       {page === 'articles'   && <Articles />}
       {page === 'seva'       && <Seva />}
+      {page === 'contact'    && <Contact />}
       <Footer setPage={goTo} />
     </div>
   );
