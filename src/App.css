@@ -43,8 +43,8 @@ button, a { font-family: inherit; cursor: pointer; }
 .logo-ik { font-family: 'Noto Sans Gurmukhi', sans-serif; font-size: .9rem; color: #fff; font-weight: 700; }
 .logo-om { font-family: 'Noto Serif Devanagari', serif; font-size: .9rem; color: #fff; font-weight: 700; }
 .logo-name { font-family: 'Yeseva One', serif; color: var(--gold); font-size: 1.1rem; letter-spacing: .3px; white-space: nowrap; }
-.nav-links { display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; }
-.nav-links button { background: none; border: none; color: #fff; font-size: 1rem; font-weight: 600; cursor: pointer; transition: color .2s; white-space: nowrap; padding: .3rem 0; position: relative; font-family: 'Cormorant Garamond', serif; }
+.nav-links { display: flex; align-items: center; gap: 1rem; flex-wrap: nowrap; }
+.nav-links button { background: none; border: none; color: #fff; font-size: .88rem; font-weight: 600; cursor: pointer; transition: color .2s; white-space: nowrap; padding: .3rem 0; position: relative; font-family: 'Cormorant Garamond', serif; }
 .nav-links button::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--saffron); transform: scaleX(0); transition: transform .2s; transform-origin: left; }
 .nav-links button:hover, .nav-links button.active { color: var(--gold); }
 .nav-links button.active::after { transform: scaleX(1); }
