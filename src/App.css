@@ -637,25 +637,28 @@ button, a { font-family: inherit; cursor: pointer; }
    ══════════════════════════════════════════════════════════ */
 .conv-section {
   position: relative;
-  padding: 5.5rem 1.5rem 5rem;
+  padding: 6rem 1.5rem 5.5rem;
   overflow: hidden;
   background: #0a0604;
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--saffron), var(--gold), var(--navy)) 1;
 }
 .conv-bg {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  opacity: 0.22;
-  filter: saturate(1.1);
+  opacity: 0.28;
+  filter: saturate(1.2) contrast(1.05);
 }
 .conv-overlay {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at top, rgba(212,86,10,0.25), transparent 60%),
-    linear-gradient(180deg, #0a0604 0%, #150a06 40%, #0c1830 75%, #0a0604 100%);
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,86,10,0.35), transparent 65%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(26,58,107,0.4), transparent 65%),
+    linear-gradient(180deg, #0a0604 0%, #170b07 35%, #0d1c3a 75%, #0a0604 100%);
 }
 .conv-content {
   position: relative; z-index: 2;
-  max-width: 920px; margin: 0 auto;
+  max-width: 960px; margin: 0 auto;
   text-align: center;
 }
 .conv-eyebrow {
@@ -669,18 +672,19 @@ button, a { font-family: inherit; cursor: pointer; }
 }
 .conv-title {
   font-family: 'Yeseva One', serif;
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-  line-height: 1.15;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 1.12;
   background: linear-gradient(135deg, #fff 0%, #FFD98A 55%, #F0C060 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 30px rgba(240,192,96,0.15);
+  margin-bottom: 1.1rem;
+  text-shadow: 0 2px 40px rgba(240,192,96,0.2);
+  letter-spacing: -0.5px;
 }
 .conv-theme {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-style: italic;
   font-weight: 600;
   margin-bottom: 0.3rem;
@@ -711,12 +715,13 @@ button, a { font-family: inherit; cursor: pointer; }
   margin-bottom: 2.5rem; flex-wrap: wrap;
 }
 .conv-count-box {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(240,192,96,0.35);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(240,192,96,0.45);
   border-radius: 14px;
-  padding: 1rem 1.3rem;
-  min-width: 85px;
+  padding: 1.1rem 1.4rem;
+  min-width: 90px;
   backdrop-filter: blur(6px);
+  box-shadow: 0 0 25px rgba(240,192,96,0.12), inset 0 1px 0 rgba(255,255,255,0.1);
 }
 .conv-count-num {
   font-family: 'Yeseva One', serif;
@@ -768,29 +773,39 @@ button, a { font-family: inherit; cursor: pointer; }
 /* CTA */
 .conv-cta-row {
   display: flex; justify-content: center; gap: 1.2rem;
-  flex-wrap: wrap; margin-bottom: 0.8rem;
+  flex-wrap: wrap; margin-bottom: 1rem;
 }
 .conv-btn-primary {
-  background: linear-gradient(135deg, var(--saffron), #b84000);
-  color: #fff; padding: 1rem 2.2rem; border-radius: 50px;
-  font-weight: 700; font-size: 1.05rem; text-decoration: none;
-  box-shadow: 0 8px 25px rgba(212,86,10,0.4);
+  background: linear-gradient(135deg, #ff7a1a, var(--saffron) 50%, #b84000);
+  color: #fff; padding: 1.15rem 2.6rem; border-radius: 50px;
+  font-weight: 800; font-size: 1.12rem; text-decoration: none;
+  letter-spacing: 0.3px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.15) inset, 0 10px 30px rgba(212,86,10,0.55), 0 0 40px rgba(255,122,26,0.25);
   transition: transform 0.25s, box-shadow 0.25s;
   display: inline-block;
+  animation: conv-pulse 2.8s ease-in-out infinite;
 }
-.conv-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(212,86,10,0.55); }
+.conv-btn-primary:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 0 0 1px rgba(255,255,255,0.25) inset, 0 16px 40px rgba(212,86,10,0.7), 0 0 55px rgba(255,122,26,0.4); animation-play-state: paused; }
+@keyframes conv-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.15) inset, 0 10px 30px rgba(212,86,10,0.55), 0 0 40px rgba(255,122,26,0.25); }
+  50% { box-shadow: 0 0 0 1px rgba(255,255,255,0.25) inset, 0 10px 30px rgba(212,86,10,0.7), 0 0 65px rgba(255,122,26,0.5); }
+}
 .conv-btn-secondary {
-  background: transparent;
-  border: 1.5px solid var(--gold-light);
-  color: var(--gold-light);
-  padding: 1rem 2.2rem; border-radius: 50px;
-  font-weight: 700; font-size: 1.05rem;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid var(--gold-light);
+  color: #fff;
+  padding: 1.1rem 2.4rem; border-radius: 50px;
+  font-weight: 800; font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
   transition: all 0.25s;
 }
-.conv-btn-secondary:hover { background: rgba(240,192,96,0.12); }
+.conv-btn-secondary:hover { background: rgba(240,192,96,0.22); border-color: #fff; transform: translateY(-3px); }
 .conv-deadline {
-  color: rgba(255,255,255,0.55);
-  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.92rem;
+  font-weight: 600;
   margin-bottom: 3rem;
 }
 
