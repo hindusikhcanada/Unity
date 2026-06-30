@@ -86,6 +86,130 @@ const SLIDES = [
   { img: IMG.kartarpurSahib, title: 'Kartarpur Sahib',         sub: 'ਕਰਤਾਰਪੁਰ ਸਾਹਿਬ — Where Guru Nanak Dev Ji Spent His Final Years' },
 ];
 
+// ── CONVENTION 2026 ──────────────────────────────────────
+function ConventionCountdown() {
+  const target = new Date('2026-08-22T10:00:00-04:00').getTime();
+  const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  useEffect(() => {
+    const tick = () => {
+      const diff = Math.max(0, target - Date.now());
+      setT({
+        d: Math.floor(diff / 86400000),
+        h: Math.floor(diff / 3600000) % 24,
+        m: Math.floor(diff / 60000) % 60,
+        s: Math.floor(diff / 1000) % 60,
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [target]);
+  return (
+    <div className="conv-countdown">
+      {[['Days', t.d], ['Hours', t.h], ['Minutes', t.m], ['Seconds', t.s]].map(([label, val]) => (
+        <div key={label} className="conv-count-box">
+          <div className="conv-count-num">{String(val).padStart(2, '0')}</div>
+          <div className="conv-count-label">{label}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ConventionSection({ setPage }) {
+  const tiers = [
+    { name: 'Platinum', price: '$7,500', qty: 'Exclusive · 1 only', color: '#1A3A6B' },
+    { name: 'Gold', price: '$5,000', qty: 'Up to 2 available', color: '#B8893B' },
+    { name: 'Silver', price: '$2,500', qty: 'Up to 3 available', color: '#6b6b6b' },
+    { name: 'Bronze', price: '$1,000', qty: 'Up to 5 available', color: '#8a5a2b' },
+  ];
+
+  const stats = [
+    { num: '250', label: 'Senior Leaders' },
+    { num: '25', label: 'Tables of Ten' },
+    { num: '10', label: 'Community Awards' },
+    { num: '4', label: 'Hours of Impact' },
+  ];
+
+  return (
+    <section className="conv-section">
+      <div className="conv-bg" style={{ backgroundImage: 'url(/sacred/golden_temple.jpg)' }} />
+      <div className="conv-overlay" />
+
+      <div className="conv-content">
+        <Reveal>
+          <p className="conv-eyebrow">✦ Save The Date ✦</p>
+          <h2 className="conv-title">Hindu Sikh Unity<br/>Convention 2026</h2>
+          <p className="conv-theme">"Saanjhi Virasat, Saanjha Bhavishya"</p>
+          <p className="conv-subtheme">Shared Heritage · Shared Future</p>
+        </Reveal>
+
+        <Reveal delay={100}>
+          <div className="conv-details">
+            <div className="conv-detail"><span className="conv-icon">📅</span> Saturday, August 22, 2026</div>
+            <div className="conv-detail"><span className="conv-icon">🕙</span> 10:00 AM – 2:00 PM</div>
+            <div className="conv-detail"><span className="conv-icon">📍</span> Chandni Victoria Convention Centre, Mississauga</div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={150}>
+          <ConventionCountdown />
+        </Reveal>
+
+        <Reveal delay={200}>
+          <p className="conv-narrative">
+            A landmark North American gathering where the senior-most Hindu and Sikh leadership —
+            religious, political, corporate, and civic — come together not to talk about unity,
+            but to demonstrate it and deliver on it. Witness the signing of the <strong>Unity Compact</strong> by
+            20+ senior leaders on stage.
+          </p>
+        </Reveal>
+
+        <Reveal delay={250}>
+          <div className="conv-stats">
+            {stats.map(s => (
+              <div key={s.label} className="conv-stat">
+                <div className="conv-stat-num">{s.num}</div>
+                <div className="conv-stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={300}>
+          <div className="conv-cta-row">
+            <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+              target="_blank" rel="noreferrer" className="btn conv-btn-primary">
+              Reserve Your Seat — Early Bird $120 →
+            </a>
+            <button onClick={() => setPage && setPage('convention')} className="btn conv-btn-secondary">
+              View Full Details
+            </button>
+          </div>
+          <p className="conv-deadline">⏳ Early bird pricing ends July 20, 2026 · By invitation</p>
+        </Reveal>
+
+        <Reveal delay={350}>
+          <div className="conv-sponsor-strip">
+            <p className="conv-sponsor-label">Become a Unity Partner</p>
+            <div className="conv-tiers">
+              {tiers.map(t => (
+                <div key={t.name} className="conv-tier" style={{ borderTopColor: t.color }}>
+                  <div className="conv-tier-name" style={{ color: t.color }}>{t.name}</div>
+                  <div className="conv-tier-price">{t.price}</div>
+                  <div className="conv-tier-qty">{t.qty}</div>
+                </div>
+              ))}
+            </div>
+            <a href="mailto:info@hindusikhunity.com?subject=Sponsorship Inquiry - HSUC 2026"
+              className="conv-sponsor-link">Inquire About Sponsorship →</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function HeroSlider({ setPage }) {
   const [cur, setCur] = useState(0);
   const [prev, setPrev] = useState(null);
@@ -375,6 +499,7 @@ function Home({ setPage }) {
   return (
     <div className="page-home">
       <HeroSlider setPage={setPage} />
+      <ConventionSection setPage={setPage} />
       <MissionVision />
       <section className="stats-bar">
         <Counter end={5000} label="Members" />
