@@ -137,74 +137,60 @@ function ConventionSection({ setPage }) {
       <div className="conv-overlay" />
 
       <div className="conv-content">
-        <Reveal>
-          <p className="conv-eyebrow">✦ Save The Date ✦</p>
-          <h2 className="conv-title">Hindu Sikh Unity<br/>Convention 2026</h2>
-          <p className="conv-theme">"Saanjhi Virasat, Saanjha Bhavishya"</p>
-          <p className="conv-subtheme">Shared Heritage · Shared Future</p>
-        </Reveal>
+        <p className="conv-eyebrow">✦ Save The Date ✦</p>
+        <h2 className="conv-title">Hindu Sikh Unity<br/>Convention 2026</h2>
+        <p className="conv-theme">"Saanjhi Virasat, Saanjha Bhavishya"</p>
+        <p className="conv-subtheme">Shared Heritage · Shared Future</p>
 
-        <Reveal delay={100}>
-          <div className="conv-details">
-            <div className="conv-detail"><span className="conv-icon">📅</span> Saturday, August 22, 2026</div>
-            <div className="conv-detail"><span className="conv-icon">🕙</span> 10:00 AM – 2:00 PM</div>
-            <div className="conv-detail"><span className="conv-icon">📍</span> Chandni Victoria Convention Centre, Mississauga</div>
-          </div>
-        </Reveal>
+        <div className="conv-details">
+          <div className="conv-detail"><span className="conv-icon">📅</span> Saturday, August 22, 2026</div>
+          <div className="conv-detail"><span className="conv-icon">🕙</span> 10:00 AM – 2:00 PM</div>
+          <div className="conv-detail"><span className="conv-icon">📍</span> Chandni Victoria Convention Centre, Mississauga</div>
+        </div>
 
-        <Reveal delay={150}>
-          <ConventionCountdown />
-        </Reveal>
+        <ConventionCountdown />
 
-        <Reveal delay={200}>
-          <p className="conv-narrative">
-            A landmark North American gathering where the senior-most Hindu and Sikh leadership —
-            religious, political, corporate, and civic — come together not to talk about unity,
-            but to demonstrate it and deliver on it. Witness the signing of the <strong>Unity Compact</strong> by
-            20+ senior leaders on stage.
-          </p>
-        </Reveal>
+        <p className="conv-narrative">
+          A landmark North American gathering where the senior-most Hindu and Sikh leadership —
+          religious, political, corporate, and civic — come together not to talk about unity,
+          but to demonstrate it and deliver on it. Witness the signing of the <strong>Unity Compact</strong> by
+          20+ senior leaders on stage.
+        </p>
 
-        <Reveal delay={250}>
-          <div className="conv-stats">
-            {stats.map(s => (
-              <div key={s.label} className="conv-stat">
-                <div className="conv-stat-num">{s.num}</div>
-                <div className="conv-stat-label">{s.label}</div>
+        <div className="conv-stats">
+          {stats.map(s => (
+            <div key={s.label} className="conv-stat">
+              <div className="conv-stat-num">{s.num}</div>
+              <div className="conv-stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="conv-cta-row">
+          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+            target="_blank" rel="noreferrer" className="btn conv-btn-primary">
+            Reserve Your Seat — Early Bird $120 →
+          </a>
+          <button onClick={() => setPage && setPage('convention')} className="btn conv-btn-secondary">
+            View Full Details
+          </button>
+        </div>
+        <p className="conv-deadline">⏳ Early bird pricing ends July 20, 2026 · By invitation</p>
+
+        <div className="conv-sponsor-strip">
+          <p className="conv-sponsor-label">Become a Unity Partner</p>
+          <div className="conv-tiers">
+            {tiers.map(t => (
+              <div key={t.name} className="conv-tier" style={{ borderTopColor: t.color }}>
+                <div className="conv-tier-name" style={{ color: t.color }}>{t.name}</div>
+                <div className="conv-tier-price">{t.price}</div>
+                <div className="conv-tier-qty">{t.qty}</div>
               </div>
             ))}
           </div>
-        </Reveal>
-
-        <Reveal delay={300}>
-          <div className="conv-cta-row">
-            <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
-              target="_blank" rel="noreferrer" className="btn conv-btn-primary">
-              Reserve Your Seat — Early Bird $120 →
-            </a>
-            <button onClick={() => setPage && setPage('convention')} className="btn conv-btn-secondary">
-              View Full Details
-            </button>
-          </div>
-          <p className="conv-deadline">⏳ Early bird pricing ends July 20, 2026 · By invitation</p>
-        </Reveal>
-
-        <Reveal delay={350}>
-          <div className="conv-sponsor-strip">
-            <p className="conv-sponsor-label">Become a Unity Partner</p>
-            <div className="conv-tiers">
-              {tiers.map(t => (
-                <div key={t.name} className="conv-tier" style={{ borderTopColor: t.color }}>
-                  <div className="conv-tier-name" style={{ color: t.color }}>{t.name}</div>
-                  <div className="conv-tier-price">{t.price}</div>
-                  <div className="conv-tier-qty">{t.qty}</div>
-                </div>
-              ))}
-            </div>
-            <a href="mailto:info@hindusikhunity.com?subject=Sponsorship Inquiry - HSUC 2026"
-              className="conv-sponsor-link">Inquire About Sponsorship →</a>
-          </div>
-        </Reveal>
+          <a href="mailto:info@hindusikhunity.com?subject=Sponsorship Inquiry - HSUC 2026"
+            className="conv-sponsor-link">Inquire About Sponsorship →</a>
+        </div>
       </div>
     </section>
   );
