@@ -210,6 +210,292 @@ function ConventionSection({ setPage }) {
   );
 }
 
+// ── CONVENTION 2026 FULL PAGE ───────────────────────────
+function ConventionPage() {
+  const [tab, setTab] = useState('overview');
+
+  const schedule = [
+    ['10:00 – 10:30', 'Registration & Welcome Reception', 'Chai, coffee, samosas, jalebi station'],
+    ['10:30 – 10:45', 'Opening Ceremony', 'Joint invocation, O Canada, MC welcome'],
+    ['10:45 – 11:00', 'Presidential Welcome', 'Harji Bajwa sets the vision for the day'],
+    ['11:00 – 11:20', 'Keynote I', '"Hindu-Sikh Unity as a Canadian Strength"'],
+    ['11:20 – 11:35', 'Cultural Performance', 'Joint Shabad + Bhajan medley'],
+    ['11:35 – 11:55', 'Keynote II', '"Centuries of Shared Heritage"'],
+    ['11:55 – 12:25', 'Awards Ceremony — Part I', 'Community Heroes (6 awards)'],
+    ['12:25 – 1:10', 'Working Lunch', 'Vegetarian buffet, table-talk prompts'],
+    ['1:10 – 1:25', 'Fireside Conversation', 'Granthi Sahib & Pandit Ji in dialogue'],
+    ['1:25 – 1:45', 'Awards Ceremony — Part II', 'Excellence Awards (4 awards)'],
+    ['1:45 – 1:55', 'The Unity Compact', '20+ leaders sign on stage · group photo'],
+    ['1:55 – 2:00', 'Closing Prayer & Vote of Thanks', ''],
+  ];
+
+  const awards = [
+    'Lifetime Achievement in Hindu-Sikh Unity', 'Religious Leadership Award (Sikh Tradition)',
+    'Religious Leadership Award (Hindu Tradition)', 'Community Builder of the Year',
+    'Humanitarian / Seva Award', 'Law Enforcement Liaison Award',
+    'Youth Leadership Award (Under 30)', 'Women in Leadership Award',
+    'Excellence in Business / Public Service', 'Unity Champion Award',
+  ];
+
+  const attendees = [
+    ['Religious Leadership', 40, 'Mandirs & Gurdwaras across the GTA'],
+    ['Elected Officials', 35, 'Federal, Provincial & Municipal'],
+    ['Corporate & Professional', 40, 'Executives, entrepreneurs, professionals'],
+    ['Community Organizations', 40, 'Non-profits & cultural associations'],
+    ['Youth & Next Generation', 30, 'Student leaders & young professionals'],
+    ['Academia & Media', 25, 'Faculty, editors, correspondents'],
+    ['Law Enforcement & Public Safety', 15, 'Peel Police, RCMP liaisons'],
+    ['HSUF Executive & Honoured Guests', 25, 'Awardees, sponsors & family'],
+  ];
+
+  const tiers = [
+    {
+      name: 'Platinum Unity Partner', price: '$7,500', qty: 'Exclusive · Only 1 available', color: '#1A3A6B',
+      benefits: ['Title designation: "Presented in Partnership with [Sponsor]"', '1 premium front-row table of 10',
+        'Logo on ALL materials: flyer, social, email, website, banners', 'Back cover full-page ad in programme book',
+        '3-minute on-stage moment & photo with chief guests', 'Sponsor banners at registration & main stage',
+        'Press release inclusion', 'Recognition plaque on stage', 'Permanent sponsor wall listing']
+    },
+    {
+      name: 'Gold Unity Partner', price: '$5,000', qty: 'Up to 2 available', color: '#B8893B',
+      benefits: ['6 complimentary seats, premium placement', 'Full-page ad inside programme book',
+        'Logo on flyer, social media, website, programme book', '1-minute on-stage recognition',
+        'Branded signage at venue', 'Recognition plaque on stage', 'Website listing under "Unity Partners"']
+    },
+    {
+      name: 'Silver Unity Partner', price: '$2,500', qty: 'Up to 3 available', color: '#6b6b6b',
+      benefits: ['4 complimentary seats', 'Half-page ad in programme book', 'Logo in programme book & website',
+        'Name recognition from stage', 'Recognition certificate', 'Website listing under "Unity Partners"']
+    },
+    {
+      name: 'Bronze Unity Partner', price: '$1,000', qty: 'Up to 5 available', color: '#8a5a2b',
+      benefits: ['2 complimentary seats', 'Quarter-page logo block in programme book',
+        'Listed in event programme & website', 'Recognition certificate', 'Website listing under "Unity Partners"']
+    },
+  ];
+
+  const dates = [
+    ['July 15, 2026', 'Platinum partner deadline (exclusive title designation)'],
+    ['July 20, 2026', 'Early bird ticket deadline'],
+    ['July 31, 2026', 'All sponsors deadline (for inclusion in printed materials)'],
+    ['August 10, 2026', 'Late partnership window (digital-only) · Ticket sales close'],
+    ['August 22, 2026', '✦ The Convention'],
+  ];
+
+  return (
+    <div className="inner-page conv-page">
+      {/* Hero */}
+      <div className="conv-page-hero" style={{ backgroundImage: 'url(/sacred/golden_temple.jpg)' }}>
+        <div className="conv-page-hero-overlay" />
+        <div className="conv-page-hero-text">
+          <p className="conv-eyebrow">Hindu Sikh Unity Forum Canada Presents</p>
+          <h1>Hindu Sikh Unity Convention 2026</h1>
+          <p className="conv-theme">"Saanjhi Virasat, Saanjha Bhavishya"</p>
+          <p className="conv-subtheme">Shared Heritage · Shared Future</p>
+          <div className="conv-page-details">
+            <span>📅 Saturday, August 22, 2026</span>
+            <span>🕙 10:00 AM – 2:00 PM</span>
+            <span>📍 Chandni Victoria Convention Centre, Mississauga</span>
+          </div>
+          <ConventionCountdown />
+        </div>
+      </div>
+
+      <div className="container conv-page-body">
+
+        {/* Tabs */}
+        <div className="conv-tabs">
+          {['overview', 'schedule', 'awards', 'sponsorship', 'attendees', 'tickets'].map(t => (
+            <button key={t} className={`conv-tab ${tab === t ? 'active' : ''}`} onClick={() => setTab(t)}>
+              {t.charAt(0).toUpperCase() + t.slice(1)}
+            </button>
+          ))}
+        </div>
+
+        {/* OVERVIEW */}
+        {tab === 'overview' && (
+          <Reveal>
+            <div className="conv-tab-content">
+              <h2 className="conv-section-h">A Landmark Working Convention</h2>
+              <p className="conv-body-text">
+                A landmark North American gathering where the senior-most Hindu and Sikh leadership —
+                religious, political, corporate, and civic — come together not to talk about unity,
+                but to demonstrate it and deliver on it. This is a working convention with productive
+                outcomes, a statement of shared identity and Canadian belonging, and a bridge-building
+                moment with concrete deliverables.
+              </p>
+              <div className="conv-stats-grid">
+                {[['250', 'Senior Leaders'], ['25', 'Tables of Ten'], ['10', 'Community Awards'], ['4', 'Hours of Impact']].map(([n, l]) => (
+                  <div key={l} className="conv-stat-card">
+                    <div className="conv-stat-card-num">{n}</div>
+                    <div className="conv-stat-card-label">{l}</div>
+                  </div>
+                ))}
+              </div>
+
+              <h3 className="conv-section-h" style={{ marginTop: '2.5rem' }}>The Unity Compact</h3>
+              <p className="conv-body-text">
+                A short, calligraphed document signed by 20+ senior leaders on stage at 1:45 PM,
+                committing signatories to:
+              </p>
+              <ul className="conv-list">
+                <li>Respect and celebrate each other's religious traditions, festivals, and sacred spaces</li>
+                <li>Stand together against hatred, violence, and external forces seeking to divide</li>
+                <li>Cooperate on joint celebrations, starting with Diwali / Bandi Chhor Divas 2026</li>
+                <li>Support each other's youth, women's, and seniors' programs</li>
+                <li>Form a Standing Council that meets quarterly with rotating leadership</li>
+                <li>Speak with one voice on matters affecting both communities in Canada</li>
+              </ul>
+            </div>
+          </Reveal>
+        )}
+
+        {/* SCHEDULE */}
+        {tab === 'schedule' && (
+          <Reveal>
+            <div className="conv-tab-content">
+              <h2 className="conv-section-h">Programme — Run of Show</h2>
+              <div className="conv-schedule">
+                {schedule.map(([time, title, desc]) => (
+                  <div key={title} className="conv-schedule-row">
+                    <div className="conv-schedule-time">{time}</div>
+                    <div className="conv-schedule-info">
+                      <div className="conv-schedule-title">{title}</div>
+                      {desc && <div className="conv-schedule-desc">{desc}</div>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        )}
+
+        {/* AWARDS */}
+        {tab === 'awards' && (
+          <Reveal>
+            <div className="conv-tab-content">
+              <h2 className="conv-section-h">10 Community Awards</h2>
+              <p className="conv-body-text">Honouring those quietly building unity in their communities.</p>
+              <div className="conv-awards-grid">
+                {awards.map((a, i) => (
+                  <div key={a} className="conv-award-card">
+                    <div className="conv-award-num">{String(i + 1).padStart(2, '0')}</div>
+                    <div className="conv-award-name">{a}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        )}
+
+        {/* SPONSORSHIP */}
+        {tab === 'sponsorship' && (
+          <Reveal>
+            <div className="conv-tab-content">
+              <h2 className="conv-section-h">Become a Unity Partner</h2>
+              <p className="conv-body-text">
+                This is not a banquet or a fundraiser disguised as advertising — it's a working
+                convention with a tangible deliverable. Your partnership will be honoured, not commercialized.
+              </p>
+              <div className="conv-tiers-detailed">
+                {tiers.map(t => (
+                  <div key={t.name} className="conv-tier-detailed" style={{ borderTopColor: t.color }}>
+                    <div className="conv-tier-detailed-name" style={{ color: t.color }}>{t.name}</div>
+                    <div className="conv-tier-detailed-price">{t.price}</div>
+                    <div className="conv-tier-detailed-qty">{t.qty}</div>
+                    <ul className="conv-tier-benefits">
+                      {t.benefits.map(b => <li key={b}>✓ {b}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <div className="conv-not-included">
+                <h4>Sponsors do not receive:</h4>
+                <p>Product booths or sales activity · Promotional speeches beyond Platinum's 3-minute moment · Flyers in welcome bags · Pop-up banners except at the designated partner wall</p>
+              </div>
+              <a href="mailto:info@hindusikhunity.com?subject=Sponsorship Inquiry - HSUC 2026" className="btn conv-btn-primary" style={{ marginTop: '2rem' }}>
+                Inquire About Sponsorship →
+              </a>
+            </div>
+          </Reveal>
+        )}
+
+        {/* ATTENDEES */}
+        {tab === 'attendees' && (
+          <Reveal>
+            <div className="conv-tab-content">
+              <h2 className="conv-section-h">Who Will Be in the Room</h2>
+              <div className="conv-attendees-grid">
+                {attendees.map(([name, num, desc]) => (
+                  <div key={name} className="conv-attendee-card">
+                    <div className="conv-attendee-num">{num}</div>
+                    <div>
+                      <div className="conv-attendee-name">{name}</div>
+                      <div className="conv-attendee-desc">{desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        )}
+
+        {/* TICKETS */}
+        {tab === 'tickets' && (
+          <Reveal>
+            <div className="conv-tab-content">
+              <h2 className="conv-section-h">Ticket Pricing</h2>
+              <div className="conv-pricing-grid">
+                <div className="conv-price-card highlight">
+                  <div className="conv-price-badge">Early Bird</div>
+                  <div className="conv-price-amt">$120</div>
+                  <div className="conv-price-label">Individual Seat</div>
+                  <div className="conv-price-deadline">Until July 20, 2026</div>
+                </div>
+                <div className="conv-price-card">
+                  <div className="conv-price-amt">$150</div>
+                  <div className="conv-price-label">Individual Seat</div>
+                  <div className="conv-price-deadline">Jul 21 – Aug 10, 2026</div>
+                </div>
+                <div className="conv-price-card highlight">
+                  <div className="conv-price-badge">Early Bird</div>
+                  <div className="conv-price-amt">$1,000</div>
+                  <div className="conv-price-label">Table of 10</div>
+                  <div className="conv-price-deadline">Until July 20, 2026</div>
+                </div>
+                <div className="conv-price-card">
+                  <div className="conv-price-amt">$1,200</div>
+                  <div className="conv-price-label">Table of 10</div>
+                  <div className="conv-price-deadline">Jul 21 – Aug 10, 2026</div>
+                </div>
+              </div>
+              <p className="conv-body-text" style={{ textAlign: 'center', marginTop: '1.5rem' }}>Registration closes August 19, 2026</p>
+
+              <h3 className="conv-section-h" style={{ marginTop: '2.5rem' }}>Key Dates</h3>
+              <div className="conv-dates-list">
+                {dates.map(([date, desc]) => (
+                  <div key={date} className="conv-date-row">
+                    <div className="conv-date-badge">{date}</div>
+                    <div className="conv-date-desc">{desc}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="conv-final-cta">
+                <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+                  target="_blank" rel="noreferrer" className="btn conv-btn-primary">
+                  Reserve Your Seat Now →
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        )}
+
+      </div>
+    </div>
+  );
+}
+
 function HeroSlider({ setPage }) {
   const [cur, setCur] = useState(0);
   const [prev, setPrev] = useState(null);
@@ -315,6 +601,7 @@ function Nav({ page, setPage }) {
     { id: 'home', label: 'Home' }, { id: 'membership', label: 'Membership' },
     { id: 'events', label: 'Events' }, { id: 'activities', label: 'Activities' },
     { id: 'directory', label: 'Directory' },
+    { id: 'convention', label: 'Convention 2026' },
     { id: 'connect', label: 'Connect' }, { id: 'articles', label: 'Articles' },
     { id: 'seva', label: 'Seva AI' },
   ];
@@ -779,10 +1066,6 @@ function Contact() {
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [errMsg, setErrMsg] = useState('');
 
-  const subjects = [
-    'General Inquiry', 'Membership', 'Events & Activities',
-    'Volunteer Opportunities', 'Media & Press', 'Partnership', 'Other'
-  ];
 
   const handle = e => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -1148,6 +1431,7 @@ export default function App() {
       {page === 'articles'   && <Articles />}
       {page === 'seva'       && <Seva />}
       {page === 'contact'    && <Contact />}
+      {page === 'convention'  && <ConventionPage />}
       <Footer setPage={goTo} />
     </div>
   );

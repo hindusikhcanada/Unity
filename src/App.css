@@ -845,3 +845,196 @@ button, a { font-family: inherit; cursor: pointer; }
   .conv-cta-row { flex-direction: column; align-items: center; }
   .conv-btn-primary, .conv-btn-secondary { width: 100%; max-width: 320px; text-align: center; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   CONVENTION 2026 — FULL PAGE
+   ══════════════════════════════════════════════════════════ */
+.conv-page-hero {
+  position: relative;
+  min-height: 70vh;
+  background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
+  padding: 3rem 1.5rem;
+}
+.conv-page-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,6,4,0.88) 0%, rgba(15,10,6,0.92) 50%, rgba(10,24,48,0.92) 100%);
+}
+.conv-page-hero-text {
+  position: relative; z-index: 2;
+  text-align: center; max-width: 880px;
+}
+.conv-page-hero-text h1 {
+  font-family: 'Yeseva One', serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  background: linear-gradient(135deg, #fff 0%, #FFD98A 55%, #F0C060 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  margin: 0.5rem 0 0.8rem; line-height: 1.15;
+}
+.conv-page-details {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
+  color: rgba(255,255,255,0.9); font-weight: 600; font-size: 1rem;
+  margin: 1.8rem 0 2rem;
+}
+.conv-page-body { padding: 3rem 1.5rem 5rem; max-width: 1000px; margin: 0 auto; }
+
+/* Tabs */
+.conv-tabs {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 1rem;
+}
+.conv-tab {
+  background: transparent; border: 1.5px solid #ddd; color: #555;
+  padding: 0.6rem 1.4rem; border-radius: 30px;
+  font-weight: 700; font-size: 0.95rem;
+  transition: all 0.2s;
+}
+.conv-tab:hover { border-color: var(--saffron); color: var(--saffron); }
+.conv-tab.active { background: var(--saffron); border-color: var(--saffron); color: #fff; }
+
+.conv-section-h {
+  font-family: 'Yeseva One', serif;
+  color: var(--navy);
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+.conv-body-text {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.conv-list {
+  list-style: none;
+  display: grid; gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.conv-list li {
+  position: relative;
+  padding-left: 1.8rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.conv-list li::before {
+  content: '✓';
+  position: absolute; left: 0;
+  color: var(--saffron);
+  font-weight: 900;
+}
+
+/* Stats grid (page version) */
+.conv-stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; margin: 1.5rem 0 2rem;
+}
+.conv-stat-card {
+  background: linear-gradient(135deg, var(--navy), #0d2147);
+  border-radius: 14px; padding: 1.5rem 1rem; text-align: center;
+}
+.conv-stat-card-num { font-family: 'Yeseva One', serif; font-size: 2rem; color: var(--gold-light); }
+.conv-stat-card-label { color: rgba(255,255,255,0.75); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0.4rem; }
+
+/* Schedule */
+.conv-schedule { display: grid; gap: 0; }
+.conv-schedule-row {
+  display: grid; grid-template-columns: 140px 1fr;
+  gap: 1.2rem; padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+.conv-schedule-time { color: var(--saffron); font-weight: 800; font-size: 0.95rem; }
+.conv-schedule-title { color: var(--navy); font-weight: 700; font-size: 1.05rem; }
+.conv-schedule-desc { color: #888; font-size: 0.92rem; margin-top: 0.2rem; }
+
+/* Awards */
+.conv-awards-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.conv-award-card {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--cream); border-left: 4px solid var(--gold);
+  border-radius: 10px; padding: 1rem 1.2rem;
+}
+.conv-award-num { font-family: 'Yeseva One', serif; font-size: 1.5rem; color: var(--gold); opacity: 0.7; }
+.conv-award-name { color: var(--navy); font-weight: 700; font-size: 0.98rem; }
+
+/* Sponsorship tiers detailed */
+.conv-tiers-detailed {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.2rem; margin: 1.5rem 0 2rem;
+}
+.conv-tier-detailed {
+  background: #fff; border: 1px solid #eee; border-top: 4px solid;
+  border-radius: 14px; padding: 1.5rem 1.2rem;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+}
+.conv-tier-detailed-name { font-weight: 800; font-size: 1.05rem; margin-bottom: 0.3rem; }
+.conv-tier-detailed-price { font-family: 'Yeseva One', serif; font-size: 1.9rem; color: var(--text); }
+.conv-tier-detailed-qty { color: #999; font-size: 0.78rem; margin-bottom: 1rem; }
+.conv-tier-benefits { list-style: none; display: grid; gap: 0.5rem; }
+.conv-tier-benefits li { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+.conv-not-included {
+  background: #fff8f0; border: 1px solid var(--gold-light);
+  border-radius: 12px; padding: 1.2rem 1.5rem; margin-top: 1.5rem;
+}
+.conv-not-included h4 { color: var(--saffron); margin-bottom: 0.5rem; font-size: 1rem; }
+.conv-not-included p { color: #888; font-size: 0.92rem; line-height: 1.6; }
+
+/* Attendees */
+.conv-attendees-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.conv-attendee-card {
+  display: flex; align-items: center; gap: 1.2rem;
+  background: var(--cream); border-radius: 12px; padding: 1.2rem;
+}
+.conv-attendee-num {
+  font-family: 'Yeseva One', serif; font-size: 1.8rem; color: var(--saffron);
+  min-width: 50px; text-align: center;
+}
+.conv-attendee-name { color: var(--navy); font-weight: 700; font-size: 1rem; }
+.conv-attendee-desc { color: #888; font-size: 0.85rem; margin-top: 0.2rem; }
+
+/* Tickets/Pricing */
+.conv-pricing-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.conv-price-card {
+  background: #fff; border: 2px solid #eee; border-radius: 14px;
+  padding: 1.8rem 1rem; text-align: center; position: relative;
+}
+.conv-price-card.highlight { border-color: var(--saffron); background: #fff8f0; }
+.conv-price-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--saffron); color: #fff; font-size: 0.7rem; font-weight: 800;
+  padding: 0.25rem 0.8rem; border-radius: 20px; letter-spacing: 0.5px;
+}
+.conv-price-amt { font-family: 'Yeseva One', serif; font-size: 2.2rem; color: var(--navy); margin-top: 0.5rem; }
+.conv-price-label { color: var(--muted); font-weight: 700; font-size: 0.95rem; margin-top: 0.3rem; }
+.conv-price-deadline { color: #999; font-size: 0.8rem; margin-top: 0.4rem; }
+
+.conv-dates-list { display: grid; gap: 0.8rem; }
+.conv-date-row {
+  display: flex; align-items: center; gap: 1.2rem;
+  padding: 0.9rem 1.2rem; background: var(--cream); border-radius: 10px;
+}
+.conv-date-badge {
+  background: var(--navy); color: #fff; font-weight: 700; font-size: 0.82rem;
+  padding: 0.4rem 0.9rem; border-radius: 8px; white-space: nowrap;
+}
+.conv-date-desc { color: var(--muted); font-size: 0.95rem; }
+
+.conv-final-cta { text-align: center; margin-top: 2.5rem; }
+
+@media (max-width: 700px) {
+  .conv-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .conv-schedule-row { grid-template-columns: 1fr; gap: 0.3rem; }
+  .conv-page-details { flex-direction: column; gap: 0.6rem; }
+  .conv-tabs { gap: 0.4rem; }
+  .conv-tab { padding: 0.5rem 1rem; font-size: 0.85rem; }
+}
