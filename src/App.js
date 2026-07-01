@@ -1270,6 +1270,113 @@ function Seva() {
 }
 
 // ── FOOTER ───────────────────────────────────────────────
+function VipRsvp() {
+  return (
+    <div className="inner-page vip-rsvp-page">
+      <div className="vip-rsvp-hero" style={{ backgroundImage: 'url(/sacred/harmandir.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="vip-rsvp-hero-overlay" />
+        <div className="vip-rsvp-hero-content">
+          <div className="vip-rsvp-badge">V I P</div>
+          <div className="vip-rsvp-presents">HINDU SIKH UNITY FORUM CANADA &nbsp;·&nbsp; BY INVITATION ONLY</div>
+          <h1 className="vip-rsvp-title">Hindu Sikh Unity Convention 2026</h1>
+          <p className="vip-rsvp-theme">"Saanjhi Virasat, Saanjha Bhavishya"</p>
+          <p className="vip-rsvp-subtheme">Shared Heritage &middot; Shared Future</p>
+        </div>
+      </div>
+
+      <div className="container vip-rsvp-body">
+        <div className="vip-rsvp-intro">
+          <p className="vip-rsvp-intro-text">
+            You have been personally selected as an <strong>Honoured VIP Guest</strong> of the
+            Hindu Sikh Unity Convention 2026 — a landmark gathering of 250 senior Hindu and Sikh
+            leaders from across North America.
+          </p>
+          <p className="vip-rsvp-intro-text">
+            This is a working convention featuring keynote addresses, ten Community Excellence Awards,
+            the signing of the Unity Compact, and a formal luncheon. Your presence will honour
+            this historic occasion.
+          </p>
+        </div>
+
+        <div className="vip-rsvp-details">
+          <div className="vip-detail-card">
+            <div className="vip-detail-label">DATE</div>
+            <div className="vip-detail-value">Saturday, August 22, 2026</div>
+          </div>
+          <div className="vip-detail-card">
+            <div className="vip-detail-label">TIME</div>
+            <div className="vip-detail-value">10:00 AM – 2:00 PM</div>
+            <div className="vip-detail-sub">Please arrive by 9:45 AM</div>
+          </div>
+          <div className="vip-detail-card">
+            <div className="vip-detail-label">VENUE</div>
+            <div className="vip-detail-value">Chandni Victoria Convention Centre</div>
+            <div className="vip-detail-sub">2935 Drew Rd, Mississauga, ON L4T 0A1</div>
+          </div>
+        </div>
+
+        <div className="vip-rsvp-programme">
+          <h2 className="vip-section-heading">Programme Highlights</h2>
+          <div className="vip-programme-grid">
+            {[
+              { icon: '🕙', label: 'Welcome Reception', desc: 'Arrival, registration and networking with distinguished guests' },
+              { icon: '🎤', label: 'Keynote Addresses', desc: 'Addresses by senior Hindu and Sikh community leaders from across North America' },
+              { icon: '🏅', label: 'Community Excellence Awards', desc: 'Recognition of ten outstanding individuals for their contribution to Hindu-Sikh unity' },
+              { icon: '📜', label: 'Unity Compact Signing', desc: 'Historic signing of the Unity Compact — a living document of shared values and commitment' },
+              { icon: '🎶', label: 'Cultural Programme', desc: 'Performances celebrating the shared heritage of Hindu and Sikh traditions' },
+              { icon: '🍽️', label: 'Formal Luncheon', desc: 'Vegetarian luncheon with Jain options — seated by table of honour' },
+            ].map((item, i) => (
+              <div key={i} className="vip-programme-item">
+                <div className="vip-programme-icon">{item.icon}</div>
+                <div>
+                  <div className="vip-programme-label">{item.label}</div>
+                  <div className="vip-programme-desc">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="vip-rsvp-cta-section">
+          <div className="vip-rsvp-cta-card">
+            <div className="vip-rsvp-cta-badge">RSVP REQUESTED</div>
+            <h2 className="vip-rsvp-cta-heading">Confirm Your Attendance</h2>
+            <p className="vip-rsvp-cta-text">
+              Kindly RSVP by <strong>August 10, 2026</strong> so our VIP Protocol team can
+              confirm your seating and arrange your arrival experience.
+            </p>
+            <p className="vip-rsvp-cta-text">
+              This invitation is <strong>personal and non-transferable</strong>. A member of
+              our team will follow up after your RSVP with further details.
+            </p>
+            <a
+              href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-convention-2026-vip-rsvp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-vip-rsvp"
+            >
+              Confirm My Attendance
+            </a>
+            <p className="vip-rsvp-contact">
+              Enquiries: <a href="mailto:info@hindusikhunity.com">info@hindusikhunity.com</a>
+              &nbsp;&nbsp;·&nbsp;&nbsp;
+              <a href="https://www.hindusikhunity.com" target="_blank" rel="noopener noreferrer">www.hindusikhunity.com</a>
+            </p>
+          </div>
+        </div>
+
+        <div className="vip-rsvp-quote">
+          <blockquote>
+            "Two traditions, woven by centuries of shared sacrifice and devotion,
+            walking forward as one — Stronger Together."
+          </blockquote>
+          <cite>— Harji Bajwa &amp; Surinder Sharma, Hindu Sikh Unity Forum Canada</cite>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Footer({ setPage }) {
   const go = (p) => { setPage(p); window.scrollTo(0, 0); };
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
@@ -1403,7 +1510,11 @@ function Footer({ setPage }) {
 
 // ── APP ROOT ─────────────────────────────────────────────
 export default function App() {
-  const [page, setPage] = useState('home');
+  const getInitialPage = () => {
+    if (window.location.hash === '#vip-2026') return 'vip';
+    return 'home';
+  };
+  const [page, setPage] = useState(getInitialPage);
   const goTo = (p) => { setPage(p); window.scrollTo(0, 0); };
   return (
     <div className="app">
@@ -1418,6 +1529,7 @@ export default function App() {
       {page === 'seva'       && <Seva />}
       {page === 'contact'    && <Contact />}
       {page === 'convention'  && <ConventionPage />}
+      {page === 'vip'        && <VipRsvp />}
       <Footer setPage={goTo} />
     </div>
   );
