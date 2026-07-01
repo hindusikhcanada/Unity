@@ -167,7 +167,7 @@ function ConventionSection({ setPage }) {
         </div>
 
         <div className="conv-cta-row">
-          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-convention--2026"
             target="_blank" rel="noreferrer" className="btn conv-btn-primary">
             Reserve Your Seat — Early Bird $120 →
           </a>
@@ -188,8 +188,9 @@ function ConventionSection({ setPage }) {
               </div>
             ))}
           </div>
-          <a href="mailto:info@hindusikhunity.com?subject=Sponsorship Inquiry - HSUC 2026"
-            className="conv-sponsor-link">Inquire About Sponsorship →</a>
+          <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-convention--2026"
+            target="_blank" rel="noreferrer"
+            className="conv-sponsor-link">Become a Sponsor — Register Now →</a>
         </div>
       </div>
     </section>
@@ -399,9 +400,15 @@ function ConventionPage() {
                 <h4>Sponsors do not receive:</h4>
                 <p>Product booths or sales activity · Promotional speeches beyond Platinum's 3-minute moment · Flyers in welcome bags · Pop-up banners except at the designated partner wall</p>
               </div>
-              <a href="mailto:info@hindusikhunity.com?subject=Sponsorship Inquiry - HSUC 2026" className="btn conv-btn-primary" style={{ marginTop: '2rem' }}>
-                Inquire About Sponsorship →
-              </a>
+              <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
+                <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-convention--2026"
+                  target="_blank" rel="noreferrer" className="btn conv-btn-primary">
+                  Register as a Sponsor →
+                </a>
+                <a href="mailto:info@hindusikhunity.com?subject=Sponsorship Inquiry - HSUC 2026" className="btn conv-btn-secondary">
+                  Enquire by Email →
+                </a>
+              </div>
             </div>
           </Reveal>
         )}
@@ -468,7 +475,7 @@ function ConventionPage() {
               </div>
 
               <div className="conv-final-cta">
-                <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-forum-canadas-membership"
+                <a href="https://www.zeffy.com/en-CA/ticketing/hindu-sikh-unity-convention--2026"
                   target="_blank" rel="noreferrer" className="btn conv-btn-primary">
                   Reserve Your Seat Now →
                 </a>
