@@ -725,7 +725,7 @@ function MissionVision() {
       {/* Canadian identity bar */}
       <div className="mv-canada-bar">
         <span className="mv-maple">🍁</span>
-        <span className="mv-canada-text">Proudly Serving Hindu &amp; Sikh Canadians Since 2019</span>
+        <span className="mv-canada-text">Proudly Serving Hindu &amp; Sikh Canadians Since April 2023</span>
         <span className="mv-maple">🍁</span>
       </div>
 
@@ -784,7 +784,7 @@ function Home({ setPage }) {
       <section className="stats-bar">
         <Counter end={5000} label="Members" />
         <Counter end={12}   label="Cities" />
-        <Counter end={5}    label="Years of Unity" />
+        <Counter end={3}    label="Years of Unity" />
         <Counter end={200}  label="Events Hosted" />
       </section>
       <Features setPage={setPage} />
@@ -1098,7 +1098,7 @@ function Contact() {
           {[
             { icon: '🌐', label: 'Website', val: 'www.hindusikhunity.com' },
             { icon: '📧', label: 'Email', val: 'info@hindusikhunity.com' },
-            { icon: '📍', label: 'Base', val: 'Oakville / Greater Toronto Area, ON' },
+            { icon: '📍', label: 'Address', val: '130 Dundas St East, Suite 406, Mississauga ON L5A 3V8' },
           ].map(({ icon, label, val }) => (
             <div key={label} style={{ background: '#FAF3E0', borderRadius: 12, padding: '1.2rem', borderLeft: '4px solid #D4560A', textAlign: 'center' }}>
               <div style={{ fontSize: 28, marginBottom: 6 }}>{icon}</div>
@@ -1421,7 +1421,7 @@ function Footer({ setPage }) {
             {[
               { icon: '🌐', label: 'Website', val: 'www.hindusikhunity.com' },
               { icon: '📧', label: 'Email', val: 'info@hindusikhunity.com' },
-              { icon: '📍', label: 'Location', val: 'Oakville / Greater Toronto Area, ON' },
+              { icon: '📍', label: 'Address', val: '130 Dundas St East, Suite 406, Mississauga ON L5A 3V8' },
               { icon: '👤', label: 'President', val: 'Harji Bajwa — 416-895-6788' },
               { icon: '👤', label: 'Chairman', val: 'Surinder Sharma — 416-871-1718' },
             ].map(({ icon, label, val }) => (
@@ -1509,7 +1509,7 @@ function Footer({ setPage }) {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2025 Hindu Sikh Unity Forum Canada. All rights reserved. Celebrating shared heritage.</p>
+        <p>© 2026 Hindu Sikh Unity Forum Canada. All rights reserved. Established April 17, 2023 · Celebrating shared heritage.</p>
       </div>
     </footer>
   );
