@@ -2,6 +2,7 @@
   "buildCommand": "CI=false react-scripts build",
   "outputDirectory": "build",
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
