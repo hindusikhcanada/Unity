@@ -1186,6 +1186,8 @@ function Contact() {
               { name: 'Kanwar Dhanjal', role: 'Director' },
               { name: 'Kamaljeet Singh Chowdhary', role: 'Director' },
               { name: 'Harshul Gupta', role: 'Director' },
+              { name: 'Paul Khanna', role: 'Director' },
+              { name: 'Dr. Rajesh Bhatia', role: 'Director' },
             ].map(({ name, role }) => (
               <div key={name} style={{ background: '#FAF3E0', borderRadius: 12, padding: '1.2rem', border: '1px solid #F0C060' }}>
                 <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(135deg,#D4560A,#1A3A6B)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px', color: '#fff', fontWeight: 700, fontSize: 18 }}>{name[0]}</div>
