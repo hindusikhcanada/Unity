@@ -21,12 +21,18 @@ const IMG = {
   havan:          '/gallery/temple-prayer.jpg',
   turban:         '/gallery/turban.jpg',
   // Feature card headers - contextually accurate contemporary photos
-  memberCard:     '/cards/membership.jpg',   // Golden Temple
-  community:      '/cards/connect.jpg',      // Contemporary community scene, blue sky, people
-  business:       '/cards/directory.jpg',    // Gurdwara community with people
-  calendar:       '/cards/events.jpg',       // Spiritual gathering, blue sky, people
-  articles:       '/cards/articles.png',     // Bhagavad Gita cover
-  seva:           '/cards/seva.jpg',         // Serene blue sky landscape - wisdom/guidance
+  memberCard:     '/cards/membership.jpg',
+  community:      '/cards/connect.jpg',
+  business:       '/cards/directory.jpg',
+  calendar:       '/cards/events.jpg',
+  articles:       '/cards/articles.png',
+  seva:           '/cards/seva.jpg',
+  // Additional references used in Events, Directory, Articles, Unity sections
+  diya:           '/gallery/diya-aarti.jpg',
+  prayer:         '/gallery/sadh-sangat.jpg',
+  langar:         '/gallery/langar.jpg',
+  procession:     '/gallery/sikh-festivals.jpg',
+  goldenTemple:   '/sacred/harmandir.jpg',
 };
 
 // ── Intersection Observer hook ──────────────────────────
