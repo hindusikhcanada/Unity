@@ -94,7 +94,7 @@ const SLIDES = [
 
 // ── CONVENTION 2026 ──────────────────────────────────────
 function ConventionCountdown() {
-  const target = new Date('2026-08-22T10:00:00-04:00').getTime();
+  const target = new Date('2026-08-29T10:00:00-04:00').getTime();
   const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
   useEffect(() => {
     const tick = () => {
@@ -149,7 +149,7 @@ function ConventionSection({ setPage }) {
         <p className="conv-subtheme">Shared Heritage · Shared Future</p>
 
         <div className="conv-details">
-          <div className="conv-detail"><span className="conv-icon">📅</span> Saturday, August 22, 2026</div>
+          <div className="conv-detail"><span className="conv-icon">📅</span> Saturday, August 29, 2026</div>
           <div className="conv-detail"><span className="conv-icon">🕙</span> 10:00 AM – 2:00 PM</div>
           <div className="conv-detail"><span className="conv-icon">📍</span> Chandni Victoria Convention Centre, Mississauga</div>
         </div>
@@ -272,7 +272,7 @@ function ConventionPage() {
     ['July 20, 2026', 'Early bird ticket deadline'],
     ['July 31, 2026', 'All sponsors deadline (for inclusion in printed materials)'],
     ['August 10, 2026', 'Late partnership window (digital-only) · Ticket sales close'],
-    ['August 22, 2026', '✦ The Convention'],
+    ['August 29, 2026', '✦ The Convention'],
   ];
 
   return (
@@ -286,7 +286,7 @@ function ConventionPage() {
           <p className="conv-theme">"Saanjhi Virasat, Saanjha Bhavishya"</p>
           <p className="conv-subtheme">Shared Heritage · Shared Future</p>
           <div className="conv-page-details">
-            <span>📅 Saturday, August 22, 2026</span>
+            <span>📅 Saturday, August 29, 2026</span>
             <span>🕙 10:00 AM – 2:00 PM</span>
             <span>📍 Chandni Victoria Convention Centre, Mississauga</span>
           </div>
@@ -1319,7 +1319,7 @@ function VipRsvp() {
         <div className="vip-rsvp-details">
           <div className="vip-detail-card">
             <div className="vip-detail-label">DATE</div>
-            <div className="vip-detail-value">Saturday, August 22, 2026</div>
+            <div className="vip-detail-value">Saturday, August 29, 2026</div>
           </div>
           <div className="vip-detail-card">
             <div className="vip-detail-label">TIME</div>
