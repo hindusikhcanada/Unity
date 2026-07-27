@@ -181,7 +181,7 @@ function ConventionSection({ setPage }) {
             View Full Details
           </button>
         </div>
-        <p className="conv-deadline">⏳ Early bird pricing ends July 20, 2026 · By invitation</p>
+        <p className="conv-deadline">⏳ Early bird pricing ends August 18, 2026 · By invitation</p>
 
         <div className="conv-sponsor-strip">
           <p className="conv-sponsor-label">Become a Unity Partner</p>
@@ -269,9 +269,9 @@ function ConventionPage() {
 
   const dates = [
     ['July 15, 2026', 'Platinum partner deadline (exclusive title designation)'],
-    ['July 20, 2026', 'Early bird ticket deadline'],
+    ['August 18, 2026', 'Early bird ticket deadline'],
     ['July 31, 2026', 'All sponsors deadline (for inclusion in printed materials)'],
-    ['August 10, 2026', 'Late partnership window (digital-only) · Ticket sales close'],
+    ['August 26, 2026', 'Late partnership window (digital-only) · Ticket sales close'],
     ['August 29, 2026', '✦ The Convention'],
   ];
 
@@ -449,26 +449,26 @@ function ConventionPage() {
                   <div className="conv-price-badge">Early Bird</div>
                   <div className="conv-price-amt">$120</div>
                   <div className="conv-price-label">Individual Seat</div>
-                  <div className="conv-price-deadline">Until July 20, 2026</div>
+                  <div className="conv-price-deadline">Until August 18, 2026</div>
                 </div>
                 <div className="conv-price-card">
                   <div className="conv-price-amt">$150</div>
                   <div className="conv-price-label">Individual Seat</div>
-                  <div className="conv-price-deadline">Jul 21 – Aug 10, 2026</div>
+                  <div className="conv-price-deadline">Aug 19 – Aug 26, 2026</div>
                 </div>
                 <div className="conv-price-card highlight">
                   <div className="conv-price-badge">Early Bird</div>
                   <div className="conv-price-amt">$1,000</div>
                   <div className="conv-price-label">Table of 10</div>
-                  <div className="conv-price-deadline">Until July 20, 2026</div>
+                  <div className="conv-price-deadline">Until August 18, 2026</div>
                 </div>
                 <div className="conv-price-card">
                   <div className="conv-price-amt">$1,200</div>
                   <div className="conv-price-label">Table of 10</div>
-                  <div className="conv-price-deadline">Jul 21 – Aug 10, 2026</div>
+                  <div className="conv-price-deadline">Aug 19 – Aug 26, 2026</div>
                 </div>
               </div>
-              <p className="conv-body-text" style={{ textAlign: 'center', marginTop: '1.5rem' }}>Registration closes August 19, 2026</p>
+              <p className="conv-body-text" style={{ textAlign: 'center', marginTop: '1.5rem' }}>Registration closes August 26, 2026</p>
 
               <h3 className="conv-section-h" style={{ marginTop: '2.5rem' }}>Key Dates</h3>
               <div className="conv-dates-list">
@@ -1360,7 +1360,7 @@ function VipRsvp() {
             <div className="vip-rsvp-cta-badge">RSVP REQUESTED</div>
             <h2 className="vip-rsvp-cta-heading">Confirm Your Attendance</h2>
             <p className="vip-rsvp-cta-text">
-              Kindly RSVP by <strong>August 10, 2026</strong> so our VIP Protocol team can
+              Kindly RSVP by <strong>August 18, 2026</strong> so our VIP Protocol team can
               confirm your seating and arrange your arrival experience.
             </p>
             <p className="vip-rsvp-cta-text">
