@@ -3,6 +3,26 @@ import './Activities.css';
 
 const EVENTS = [
   {
+    year: '2026',
+    items: [
+      {
+        id: 'vishwa-bandhu',
+        date: 'August 30, 2026',
+        title: 'Hindu Vishwa Bandhu — Welcoming Dr. Mohan Bhagwat Ji',
+        location: 'Toronto, Ontario',
+        tag: 'Special Event',
+        tagColor: '#7c3aed',
+        summary: 'HSUF Canada members and leadership were present at Hindu Vishwa Bandhu, a landmark gathering organized by CHORD (Canadian Hindus for Outreach, Relations and Dialogue) in Toronto, welcoming Dr. Mohan Bhagwat Ji before an audience of over 2,500 attendees from across 8 Canadian provinces.',
+        highlights: [
+          'HSUF Canada leadership quoted in national press coverage of the event, reflecting the Forum\'s continued visibility within the broader Hindu-Sikh community landscape in Canada.',
+          'One of the largest gatherings of the Canadian Hindu diaspora to date, featuring cultural performances and remarks from prominent community and civic figures.',
+        ],
+        dignitaries: [],
+        attendance: '2,500+ attendees from across 8 Canadian provinces',
+      },
+    ]
+  },
+  {
     year: '2025',
     items: [
       {
@@ -12,6 +32,7 @@ const EVENTS = [
         location: 'Brampton, Ontario',
         tag: 'Special Event',
         tagColor: '#7c3aed',
+        images: ['/events/nagendra-group1.jpg', '/events/nagendra-group2.jpg', '/events/nagendra-stage.jpg', '/events/nagendra-memento.jpg'],
         summary: 'A historic evening hosted by HSUF Canada in collaboration with Vishav Punjabi Sabha Canada, featuring Dr. H. R. Nagendra, President of S-VYASA Bengaluru, Padma Shri Awardee and world-renowned yoga visionary.',
         highlights: [
           'Dr. Nagendra delivered a keynote on yoga\'s transformative power, drawing from Guru Nanak Dev Ji\'s teachings — Naam Japo, Keerat Karo, Vand Chhako.',
@@ -28,6 +49,27 @@ const EVENTS = [
           'Dr. Dalbir Singh Kathuria — Chairman, Vishav Punjabi Sabha Canada',
         ],
         attendance: 'Community leaders, civic engagement experts, interfaith representatives, and political dignitaries',
+      },
+      {
+        id: 'balidaan-2025',
+        date: 'November 29, 2025',
+        title: '350th Balidaan Diwas of Guru Tegh Bahadur Ji',
+        location: 'Hindu Sabha Temple, Brampton, Ontario',
+        tag: 'Special Event',
+        tagColor: '#7c3aed',
+        images: ['/events/balidaan2025-crowd.jpg', '/events/balidaan2025-stage.jpg', '/events/balidaan2025-banner.jpg', '/events/balidaan2025-collage.jpg'],
+        summary: 'Hundreds of community members gathered at Hindu Sabha Temple to commemorate the 350th Balidaan Diwas of Guru Tegh Bahadur Ji, honoured as Hind di Chadar for his courageous stand in defence of truth, human dignity, and the protection of Dharma.',
+        highlights: [
+          'Welcome address followed by an introduction to HSUF Canada\'s mission and work.',
+          'Ceremonial lamp lighting and devotional Shabad Bhajan Kirtan led by temple priests.',
+          'Spiritual reflections offered by Bhai Gurprakash Singh Ji, Pandit Abhaydev Shastri Ji, and Dr. Pargat Singh Bagga.',
+          'Speakers reflected on Guru Tegh Bahadur Ji\'s historic sacrifice to protect the Kashmiri Pandits and the centuries-old Hindu-Sikh bond.',
+        ],
+        dignitaries: [
+          'MP Ruby Sahota', 'MP Amarjeet Gill', 'MPP Amarjot Sandhu', 'MPP Deepak Anand', 'MPP Hardeep Grewal',
+          'Numerous civic and community leaders',
+        ],
+        attendance: 'Hundreds of community members, elected representatives, and religious leaders',
       },
       {
         id: 'pahalgam',
@@ -73,6 +115,7 @@ const EVENTS = [
         location: 'Mississauga, Ontario',
         tag: 'Celebration',
         tagColor: '#D4560A',
+        images: ['/events/vaisakhi2024-poster.jpg', '/events/vaisakhi2024-dance.jpg', '/events/vaisakhi2024-hcfgroup.jpg', '/events/vaisakhi2024-friends.jpg', '/events/vaisakhi2024-applause.jpg', '/events/vaisakhi2024-crowd.jpg'],
         summary: 'A high-visibility showcase of unity in diversity with lamp-lighting, interfaith prayers, cultural performances, and a dhol dance finale.',
         highlights: [
           'Lamp-lighting ceremony, interfaith prayers, and cultural performances.',
@@ -122,6 +165,7 @@ const EVENTS = [
         location: 'Multiple Locations, Greater Toronto Area',
         tag: 'Veer Baal Divas',
         tagColor: '#1A3A6B',
+        images: ['/events/vbd2024-triveni-1.jpg', '/events/vbd2024-triveni-2.jpg'],
         summary: 'A three-event series commemorating the sacrifice of the Sahibzade across the GTA, co-organized with Canadian Hindus for Harmony and Vishwa Jain Sangathan.',
         highlights: [
           'Dec 25 — Hindu Sabha Mandir, Brampton: Weeks after the attack; President Harji Bajwa called for steadfast unity. Bhajans, shabads, and langar.',
@@ -144,6 +188,7 @@ const EVENTS = [
         location: 'Oakville Gurudwara (Dhan Dhan Baba Budha Ji Gurdwara Sahib)',
         tag: 'Inaugural',
         tagColor: '#D4560A',
+        images: ['/events/sukhmani-poster.jpg', '/events/sukhmani-group.jpg', '/events/sukhmani-garland.jpg', '/events/sukhmani-podium.jpg'],
         summary: 'The inaugural event of HSUF Canada — a Sukhmani Sahib Path at Oakville Gurudwara, bringing together ~170 members of the Hindu-Sikh community. Despite external pressure to cancel the event, it was successfully held with the support of elected representatives at all levels of government.',
         highlights: [
           'Sukhmani Sahib Path recitation from 1:30 pm to 2:45 pm.',
@@ -175,6 +220,7 @@ const EVENTS = [
         location: 'Oakville, Brampton & Montreal',
         tag: 'Veer Baal Divas',
         tagColor: '#1A3A6B',
+        images: ['/events/vbd2023-banner.jpg', '/events/vbd2023-certificates.jpg', '/events/vbd2023-venue.jpg', '/events/vbd2023-montreal.jpg'],
         summary: 'The first national Veer Baal Divas series by HSUF Canada, taking the unity observance from the GTA to Montreal, establishing a collaborative template for annual interfaith commemorations.',
         highlights: [
           'Dec 23 — Vaishno Devi Temple, Oakville: Interfaith commemoration with Sikh granthis and Hindu priests; bhajans, kirtan, and langar.',
@@ -291,6 +337,16 @@ export default function Activities() {
                   {openId === event.id && (
                     <div className="event-body">
                       <p className="event-summary">{event.summary}</p>
+
+                      {event.images && event.images.length > 0 && (
+                        <div className="event-gallery">
+                          {event.images.map((src, i) => (
+                            <div key={i} className="event-gallery-item">
+                              <img src={src} alt={`${event.title} ${i + 1}`} loading="lazy" />
+                            </div>
+                          ))}
+                        </div>
+                      )}
 
                       {event.attendance && (
                         <div className="event-section">
