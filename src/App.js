@@ -1039,9 +1039,20 @@ function Footer({ setPage }) {
 }
 
 // ── APP ROOT ─────────────────────────────────────────────
+const VALID_PAGES = ['home', 'membership', 'events', 'activities', 'directory', 'connect', 'articles', 'seva'];
+function getInitialPage() {
+  const params = new URLSearchParams(window.location.search);
+  const p = params.get('page');
+  return VALID_PAGES.includes(p) ? p : 'home';
+}
 export default function App() {
-  const [page, setPage] = useState('home');
-  const goTo = (p) => { setPage(p); window.scrollTo(0, 0); };
+  const [page, setPage] = useState(getInitialPage);
+  const goTo = (p) => {
+    setPage(p);
+    window.scrollTo(0, 0);
+    const url = p === 'home' ? window.location.pathname : `${window.location.pathname}?page=${p}`;
+    window.history.replaceState(null, '', url);
+  };
   return (
     <div className="app">
       <Nav page={page} setPage={goTo} />
