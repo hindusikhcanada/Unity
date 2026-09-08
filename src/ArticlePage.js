@@ -8,7 +8,7 @@ export default function GurbaniArticlePage({ setPage }) {
 
   return (
     <div className="inner-page">
-      <div className="inner-hero" style={{ backgroundImage: `url(/gallery/diya-aarti.jpg)` }}>
+      <div className="inner-hero" style={{ backgroundImage: `url(/articles/guru-granth-sahib.jpg)` }}>
         <div className="inner-overlay" />
         <div className="inner-hero-text">
           <h1>{GURBANI_ARTICLE.en.title.split(':')[0]}</h1>

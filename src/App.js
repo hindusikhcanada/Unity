@@ -21,6 +21,7 @@ const IMG = {
   kirtan:         '/gallery/gurdwara-scene.jpg',
   havan:          '/gallery/temple-prayer.jpg',
   turban:         '/gallery/turban.jpg',
+  guruGranthSahib: '/articles/guru-granth-sahib.jpg',
   // Feature card headers - contextually accurate contemporary photos
   memberCard:     '/cards/membership.jpg',
   community:      '/cards/connect.jpg',
@@ -622,7 +623,7 @@ function Articles({ setPage }) {
   const [filter, setFilter] = useState('All');
   const arts = [
     { img: IMG.prayer,    title: 'Spiritual Roots: Common Philosophy', cat: 'Spirituality', author: 'Dr. Priya Sharma', read: '8 min', featured: true,  desc: 'Explore the profound connections between Hindu Vedantic philosophy and Sikh teachings.' },
-    { img: IMG.turban,    title: 'Gurbani: The Living Guru',            cat: 'Spirituality', author: 'HSUF Canada',       read: '10 min', featured: true, desc: 'Why daily paath matters for every generation — the languages, structure, and teachings of Guru Granth Sahib Ji.', articleId: 'gurbani' },
+    { img: IMG.guruGranthSahib, title: 'Gurbani: The Living Guru',      cat: 'Spirituality', author: 'HSUF Canada',       read: '10 min', featured: true, desc: 'Why daily paath matters for every generation — the languages, structure, and teachings of Guru Granth Sahib Ji.', articleId: 'gurbani' },
     { img: IMG.diya,      title: 'Celebrating Hindu and Sikh Festivals', cat: 'Festivals',    author: 'Anjali Patel',      read: '5 min', featured: false, desc: 'A journey through vibrant festivals celebrating shared values of joy and community.' },
     { img: IMG.langar,    title: 'Seva in Action: Community Stories',   cat: 'Community',    author: 'Contributors',      read: '7 min', featured: false, desc: 'Real stories of members putting selfless service into action across Canada.' },
     { img: IMG.havan,     title: 'The Langar Tradition',                cat: 'Spirituality', author: 'Dr. Rajesh Kumar',  read: '6 min', featured: false, desc: 'Understanding Langar and its deep parallels in Hindu culture and hospitality.' },
