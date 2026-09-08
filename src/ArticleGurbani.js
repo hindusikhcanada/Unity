@@ -69,7 +69,7 @@ const GURBANI_ARTICLE = {
           ['Involve the whole family.', 'Children absorb rhythm and reverence long before they grasp meaning. Reciting together, even briefly, plants a seed that grows over a lifetime.'],
           ['Sit in silence afterward.', 'Even sixty seconds of stillness after paath, letting the words settle, transforms recitation from routine into genuine reflection.'],
         ],
-        after: 'Gurbani was given not as a text to be preserved behind glass, but as a living guide meant to be read, sung, questioned, and lived with, every single day, by every generation, in whatever measure of time and understanding one can bring to it.',
+        after: 'Gurbani is a living guide meant to be read, sung, questioned, and lived with, every single day, by every generation, in whatever measure of time and understanding one can bring to it.',
       },
     ],
     signoff: 'Stronger Together, Hindu Sikh Unity Forum Canada',
