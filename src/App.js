@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Activities from './Activities';
+import GurbaniArticlePage from './ArticlePage';
 
 // ── Unsplash image library (verified popular IDs) ───────
 const IMG = {
@@ -617,16 +618,17 @@ function Connect() {
 }
 
 // ── ARTICLES ─────────────────────────────────────────────
-function Articles() {
+function Articles({ setPage }) {
   const [filter, setFilter] = useState('All');
   const arts = [
     { img: IMG.prayer,    title: 'Spiritual Roots: Common Philosophy', cat: 'Spirituality', author: 'Dr. Priya Sharma', read: '8 min', featured: true,  desc: 'Explore the profound connections between Hindu Vedantic philosophy and Sikh teachings.' },
-    { img: IMG.kirtan,    title: 'Gurbani Wisdom: Lessons for Modern Life', cat: 'Culture', author: 'Harpreet Singh',    read: '6 min', featured: true,  desc: 'Timeless wisdom from the Guru Granth Sahib applied to contemporary Canadian life.' },
+    { img: IMG.turban,    title: 'Gurbani: The Living Guru',            cat: 'Spirituality', author: 'HSUF Canada',       read: '10 min', featured: true, desc: 'Why daily paath matters for every generation — the languages, structure, and teachings of Guru Granth Sahib Ji.', articleId: 'gurbani' },
     { img: IMG.diya,      title: 'Celebrating Hindu and Sikh Festivals', cat: 'Festivals',    author: 'Anjali Patel',      read: '5 min', featured: false, desc: 'A journey through vibrant festivals celebrating shared values of joy and community.' },
     { img: IMG.langar,    title: 'Seva in Action: Community Stories',   cat: 'Community',    author: 'Contributors',      read: '7 min', featured: false, desc: 'Real stories of members putting selfless service into action across Canada.' },
     { img: IMG.havan,     title: 'The Langar Tradition',                cat: 'Spirituality', author: 'Dr. Rajesh Kumar',  read: '6 min', featured: false, desc: 'Understanding Langar and its deep parallels in Hindu culture and hospitality.' },
     { img: IMG.lotus,     title: 'Bhakti and Devotion: A Shared Path',  cat: 'Culture',      author: 'Simran Kaur',       read: '7 min', featured: false, desc: 'The Bhakti tradition and its resonance in Sikh devotion — love as the path.' },
   ];
+  const openArticle = (a) => { if (a.articleId === 'gurbani') setPage('article-gurbani'); };
   const filtered = filter === 'All' ? arts : arts.filter(a => a.cat === filter);
   return (
     <div className="inner-page">
@@ -646,7 +648,9 @@ function Articles() {
                   <h3>{a.title}</h3>
                   <p>{a.desc}</p>
                   <div className="art-meta">{a.author} · {a.read} read</div>
-                  <button className="read-btn">Read Article →</button>
+                  <button className="read-btn" onClick={() => openArticle(a)} disabled={!a.articleId} style={!a.articleId ? { opacity: .5, cursor: 'default' } : {}}>
+                    {a.articleId ? 'Read Article →' : 'Coming Soon'}
+                  </button>
                 </div>
               </div>
             </Reveal>
@@ -660,7 +664,7 @@ function Articles() {
         <div className="art-list">
           {filtered.map((a, i) => (
             <Reveal key={i} delay={i * 0.05}>
-              <div className="art-item">
+              <div className="art-item" onClick={() => openArticle(a)} style={!a.articleId ? { cursor: 'default' } : {}}>
                 <img src={a.img} alt={a.title} className="art-thumb" />
                 <div>
                   <span className="feat-badge">{a.cat}</span>
@@ -1039,7 +1043,7 @@ function Footer({ setPage }) {
 }
 
 // ── APP ROOT ─────────────────────────────────────────────
-const VALID_PAGES = ['home', 'membership', 'events', 'activities', 'directory', 'connect', 'articles', 'seva'];
+const VALID_PAGES = ['home', 'membership', 'events', 'activities', 'directory', 'connect', 'articles', 'article-gurbani', 'seva'];
 function getInitialPage() {
   const params = new URLSearchParams(window.location.search);
   const p = params.get('page');
@@ -1062,7 +1066,8 @@ export default function App() {
       {page === 'activities' && <Activities />}
       {page === 'directory'  && <Directory />}
       {page === 'connect'    && <Connect />}
-      {page === 'articles'   && <Articles />}
+      {page === 'articles'   && <Articles setPage={goTo} />}
+      {page === 'article-gurbani' && <GurbaniArticlePage setPage={goTo} />}
       {page === 'seva'       && <Seva />}
       {page === 'contact'    && <Contact />}
 
