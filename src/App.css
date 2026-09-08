@@ -757,3 +757,17 @@ button, a { font-family: inherit; cursor: pointer; }
   .article-intro { font-size: 1.1rem; }
   .lang-tabs button { padding: .5rem 1.1rem; font-size: .95rem; }
 }
+
+.article-figure {
+  margin: 1.8rem 0; text-align: center;
+}
+.article-figure img {
+  width: 100%; max-width: 560px; border-radius: 14px;
+  box-shadow: 0 10px 34px rgba(0,0,0,.16);
+}
+.article-figure figcaption {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; color: #777;
+  font-size: 1rem; margin-top: .7rem;
+}
+.article-body[lang="pa"] .article-figure figcaption { font-family: 'Noto Sans Gurmukhi', sans-serif; font-style: normal; }
+.article-body[lang="hi"] .article-figure figcaption { font-family: 'Noto Serif Devanagari', serif; font-style: normal; }
